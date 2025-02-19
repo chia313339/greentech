@@ -3,27 +3,26 @@
   <div class="group-page">
     <!-- 左側分組切換區 (固定於左側) -->
     <div class="left-sidebar">
-      <!-- 手動寫出三個按鈕，根據 store.currentGroup 判斷 active -->
+      <!-- Greentech 按鈕 -->
       <button
-        class="group-btn"
+        class="group-btn greentech"
         :class="{ 'active-btn': currentGroup === 'greentech' }"
-        style="background-color: #00DB00"
         @click="goToGroup('greentech')"
       >
         GREENTECH
       </button>
+      <!-- City 按鈕 -->
       <button
-        class="group-btn"
+        class="group-btn city"
         :class="{ 'active-btn': currentGroup === 'city' }"
-        style="background-color: #009CFF"
         @click="goToGroup('city')"
       >
         CITY
       </button>
+      <!-- Healthcare 按鈕 -->
       <button
-        class="group-btn"
+        class="group-btn healthcare"
         :class="{ 'active-btn': currentGroup === 'healthcare' }"
-        style="background-color: #FFB600"
         @click="goToGroup('healthcare')"
       >
         HEALTHCARE
@@ -163,13 +162,12 @@ export default {
   },
   methods: {
     goToGroup(route) {
-      // 當點選分組按鈕時，更新 store.currentGroup 與 store.currentNav，並導向 /[group]/about
+      // 當點選分組按鈕時，更新 store 並導向 /[group]/about
       store.currentGroup = route
       store.currentNav = 'about'
       this.$router.push(`/${route}/about`)
     },
     updateNav(key) {
-      // 更新 store.currentNav
       store.currentNav = key
     },
     goHome() {
@@ -183,16 +181,23 @@ export default {
     }
   },
   watch: {
+    '$route.params.group'(newVal) {
+      // 如果 URL 帶有 group，則更新 store
+      let segments = this.$route.path.split('/');
+      // segments[1] 為 group
+      store.currentGroup = segments[1] || 'greentech'
+    },
     '$route.params.navItem'(newVal) {
-      store.currentNav = newVal || 'about'
+      // 由於沒有 navItem 參數，從 URL 中解析
+      let segments = this.$route.path.split('/');
+      // segments[2] 為 nav，若無則預設 'about'
+      store.currentNav = segments[2] || 'about'
     }
   },
   mounted() {
-    store.currentNav = this.$route.params.navItem || 'about'
-    // 如果路由沒有帶 currentGroup，則也同步更新
-    if (this.$route.params.group) {
-      store.currentGroup = this.$route.params.group
-    }
+    let segments = this.$route.path.split('/');
+    store.currentGroup = segments[1] || 'greentech';
+    store.currentNav = segments[2] || 'about';
   }
 }
 </script>
@@ -202,7 +207,7 @@ export default {
 .group-page {
   position: relative;
   min-height: 100vh;
-  padding-bottom: 80px;
+  padding-bottom: 100px;
 }
 
 /* 左側分組按鈕 (固定於左側) */
@@ -216,7 +221,18 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
+/* 設定每個按鈕的 z-index (最上面的最低，最下面的最高) */
+.left-sidebar button:nth-child(1) {
+  z-index: 1;
+}
+.left-sidebar button:nth-child(2) {
+  z-index: 2;
+}
+.left-sidebar button:nth-child(3) {
+  z-index: 3;
+}
 .group-btn {
+  background-color: rgb(143, 143, 143);
   width: 50px;
   flex: 1;
   border: none;
@@ -228,15 +244,28 @@ export default {
   justify-content: center;
   cursor: pointer;
   transition: transform 0.2s ease;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.187);
+  font-size: 1.3vw;
+  font-weight: bold;
+  transform-origin: top;
 }
 .group-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 .active-btn {
-  transform: scale(1.2);
-  box-shadow: 0 -5px 5px -5px grey;
+  transform: scale(1.1);
+  box-shadow: 0 -4px 4px rgba(0, 0, 0, 0.187);
+}
+.greentech.active-btn {
+  background-color: #00DB00;
+}
+.city.active-btn {
+  background-color: #009CFF;
+}
+.healthcare.active-btn {
+  background-color: #FFB600;
 }
 
 /* 主要內容區 */
@@ -257,7 +286,7 @@ export default {
   z-index: 1000;
 }
 .bottom-logo {
-  width: 16.67%; /* 1/6 */
+  width: 16.67%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -272,7 +301,7 @@ export default {
   height: auto;
 }
 .bottom-nav {
-  width: 83.33%; /* 5/6 */
+  width: 83.33%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -282,7 +311,7 @@ export default {
   color: rgb(255, 255, 255);
   text-decoration: none;
   transition: color 0.2s ease;
-  font-size:1.3vw;
+  font-size: 1.3vw;
 }
 .nav-link:hover {
   color: white;

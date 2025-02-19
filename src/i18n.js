@@ -6,11 +6,11 @@ const messages = {
     nav: {
       about: "About",
       schedule: "Schedule",
-      enterprise: "Enterprise",
+      enterprise: "Competition",
       instructions: "Instructions",
       scoring: "Scoring",
       awards: "Awards",
-      passed: "Passed",
+      passed: "Shortlist",
       retrospective: "Retrospective",
       faq: "FAQ",
       contact: "Contact"

@@ -40,14 +40,14 @@
         <img src="../assets/logo.png" alt="Logo" />
       </div>
       <div class="bottom-nav">
-        <!-- 手動寫出各個 Nav 項目，並加上 @click 更新 store.currentNav -->
+        <!-- 使用 $t() 翻譯 nav 文字 -->
         <router-link
           :to="`/${currentGroup}/about`"
           class="nav-link"
           :class="{ active: currentNav === 'about' }"
           @click="updateNav('about')"
         >
-          關於競賽
+          {{ $t('nav.about') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -56,7 +56,7 @@
           :class="{ active: currentNav === 'schedule' }"
           @click="updateNav('schedule')"
         >
-          競賽時程
+          {{ $t('nav.schedule') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -65,7 +65,7 @@
           :class="{ active: currentNav === 'enterprise' }"
           @click="updateNav('enterprise')"
         >
-          企業出題
+          {{ $t('nav.enterprise') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -74,7 +74,7 @@
           :class="{ active: currentNav === 'instructions' }"
           @click="updateNav('instructions')"
         >
-          報名須知
+          {{ $t('nav.instructions') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -83,7 +83,7 @@
           :class="{ active: currentNav === 'scoring' }"
           @click="updateNav('scoring')"
         >
-          評分標準
+          {{ $t('nav.scoring') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -92,7 +92,7 @@
           :class="{ active: currentNav === 'awards' }"
           @click="updateNav('awards')"
         >
-          獎項及義務
+          {{ $t('nav.awards') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -101,7 +101,7 @@
           :class="{ active: currentNav === 'passed' }"
           @click="updateNav('passed')"
         >
-          通過名單
+          {{ $t('nav.passed') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -110,7 +110,7 @@
           :class="{ active: currentNav === 'retrospective' }"
           @click="updateNav('retrospective')"
         >
-          歷屆回顧
+          {{ $t('nav.retrospective') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -119,7 +119,7 @@
           :class="{ active: currentNav === 'faq' }"
           @click="updateNav('faq')"
         >
-          FAQ
+          {{ $t('nav.faq') }}
         </router-link>
         <span class="separator">|</span>
         <router-link
@@ -128,7 +128,7 @@
           :class="{ active: currentNav === 'contact' }"
           @click="updateNav('contact')"
         >
-          聯繫我們
+          {{ $t('nav.contact') }}
         </router-link>
       </div>
     </div>
@@ -220,6 +220,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: 30px;
 }
 /* 設定每個按鈕的 z-index (最上面的最低，最下面的最高) */
 .left-sidebar button:nth-child(1) {

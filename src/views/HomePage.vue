@@ -71,7 +71,7 @@ export default {
   text-align: center;
 }
 .center-logo {
-  width: 300px; /* 可依需求調整 */
+  width: 25vw; /* 可依需求調整 */
   height: auto;
 }
 .title {

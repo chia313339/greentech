@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  mounted() {
+    if (window.innerWidth < 1000) {
+      alert("您的裝置尺寸無法達到最佳瀏覽效果，建議換到更大的螢幕");
+    }
+  }
 }
 </script>
 

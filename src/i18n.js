@@ -42,7 +42,7 @@ const messages = {
       greentechSchedule: "Greentech - 競賽時程"
     },
     buttons: {
-      signup: "報名連結",
+      signup: "報名<br>連結",
       en: "EN"
     }
   }

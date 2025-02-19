@@ -135,9 +135,8 @@
 
     <!-- 右下角懸浮按鈕區 -->
     <div class="floating-buttons">
-      <button class="reg-btn" @click="goToSignup">
-        報名 <br> 連結
-      </button>
+      <button class="reg-btn" @click="goToSignup" v-html="$t('buttons.signup')"></button>
+
       <button class="lang-btn" @click="toggleLanguage">
         {{ languageBtnText }}
       </button>
@@ -309,7 +308,7 @@ export default {
   padding: 0 20px;
 }
 .nav-link {
-  color: rgb(255, 255, 255);
+  color: rgb(105, 105, 105);
   text-decoration: none;
   transition: color 0.2s ease;
   font-size: 1.3vw;
@@ -349,6 +348,9 @@ export default {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease;
+  font-size: 1.1rem;
+  border: 2px solid white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
 }
 .reg-btn {
   background: linear-gradient(to right, #e63188, #f28d0f);

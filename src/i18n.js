@@ -22,6 +22,9 @@ const messages = {
     buttons: {
       signup: "Sign Up",
       en: "EN"
+    },
+    signupmodal:{
+      signup: "Sign Up",
     }
   },
   zh: {
@@ -44,6 +47,9 @@ const messages = {
     buttons: {
       signup: "報名<br>連結",
       en: "EN"
+    },
+    signupmodal:{
+      signup: "報名連結",
     }
   }
 }
@@ -53,5 +59,7 @@ const i18n = createI18n({
   fallbackLocale: 'en', // 找不到翻譯時使用英文
   messages,
 })
+
+
 
 export default i18n

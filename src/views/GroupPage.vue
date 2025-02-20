@@ -135,12 +135,35 @@
 
     <!-- 右下角懸浮按鈕區 -->
     <div class="floating-buttons">
-      <button class="reg-btn" @click="goToSignup" v-html="$t('buttons.signup')"></button>
+      <button class="reg-btn" v-html="$t('buttons.signup')" data-bs-toggle="modal" data-bs-target="#signModal"></button>
 
       <button class="lang-btn" @click="toggleLanguage">
         {{ languageBtnText }}
       </button>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="signModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-custom-size">
+        <div class="modal-content custom-modal-content">
+          <div class="modal-header">
+            <!-- 僅保留右上角的關閉按鈕 -->
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="signup-images-container">
+              <img src="@/assets/signup/greentech.png" alt="Greentech" @click="showSignupForm('greentech')">
+              <img src="@/assets/signup/city.png" alt="City" @click="showSignupForm('city')">
+              <img src="@/assets/signup/healthcare.png" alt="Healthcare" @click="showSignupForm('healthcare')">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
   </div>
 </template>
 
@@ -173,7 +196,11 @@ export default {
       this.$router.push('/')
     },
     goToSignup() {
-      alert('前往報名頁面')
+      alert('前往報名頁面!!!!')
+    },
+    showSignupForm(group) {
+      // 根據傳入的組別，顯示對應的報名表單
+      alert(`${group} 報名表單`)
     },
     toggleLanguage() {
       this.$i18n.locale = (this.$i18n.locale === 'zh') ? 'en' : 'zh'
@@ -364,4 +391,61 @@ export default {
 .lang-btn:hover {
   transform: scale(1.1);
 }
+
+/* 自訂 modal 尺寸 */
+.modal-custom-size {
+  width: 90vw;
+  height: 60vh;
+  max-width: 90vw;
+  max-height: 60vh;
+}
+
+/* 讓 modal-content 撐滿容器 */
+.custom-modal-content {
+  height: 100%;
+  background-size: cover;
+  border: none;
+}
+
+/* 移除 modal-header 與 modal-body 之間的分隔線 */
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.custom-modal-content {
+  background: url('@/assets/signup/bk.png') no-repeat center center;
+  background-size: cover;
+  border: none;
+}
+
+.signup-images-container {
+  display: flex;
+  flex-wrap: nowrap;         /* 不換行 */
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;                 /* 圖片間間隔 10px */
+  max-width: 70vw;           /* 整體容器不超過 70vw */
+  margin: 0 auto;            /* 水平置中 */
+}
+
+.signup-images-container img {
+  width: calc((100% - 2 * 3vw) / 3);  /* 3張圖片，中間2個 gap */
+  height: auto;
+  max-height: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-images-container img:hover {
+  transform: scale(1.05);
+}
+
 </style>

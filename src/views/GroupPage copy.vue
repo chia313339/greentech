@@ -1,70 +1,37 @@
 <!-- src/views/GroupPage.vue -->
 <template>
   <div class="group-page">
-    <!-- 開場全屏 overlay -->
-    <div v-if="showOpening" class="opening-overlay">
-      <img src="@/assets/opening.png" alt="Opening" class="opening-image" />
-      <div class="opening-countdown">{{ countdown }}</div>
-      <button class="opening-skip" @click="skipOpening">SKIP</button>
-    </div>
-
     <!-- 左側分組切換區 (固定於左側) -->
     <div class="left-sidebar">
-      <!-- Greentech 按鈕（預設皆加上 active-btn 類別） -->
+      <!-- Greentech 按鈕 -->
       <button
-        class="group-btn greentech active-btn"
+        class="group-btn greentech"
+        :class="{ 'active-btn': currentGroup === 'greentech' }"
         @click="goToGroup('greentech')"
       >
         GREENTECH
       </button>
       <!-- City 按鈕 -->
       <button
-        class="group-btn city active-btn"
+        class="group-btn city"
+        :class="{ 'active-btn': currentGroup === 'city' }"
         @click="goToGroup('city')"
       >
         CITY
       </button>
       <!-- Healthcare 按鈕 -->
       <button
-        class="group-btn healthcare active-btn"
+        class="group-btn healthcare"
+        :class="{ 'active-btn': currentGroup === 'healthcare' }"
         @click="goToGroup('healthcare')"
       >
         HEALTHCARE
       </button>
     </div>
 
-    <!-- 主要內容區：載入對應路由頁面 (這裡以 carousel 為例) -->
-    <div class="content">
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"  data-bs-interval="90000">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="@/assets/img/about/001.png" class="d-block w-100" alt="Image 1">
-          </div>
-          <div class="carousel-item">
-            <img src="@/assets/img/about/002.png" class="d-block w-100" alt="Image 2">
-          </div>
-          <div class="carousel-item">
-            <img src="@/assets/img/about/003.png" class="d-block w-100" alt="Image 3">
-          </div>
-        </div>
-        <!-- Carousel Indicators -->
-        <div class="carousel-indicators custom-indicators">
-          <button type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"></button>
-          <button type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"></button>
-          <button type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"></button>
-        </div>
-      </div>
+    <!-- 主要內容區：載入對應路由頁面 -->
+    <div class="main-content">
+      <router-view />
     </div>
 
     <!-- 下方整列：左側 Logo (1/6) + 導覽列 (5/6) -->
@@ -73,10 +40,11 @@
         <img src="../assets/logo.png" alt="Logo" />
       </div>
       <div class="bottom-nav">
-        <!-- 移除 about 的 active 判斷，與其他 nav 項目一致 -->
+        <!-- 使用 $t() 翻譯 nav 文字 -->
         <router-link
           :to="`/${currentGroup}/about`"
           class="nav-link"
+          :class="{ active: currentNav === 'about' }"
           @click="updateNav('about')"
         >
           {{ $t('nav.about') }}
@@ -167,32 +135,12 @@
 
     <!-- 右下角懸浮按鈕區 -->
     <div class="floating-buttons">
-      <button class="reg-btn" v-html="$t('buttons.signup')" data-bs-toggle="modal" data-bs-target="#signModal"></button>
+      <button class="reg-btn" @click="goToSignup" v-html="$t('buttons.signup')"></button>
 
       <button class="lang-btn" @click="toggleLanguage">
         {{ languageBtnText }}
       </button>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="signModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-custom-size">
-        <div class="modal-content custom-modal-content">
-          <div class="modal-header">
-            <!-- 僅保留右上角的關閉按鈕 -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="signup-images-container">
-              <img src="@/assets/signup/greentech.png" alt="Greentech" @click="showSignupForm('greentech')">
-              <img src="@/assets/signup/city.png" alt="City" @click="showSignupForm('city')">
-              <img src="@/assets/signup/healthcare.png" alt="Healthcare" @click="showSignupForm('healthcare')">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </template>
 
@@ -200,13 +148,6 @@
 import { store } from '../store'
 export default {
   name: 'GroupPage',
-  data() {
-    return {
-      showOpening: true,
-      countdown: 5,
-      openingTimer: null
-    }
-  },
   computed: {
     currentGroup() {
       return store.currentGroup
@@ -220,7 +161,7 @@ export default {
   },
   methods: {
     goToGroup(route) {
-      // 點選分組按鈕時，更新 store 並導向 /[group]/about
+      // 當點選分組按鈕時，更新 store 並導向 /[group]/about
       store.currentGroup = route
       store.currentNav = 'about'
       this.$router.push(`/${route}/about`)
@@ -231,51 +172,31 @@ export default {
     goHome() {
       this.$router.push('/')
     },
-    showSignupForm(group) {
-      // 根據傳入的組別，顯示對應的報名表單
-      alert(`${group} 報名表單`)
-    },
     goToSignup() {
       alert('前往報名頁面')
     },
     toggleLanguage() {
       this.$i18n.locale = (this.$i18n.locale === 'zh') ? 'en' : 'zh'
-    },
-    skipOpening() {
-      this.showOpening = false
-      if (this.openingTimer) {
-        clearInterval(this.openingTimer)
-        this.openingTimer = null
-      }
     }
   },
   watch: {
     '$route.params.group'(newVal) {
       // 如果 URL 帶有 group，則更新 store
       let segments = this.$route.path.split('/');
+      // segments[1] 為 group
       store.currentGroup = segments[1] || 'greentech'
     },
     '$route.params.navItem'(newVal) {
-      // 從 URL 中解析 nav 項目
+      // 由於沒有 navItem 參數，從 URL 中解析
       let segments = this.$route.path.split('/');
+      // segments[2] 為 nav，若無則預設 'about'
       store.currentNav = segments[2] || 'about'
     }
   },
   mounted() {
-    // 解析 URL 分段
     let segments = this.$route.path.split('/');
     store.currentGroup = segments[1] || 'greentech';
     store.currentNav = segments[2] || 'about';
-
-    // 啟動開場倒數計時
-    this.openingTimer = setInterval(() => {
-      if (this.countdown > 1) {
-        this.countdown--
-      } else {
-        this.countdown = 0
-        this.skipOpening()
-      }
-    }, 1000)
   }
 }
 </script>
@@ -288,48 +209,7 @@ export default {
   padding-bottom: 100px;
 }
 
-/* ------------------- 開場畫面相關樣式 ------------------- */
-.opening-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2000;
-  background: #000;
-}
-
-.opening-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.opening-countdown {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  color: white;
-  background: rgba(0,0,0,0.5);
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.opening-skip {
-  position: absolute;
-  bottom: 5%;
-  right: 5%;
-  font-size: 1.2rem;
-  color: white;
-  background: rgba(0,0,0,0.5);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* ------------------- 左側分組按鈕 ------------------- */
+/* 左側分組按鈕 (固定於左側) */
 .left-sidebar {
   position: fixed;
   top: 0;
@@ -341,6 +221,7 @@ export default {
   justify-content: space-between;
   padding-bottom: 30px;
 }
+/* 設定每個按鈕的 z-index (最上面的最低，最下面的最高) */
 .left-sidebar button:nth-child(1) {
   z-index: 1;
 }
@@ -387,45 +268,13 @@ export default {
   background-color: #FFB600;
 }
 
-/* ------------------- 主要內容區 (Carousel) ------------------- */
-.content {
-  padding: 30px;
-}
-.carousel {
-  position: relative;
-}
-.custom-indicators {
-  position: absolute;
-  width: 100%;
-  bottom: 20px;
-  left: -15%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-}
-.custom-indicators button {
-  width: 1.5vw;
-  height: 1.5vw;
-  border-radius: 50%;
-  background-color: white;
-  border: 2px solid #66CC66;
-  opacity: 1;
-  margin: 10px;
-  transition: background-color 0.2s ease;
-}
-.custom-indicators button.active {
-  background-color: #66CC66;
-  border-color: #66CC66;
-}
-.carousel img {
-  max-height: 80vh;
-  width: 100%;
-  object-fit: contain;
-  padding: 100px;
+/* 主要內容區 */
+.main-content {
+  margin-left: 60px;
+  padding: 20px;
 }
 
-/* ------------------- 底部導覽列 ------------------- */
+/* 下方區塊：包含 Logo 與 Nav (同一列) */
 .bottom-bar {
   position: fixed;
   bottom: 0;
@@ -459,7 +308,7 @@ export default {
   padding: 0 20px;
 }
 .nav-link {
-  color: rgb(255, 255, 255);
+  color: rgb(105, 105, 105);
   text-decoration: none;
   transition: color 0.2s ease;
   font-size: 1.3vw;
@@ -479,7 +328,7 @@ export default {
   color: rgb(255, 255, 255);
 }
 
-/* ------------------- 右下角懸浮按鈕區 ------------------- */
+/* 右下角懸浮按鈕區 */
 .floating-buttons {
   position: fixed;
   right: 20px;
@@ -501,7 +350,7 @@ export default {
   transition: transform 0.2s ease;
   font-size: 1.1rem;
   border: 2px solid white;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
 }
 .reg-btn {
   background: linear-gradient(to right, #e63188, #f28d0f);
@@ -515,63 +364,4 @@ export default {
 .lang-btn:hover {
   transform: scale(1.1);
 }
-
-
-/* 自訂 modal 尺寸 */
-.modal-custom-size {
-  width: 90vw;
-  height: 60vh;
-  max-width: 90vw;
-  max-height: 60vh;
-}
-
-/* 讓 modal-content 撐滿容器 */
-.custom-modal-content {
-  height: 100%;
-  background-size: cover;
-  border: none;
-}
-
-/* 移除 modal-header 與 modal-body 之間的分隔線 */
-.modal-header {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.modal-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.custom-modal-content {
-  background: url('@/assets/signup/bk.png') no-repeat center center;
-  background-size: cover;
-  border: none;
-}
-
-.signup-images-container {
-  display: flex;
-  flex-wrap: nowrap;         /* 不換行 */
-  justify-content: center;
-  align-items: center;
-  gap: 3vw;                 /* 圖片間間隔 10px */
-  max-width: 70vw;           /* 整體容器不超過 70vw */
-  margin: 0 auto;            /* 水平置中 */
-}
-
-.signup-images-container img {
-  width: calc((100% - 2 * 3vw) / 3);  /* 3張圖片，中間2個 gap */
-  height: auto;
-  max-height: 100%;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.signup-images-container img:hover {
-  transform: scale(1.05);
-}
-
-
 </style>

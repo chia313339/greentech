@@ -297,7 +297,7 @@ export default {
 
 /* 主要內容區 */
 .main-content {
-  margin-left: 60px;
+  /* margin-left: 60px; */
   padding: 20px;
 }
 

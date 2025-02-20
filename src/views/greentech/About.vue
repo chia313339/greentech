@@ -24,9 +24,15 @@ export default {
 
 <style scoped>
 .page-container {
-  position: relative;
-  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh; /* 確保不超出畫面 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
+
+
 
 /* 固定背景層，覆滿整個螢幕 */
 .fixed-bg {
@@ -44,8 +50,8 @@ export default {
 .title-bar {
   position: fixed;
   top: 5%;
-  left: 5%;
-  width: 20vw;
+  left: 7%;
+  width: 15vw;
   height: 6vh;
   display: flex;
   align-items: center;
@@ -53,23 +59,26 @@ export default {
   background-color: #4DB233;
   color: white;
   font-weight: 900;
-  border: 3px solid white;
+  border: 5px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   z-index: 10;
-  font-size: calc(1vw + 1vh);
+  font-size: calc(1.2vw + 1vh);
   text-align: center;
+  
 }
 
 /* 內容層：設定為 flex 以便置中內容 */
 .content {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  padding: 20px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
+
+
+
 
 /* 圖片容器 */
 .img-container {
@@ -81,9 +90,11 @@ export default {
 
 /* 圖片：寬度設為 90vh，自動保持原比例 */
 .img-container img {
-  width: 90vh;
+  max-width: 70vw;
+  max-height: 70vh;
+  width: auto;
   height: auto;
-  max-width: 100%;
   display: block;
 }
+
 </style>

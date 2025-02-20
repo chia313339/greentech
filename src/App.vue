@@ -8,8 +8,8 @@
 export default {
   name: 'App',
   mounted() {
-    if (window.innerWidth < 1000) {
-      alert("您的裝置尺寸無法達到最佳瀏覽效果，建議換到更大的螢幕");
+    if (window.innerWidth < 1200) {
+      alert("您的裝置尺寸可能無法達到最佳瀏覽效果，建議換到更大的螢幕");
     }
   }
 }

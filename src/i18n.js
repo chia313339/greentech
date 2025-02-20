@@ -20,7 +20,7 @@ const messages = {
       greentechSchedule: "Greentech - Schedule"
     },
     buttons: {
-      signup: "Sign Up",
+      signup: "Sign\nUp",
       en: "EN"
     },
     signupmodal:{
@@ -45,7 +45,7 @@ const messages = {
       greentechSchedule: "Greentech - 競賽時程"
     },
     buttons: {
-      signup: "報名<br>連結",
+      signup: "報名\n連結",
       en: "EN"
     },
     signupmodal:{
@@ -55,10 +55,12 @@ const messages = {
 }
 
 const i18n = createI18n({
-  locale: 'zh',         // 預設語系
-  fallbackLocale: 'en', // 找不到翻譯時使用英文
+  legacy: false, // 關閉 legacy mode
+  locale: 'zh',
+  fallbackLocale: 'en',
   messages,
 })
+
 
 
 

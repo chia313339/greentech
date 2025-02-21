@@ -7,13 +7,13 @@
     <div class="title_head">
       <div class="title-bar">{{ $t('nav.scoring') }}</div>
       <div class="buttons">
-        <button class="btn" :class="{ active: activeTab === '初賽' }" @click="setActive('初賽')">
+        <button class="btn btn-chu" :class="{ active: activeTab === '初賽' }" @click="setActive('初賽')">
           初賽
         </button>
-        <button class="btn" :class="{ active: activeTab === '複賽' }" @click="setActive('複賽')">
+        <button class="btn btn-fu" :class="{ active: activeTab === '複賽' }" @click="setActive('複賽')">
           複賽
         </button>
-        <button class="btn" :class="{ active: activeTab === '決賽' }" @click="setActive('決賽')">
+        <button class="btn btn-jue" :class="{ active: activeTab === '決賽' }" @click="setActive('決賽')">
           決賽
         </button>
       </div>
@@ -35,7 +35,7 @@ import image2 from '@/assets/img/scoring/002.png';
 import image3 from '@/assets/img/scoring/003.png';
 
 export default {
-  name: 'H-Enterprise',
+  name: 'GT-Scoring',
   data() {
     return {
       activeTab: '初賽'
@@ -115,29 +115,49 @@ export default {
   margin-top: 20px;
 }
 
-/* 修改按鈕成圓形 */
+/* 修改按鈕成圓形與預設樣式 */
 .btn {
   border: none;
-  color: white;
+  color: white;              /* 始終白色文字 */
+  font-weight: bold;         /* 粗體字 */
+  white-space: nowrap;       /* 文字不換行 */
   cursor: pointer;
-  font-size: 1vw;
-  width: 60px;
-  height: 60px;
+  font-size: 1vw;            /* 自動調整文字大小 */
+  width: calc(2vw + 20px);    /* 使用 viewport 單位，按比例調整按鈕尺寸 */
+  height: calc(2vw + 20px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
-  background-color: #9FA09F; /* 預設 inactive 狀態 */
-}
-
-.btn.active {
-  background-color: #00CC99;
+  background-color: #9FA09F;  /* 預設 inactive 狀態 */
 }
 
 .btn:hover {
-  transform: scale(1.1);
-  color: white; /* hover 時保持文字顏色 */
+  transform: scale(1.1);      /* 滑鼠移入時放大 */
+}
+
+/* 初賽的 active/hover 狀態 */
+.btn.btn-chu.active,
+.btn.btn-chu:hover {
+  background-color: #00CC99;
+  color: white;
+}
+
+/* 複賽的 active/hover 狀態 */
+.btn.btn-fu.active,
+.btn.btn-fu:hover {
+  background-color: #009933;
+  color: white;
+
+}
+
+/* 決賽的 active/hover 狀態 */
+.btn.btn-jue.active,
+.btn.btn-jue:hover {
+  background-color: #1A5B2F;
+  color: white;
+
 }
 
 /* 內容層 */

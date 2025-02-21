@@ -371,7 +371,7 @@ export default {
   transform-origin: top;
 }
 .group-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 .active-btn {
   transform: scale(1.1);

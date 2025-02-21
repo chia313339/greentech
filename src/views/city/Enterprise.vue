@@ -33,7 +33,7 @@
     <div v-if="showModal" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <div class="modal-img-container">
-          <img src="@/assets/img/enterprise/com_content.png" alt="公司詳細內容">
+          <img src="@/assets/img/enterprise/com_content0.png" alt="公司詳細內容">
           <button class="close-button" @click="closeModal">X</button>
         </div>
       </div>
@@ -43,7 +43,7 @@
 
 <script>
 export default {
-  name: 'City-Enterprise',
+  name: 'CT-Enterprise',
   data() {
     return {
       showModal: false

@@ -114,9 +114,12 @@ export default {
 
 .btn:hover {
   transform: scale(1.01);
+  color: white;
 }
 .btn2:hover {
   transform: scale(1.01);
+  color: white;
+
 }
 
 /* 內容層 */

@@ -4,7 +4,7 @@
     <div class="fixed-bg"></div>
 
     <!-- 標題欄，固定在畫面上 -->
-    <div class="title-bar">競賽時程</div>
+    <div class="title-bar">{{ $t('nav.schedule') }}</div>
 
     <!-- 內容層 -->
     <div class="content">
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'Healthcare-Schedule'
+  name: 'Health-Schedule'
 }
 </script>
 
@@ -75,6 +75,7 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  margin-top: -100px;
 }
 
 

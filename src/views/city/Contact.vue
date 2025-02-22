@@ -57,7 +57,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #4DB233;
+  background-color: #0070b5;
   color: white;
   font-weight: 900;
   border: 5px solid white;

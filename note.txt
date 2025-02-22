@@ -1,0 +1,104 @@
+請幫我修改程式：
+1. 新增兩個按鈕，分別是「完整題目下載」，底色為#BA2553，另一個為「觀看題目說明影片」，底色為#336600，兩個按鈕寬度相同，放在<div class="title-bar">關於競賽</div>的右邊，在同一水平上
+2. 在下方的content幫我建立6*6的區塊，每個區塊上方會有src/assets/img/enterprise/com.png，下方黑色字寫下「公司1」「公司2」...
+3. content每個圖片都是超連結，滑鼠移過去會有稍微放大效果，注意是只有圖會放大，不是整個區塊。點擊後使用彈出視窗顯示圖片src/assets/img/enterprise/com_content.png，圖片右上方有X按鈕可以關閉視窗，開啟圖片時背景會變暗，點擊後面背景也會關閉視窗
+4. content的排列會因為畫面自動調整，最多一行放6個，最少一行放3個，每個區塊之間的間距為10px，放6個時均勻塞滿，隨著畫面自動調整
+
+有些錯誤請幫我修正
+1. title-bar維持原本的樣子寫上標題，「完整題目下載」「觀看題目說明影片」兩個按鈕只是再同一水平，並沒有共用底色
+2. content的每個區塊沒有底色，保持透明，且每列最多放6個，最少放3個，每個區塊之間的間距為10px，放6個時均勻塞滿，隨著畫面自動調整
+3. content每個圖片都是超連結，滑鼠移過去會有稍微放大效果，點擊後使用彈出視窗顯示圖片src/assets/img/enterprise/com_content.png，圖片右上方有X按鈕可以關閉視窗
+
+
+胡加萱人在外面遲到太久，時間不夠，需要請他重新預約
+
+我想要做幾個修改
+1. 我的content會往下延伸，所以我想要可以往下滾動看到下面的內容，但是滑上去的內容不要跟title_head交疊，避免畫面混亂
+2. 我的grid-item不需要背景色，滑鼠移過去裡面的圖片會有hover效果稍微放大
+3. 
+
+新增功能
+1. 點擊grid-item圖片後，會跳出視窗顯示圖片src/assets/img/enterprise/com_content.png，圖片右上方有X按鈕可以關閉視窗，開啟圖片時背景會變暗，點擊後面背景也會關閉視窗
+
+請幫我修改程式：
+1. btn改成圓形，hover效果會稍微放大，但字不要變黑色
+2. btn如果active會變成#00CC99，如果沒有會是#9FA09F，下面的img-container會呈現active的對應圖片:
+初賽為/img/scoring/001.png
+複賽為/img/scoring/002.png
+決賽為/img/scoring/003.png
+
+我想要
+1. 讓複賽的按鈕active跟hover都改成 #009933，決賽的按鈕active跟hover都改成 #1A5B2F
+2. 注意事項按鈕點下去後，有彈出視窗，彈出視窗會顯示src/assets/img/awards/note.png，右上角有X按鈕可以關閉視窗，開啟圖片時背景會變暗，點擊後面背景也會關閉視窗
+3. 注意事項的圖比較長，所以請配合寬度到70vw，高度根據比例顯示到70vw，並且置中，圖片下方可以透過滾輪往下滑看完整圖片
+
+
+我要調整content的內容
+1. 當選擇初賽時，content的內容會變成初賽的src/assets/img/passed/chu001.png～005.png，使用bootstrap的carousel功能，可以左右滑動
+2. 當選擇複賽時，content的內容會變成複賽的src/assets/img/passed/fu001.png～003.png，使用bootstrap的carousel功能，可以左右滑動
+3. 當選擇決賽時，content的內容會變成決賽的src/assets/img/passed/jue001.png～002.png，使用bootstrap的carousel功能，可以左右滑動
+4. 讓初賽的carousel-control變成 #00CC99，複賽 #009933，決賽 #1A5B2，且carousel-indicators的顏色也要跟著變
+
+我想要
+1. btn2靠畫面右邊顯示，但依然維持在同水平
+2. 下方content改成上傳的示意排版，有兩排，上面一排放兩個youtube的內嵌影片，分別是
+* https://youtu.be/OTS9WwW3lQs?si=A5bBsvndVJI8E5sm
+* https://youtu.be/rZuiP7bnO4k?si=nn1nk5cth69GX8ul
+3. 下面一排使用圖片輪播，會播放btn選擇的對應圖片，如2024，就會是p2024_001, p2024_002, p2024_003, p2024_004
+4. 點擊下面一排的圖片，會彈出圖片視窗放大顯示，且輪播的carousel-control-next不管btn選擇哪一年，都改為#00CC99
+5. 
+
+
+根據目前程式在幫我修改
+1. 下面一排輪播圖片要一次在畫面顯示4張，點擊carousel-control會讓圖片輪播重複顯示，其餘功能不變
+2. 下面一排輪播圖片的4張，他的左右兩邊跟上面的youtube影片那一排對齊，且carousel-control在更外面的側
+
+
+輪播的圖片會顯示四張，我希望點擊carousel-control只切換一張，不要一次換掉四張
+
+1. 一家參賽新創最多可以獲得多少驗證費用？
+2. 可以同時投件多組企業題嗎？
+3. 是否需繳交報名費用？
+4. 如果報名或填寫申請文件遇到問題時，怎麼辦？
+5. 初賽及複賽結果是否會通知？
+6. 有需要達成的義務嗎？
+7. 最後申請日是何時？
+8. 參賽人員是否有人數及身分限制？
+9. 【附件六】填寫規則是什麼？
+
+我希望
+1. 在content的位子，做出類似示意圖的摺疊效果，點開箭頭會展開細節文字
+2. 當點擊箭頭時，會展開細節文字，並且箭頭會變成向上，再點擊一次會收起細節文字，箭頭會變成向下
+
+
+我喜歡現在的規劃，但是我想要做一些修改
+1. 讓每個FAQ區塊，問題都是白色粗體字，底色為 #00CC99，展開時的答案是黑色字，底色為白色，展開與收合的區塊，外框也用#00CC99包起來，如示意圖
+2. 每個FAQ區塊中間不要有分隔線，間隔30px
+3. 幫我生成9個問題的內容　：
+1. 一家參賽新創最多可以獲得多少驗證費用？
+2. 可以同時投件多組企業題嗎？
+3. 是否需繳交報名費用？
+4. 如果報名或填寫申請文件遇到問題時，怎麼辦？
+5. 初賽及複賽結果是否會通知？
+6. 有需要達成的義務嗎？
+7. 最後申請日是何時？
+8. 參賽人員是否有人數及身分限制？
+9. 【附件六】填寫規則是什麼？
+
+
+我的影片和圖片路徑有些變動，請幫我修改
+1. 2024年的youtube影片為https://youtu.be/1Vm3phKIDus?si=Vd6bsVEEhC2EUWZ1、https://youtu.be/AbOo_Snwx7o?si=xmw42dLHHtV31Qls，圖片為@/assets/img/retrospective/greentech/2024_00001.jpg~2024_00017.jpg
+2. 2023年的youtube影片為https://youtu.be/OTS9WwW3lQs?si=YAZcdvTV4J5uTAMK、https://youtu.be/rZuiP7bnO4k?si=5pfBhDrOmKQ8_YyL，圖片為@/assets/img/retrospective/greentech/2023_00001.jpg~2023_00012.jpg
+3. 2022年的youtube影片為https://youtu.be/8dFalGEtcYk?si=ZzUDeueF3FOiBJK1、https://youtu.be/X4aeEyuzJcE?si=_erC9EhNmHswoaT_，圖片為@/assets/img/retrospective/greentech/2022_00001.jpg~2022_00007.jpg
+
+其餘排版及架構都不需要調整，我使用vite開發，這是我其中一份vue檔案
+
+
+ #009CFF, #FFB600, #00DB00
+
+ #008fe8
+ #0070b5
+
+ 42b6ff
+ 0469d5
+ 1b577c

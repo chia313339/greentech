@@ -19,58 +19,66 @@
       </div>
     </div>
 
-    <!-- 內容層：使用 Bootstrap Carousel -->
+    <!-- 內容層 -->
     <div class="content">
-      <div :key="activeTab" :id="'carouselPassed'" :class="['carousel slide', carouselClass]" data-bs-ride="carousel">
-        <!-- 指示點 -->
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            v-for="(img, index) in images"
-            :key="'indicator-' + index"
-            :data-bs-target="'#carouselPassed'"
-            :data-bs-slide-to="index"
-            :class="{ active: index === 0 }"
-            :aria-current="index === 0 ? 'true' : null"
-            :aria-label="'Slide ' + (index + 1)">
+      <div class="carousel-container">
+        <div
+        :key="activeTab"
+          id="carouselExampleIndicators"
+          class="carousel slide"
+          :class="carouselClass"
+          data-bs-ride="carousel"
+        >
+          <!-- 動態生成指示點 -->
+          <div class="carousel-indicators">
+            <button 
+              v-for="(image, index) in images" 
+              :key="index" 
+              type="button" 
+              data-bs-target="#carouselExampleIndicators" 
+              :data-bs-slide-to="index" 
+              :class="{ active: index === 0 }" 
+              :aria-current="index === 0 ? 'true' : undefined" 
+              :aria-label="'Slide ' + (index + 1)">
+            </button>
+          </div>
+          <!-- Carousel 內容 -->
+          <div class="carousel-inner">
+            <div 
+              v-for="(image, index) in images" 
+              :key="index" 
+              :class="['carousel-item', { active: index === 0 }]">
+              <img :src="image" class="d-block w-100" alt="Slide image">
+            </div>
+          </div>
+          <!-- 控制鈕 -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true" :style="{ color: currentColor }">&#10094;</span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true" :style="{ color: currentColor }">&#10095;</span>
+            <span class="visually-hidden">Next</span>
           </button>
         </div>
-        <!-- Carousel 內容 -->
-        <div class="carousel-inner">
-          <div
-            v-for="(img, index) in images"
-            :key="'item-' + index"
-            :class="['carousel-item', { active: index === 0 }]">
-            <img :src="img" class="d-block w-100" alt="Passed Image">
-          </div>
-        </div>
-        <!-- 前後控制按鈕 -->
-        <button class="carousel-control-prev" type="button" :data-bs-target="'#carouselPassed'" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" :data-bs-target="'#carouselPassed'" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import chu001 from '@/assets/img/passed/chu001.png';
-import chu002 from '@/assets/img/passed/chu002.png';
-import chu003 from '@/assets/img/passed/chu003.png';
-import chu004 from '@/assets/img/passed/chu004.png';
-import chu005 from '@/assets/img/passed/chu005.png';
+import chu1 from '@/assets/img/passed/chu001.png';
+import chu2 from '@/assets/img/passed/chu002.png';
+import chu3 from '@/assets/img/passed/chu003.png';
+import chu4 from '@/assets/img/passed/chu004.png';
+import chu5 from '@/assets/img/passed/chu005.png';
 
-import fu001 from '@/assets/img/passed/fu001.png';
-import fu002 from '@/assets/img/passed/fu002.png';
-import fu003 from '@/assets/img/passed/fu003.png';
+import fu1 from '@/assets/img/passed/fu001.png';
+import fu2 from '@/assets/img/passed/fu002.png';
+import fu3 from '@/assets/img/passed/fu003.png';
 
-import jue001 from '@/assets/img/passed/jue001.png';
-import jue002 from '@/assets/img/passed/jue002.png';
+import jue1 from '@/assets/img/passed/jue001.png';
+import jue2 from '@/assets/img/passed/jue002.png';
 
 export default {
   name: 'GT-Scoring',
@@ -80,22 +88,40 @@ export default {
     }
   },
   computed: {
+    // 根據目前階段返回對應圖片陣列
     images() {
-      if (this.activeTab === '初賽') {
-        return [chu001, chu002, chu003, chu004, chu005];
-      } else if (this.activeTab === '複賽') {
-        return [fu001, fu002, fu003];
-      } else if (this.activeTab === '決賽') {
-        return [jue001, jue002];
+      switch(this.activeTab) {
+        case '初賽':
+          return [chu1, chu2, chu3, chu4, chu5];
+        case '複賽':
+          return [fu1, fu2, fu3];
+        case '決賽':
+          return [jue1, jue2];
+        default:
+          return [chu1, chu2, chu3, chu4, chu5];
       }
-      return [];
     },
+    // 用於設定 carousel 上的 class，以便針對不同階段設定控制鈕與指示點顏色
     carouselClass() {
-      // 回傳對應的 class 名稱
-      if (this.activeTab === '初賽') return 'carousel-chu';
-      if (this.activeTab === '複賽') return 'carousel-fu';
-      if (this.activeTab === '決賽') return 'carousel-jue';
-      return '';
+      switch(this.activeTab) {
+        case '初賽':
+          return 'chu';
+        case '複賽':
+          return 'fu';
+        case '決賽':
+          return 'jue';
+        default:
+          return 'chu';
+      }
+    },
+    // 根據階段返回顏色
+    currentColor() {
+      switch(this.activeTab) {
+        case '初賽': return '#00CC99';
+        case '複賽': return '#009933';
+        case '決賽': return '#1A5B2F';
+        default: return '#00CC99';
+      }
     }
   },
   methods: {
@@ -162,50 +188,50 @@ export default {
   margin-top: 20px;
 }
 
-/* 按鈕樣式 */
+/* 修改按鈕成圓形與預設樣式 */
 .btn {
   border: none;
-  color: white;              
-  font-weight: bold;        
-  white-space: nowrap;      
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
   cursor: pointer;
-  font-size: 1vw;            
-  width: calc(2vw + 20px);    
+  font-size: 1vw;
+  width: calc(2vw + 20px);
   height: calc(2vw + 20px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
-  background-color: #9FA09F;  
+  background-color: #9FA09F;
 }
 
 .btn:hover {
-  transform: scale(1.1);      /* 滑鼠移入時放大 */
+  transform: scale(1.1);
 }
 
-/* 初賽按鈕 */
+/* 初賽的 active/hover 狀態 */
 .btn.btn-chu.active,
 .btn.btn-chu:hover {
   background-color: #00CC99;
   color: white;
 }
 
-/* 複賽按鈕 */
+/* 複賽的 active/hover 狀態 */
 .btn.btn-fu.active,
 .btn.btn-fu:hover {
   background-color: #009933;
   color: white;
 }
 
-/* 決賽按鈕 */
+/* 決賽的 active/hover 狀態 */
 .btn.btn-jue.active,
 .btn.btn-jue:hover {
   background-color: #1A5B2F;
   color: white;
 }
 
-/* 內容層：設定為 flex 以便置中內容 */
+/* 內容層：置中 carousel */
 .content {
   width: 100%;
   height: 100%;
@@ -213,75 +239,55 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: 8vh;
+  margin-top: -120px;
 }
 
+/* Carousel container 調整 */
+.carousel-container {
+  width: 90vw;
+  margin-top: 25vh;
+}
 
-/* Carousel 圖片樣式 */
+/* Carousel 圖片 */
 .carousel-inner img {
+  max-width: 100%;
   max-height: 70vh;
-  max-width: 70vw;
   object-fit: contain;
 }
 
-/* ===== 針對不同賽制的 Carousel 控制與指示點 ===== */
-
-/* 初賽：#00CC99 */
-.carousel-chu .carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2300CC99' viewBox='0 0 8 8'%3E%3Cpath d='M4.854 0.146a.5.5 0 0 0-.708 0L.646 3.646a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L1.707 4 4.854.854a.5.5 0 0 0 0-.708z'/%3E%3C/svg%3E");
-}
-.carousel-chu .carousel-control-next-icon {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%2300CC99' viewBox='0 0 8 8'%3E%3Cpath d='M3.146 0.146a.5.5 0 0 1 .708 0L7.354 3.646a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 1 1-.708-.708L6.293 4 3.146.854a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-}
-.carousel-chu .carousel-indicators button {
-  background-color: #00CC99;
-}
-.carousel-chu .carousel-indicators .active {
-  background-color: #00CC99;
+/* 移除預設控制鈕背景圖，使用文字箭頭 */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  font-size: 2rem;
+  line-height: 1;
 }
 
-/* 複賽：#009933 */
-.carousel-fu .carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009933' viewBox='0 0 8 8'%3E%3Cpath d='M4.854 0.146a.5.5 0 0 0-.708 0L.646 3.646a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L1.707 4 4.854.854a.5.5 0 0 0 0-.708z'/%3E%3C/svg%3E");
-}
-.carousel-fu .carousel-control-next-icon {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23009933' viewBox='0 0 8 8'%3E%3Cpath d='M3.146 0.146a.5.5 0 0 1 .708 0L7.354 3.646a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 1 1-.708-.708L6.293 4 3.146.854a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-}
-.carousel-fu .carousel-indicators button {
-  background-color: #009933;
-}
-.carousel-fu .carousel-indicators .active {
-  background-color: #009933;
+/* 根據不同階段改變控制鈕及指示點顏色 */
+.carousel.chu .carousel-control-prev-icon,
+.carousel.chu .carousel-control-next-icon,
+.carousel.chu .carousel-indicators [data-bs-target] {
+  color: #00CC99;
 }
 
-/* 決賽：#1A5B2F */
-.carousel-jue .carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%231A5B2F' viewBox='0 0 8 8'%3E%3Cpath d='M4.854 0.146a.5.5 0 0 0-.708 0L.646 3.646a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L1.707 4 4.854.854a.5.5 0 0 0 0-.708z'/%3E%3C/svg%3E");
-}
-.carousel-jue .carousel-control-next-icon {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%231A5B2F' viewBox='0 0 8 8'%3E%3Cpath d='M3.146 0.146a.5.5 0 0 1 .708 0L7.354 3.646a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 1 1-.708-.708L6.293 4 3.146.854a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-}
-.carousel-jue .carousel-indicators button {
-  background-color: #1A5B2F;
-}
-.carousel-jue .carousel-indicators .active {
-  background-color: #1A5B2F;
+.carousel.fu .carousel-control-prev-icon,
+.carousel.fu .carousel-control-next-icon,
+.carousel.fu .carousel-indicators [data-bs-target] {
+  color: #009933;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10; /* 確保按鈕在最上層 */
+.carousel.jue .carousel-control-prev-icon,
+.carousel.jue .carousel-control-next-icon,
+.carousel.jue .carousel-indicators [data-bs-target] {
+  color: #1A5B2F;
 }
 
-.carousel-control-prev {
-  left: -10vw;  /* 向左移出圖片範圍，可依需要調整數值 */
+/* 指示點樣式 */
+.carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 4px;
 }
-
-.carousel-control-next {
-  right: -10vw; /* 向右移出圖片範圍，可依需要調整數值 */
-}
-
-
 </style>

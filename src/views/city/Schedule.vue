@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'City-Schedule'
+  name: 'Greentech-Schedule'
 }
 </script>
 

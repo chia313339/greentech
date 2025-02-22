@@ -5,7 +5,7 @@
 
     <!-- 標題欄 -->
     <div class="title_head">
-      <div class="title-bar">{{ $t('nav.enterprise')}}</div>
+      <div class="title-bar">{{ $t('nav.enterprise') }}</div>
       <div class="buttons">
         <button class="btn download-btn" style="background-color: #BA2553;">
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;完整題目下載
@@ -21,7 +21,8 @@
       <div class="grid-container">
         <!-- 使用 v-for 重複 36 個區塊 -->
         <div class="grid-item" v-for="i in 36" :key="i">
-          <a href="javascript:void(0)" @click="openModal">
+          <!-- 利用 data-bs-toggle 與 data-bs-target 觸發 Bootstrap Modal -->
+          <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#companyModal">
             <img src="@/assets/img/enterprise/com.png" alt="公司">
           </a>
           <div class="company-label">公司{{ i }}</div>
@@ -29,34 +30,25 @@
       </div>
     </div>
 
-    <!-- Modal 視窗 -->
-    <div v-if="showModal" class="modal-overlay" @click="closeModal">
-      <div class="modal-content" @click.stop>
-        <div class="modal-img-container">
-          <img src="@/assets/img/enterprise/com_content0.png" alt="公司詳細內容">
-          <button class="close-button" @click="closeModal">X</button>
+    <!-- Bootstrap Modal：只顯示圖片，內部無額外內距 -->
+    <div class="modal fade" id="companyModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content p-0 border-0">
+          <!-- 右上角的 X 按鈕，絕對定位 -->
+          <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="modal-body p-0">
+            <img src="@/assets/img/enterprise/com_content0.png" alt="公司詳細內容" class="img-fluid">
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CT-Enterprise',
-  data() {
-    return {
-      showModal: false
-    }
-  },
-  methods: {
-    openModal() {
-      this.showModal = true;
-    },
-    closeModal() {
-      this.showModal = false;
-    }
-  }
+  name: 'GT-Enterprise'
 }
 </script>
 
@@ -123,10 +115,12 @@ export default {
   cursor: pointer;
   font-size: 1vw;
   width: 12vw;
+  transition: transform 0.2s ease;
 }
 
 .btn:hover {
-  transform: scale(1.01);
+  transform: scale(1.05);
+  color: white;
 }
 
 /* 內容層 */
@@ -182,55 +176,23 @@ export default {
   font-weight: bold;
 }
 
-/* Modal 樣式 */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 20;
-}
-
-/* Modal 的內容限制尺寸，且自動調整圖片大小 */
+/* 自訂 modal 樣式：移除內距，讓圖片與 modal 邊框貼齊 */
 .modal-content {
-  position: relative;
-  max-width: 70vw;
-  max-height: 70vh;
-  width: 100%;
-  height: 100%;
-}
-
-/* 圖片容器 */
-.modal-img-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* 圖片自動調整大小，保持比例 */
-.modal-img-container img {
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  margin: 0 auto;
-}
-
-/* 關閉按鈕，固定在圖片內右上角 */
-.close-button {
-  position: absolute;
-  top: 0;
-  right: 10px;
   border: none;
-  color: #060606;
-  font-size: 1.5em;
-  cursor: pointer;
-  padding: 0.2em 0.5em;
-  z-index: 2;
-  background-color: #ffffff00;
+}
+
+.modal-body {
+  padding: 0;
+}
+
+/* 右上角的 X 按鈕 */
+.custom-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  /* 若需要，可微調按鈕與邊框距離，例如：
+  margin: 5px;
+  */
 }
 </style>

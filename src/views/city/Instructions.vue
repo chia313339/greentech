@@ -27,14 +27,13 @@
       </div>
     </div>
 
+
   </div>
 </template>
 
-
 <script>
 export default {
-  name: 'CT-Enterprise',
-
+  name: 'GT-Enterprise'
 }
 </script>
 
@@ -100,23 +99,12 @@ export default {
   padding: 5px 10px;
   cursor: pointer;
   font-size: 1vw;
-  width: 14vw;
-}
-
-.btn2 {
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 1vw;
-  width: 10vw;
+  transition: transform 0.2s ease;
 }
 
 .btn:hover {
-  transform: scale(1.01);
-}
-.btn2:hover {
-  transform: scale(1.01);
+  transform: scale(1.05);
+  color: white;
 }
 
 /* 內容層 */
@@ -126,16 +114,16 @@ export default {
   width: 100%;
 }
 
-
-/* 圖片容器設為相對定位，方便文字絕對定位 */
+/* Grid 排版 */
 .img-container {
   position: relative;
   display: flex;
+  padding-right: 100px;
+  padding-left: 100px;
+  width: 100%;
   align-items: center;
   justify-content: center;
-  width: 100%;
 }
-
 /* 圖片：保持原有樣式 */
 .img-container img {
   max-width: 70vw;
@@ -148,10 +136,10 @@ export default {
 /* 文字覆蓋層：絕對定位在圖片內的左下角 */
 .text-overlay {
   position: absolute;
-  left: 21.5%;
+  right: 51%;
   bottom: 12%;
   color: red;
-  text-align: left;
+  text-align: right;
   /* 可根據需求調整字體大小與行高 */
   font-size: 0.8vw;
   line-height: 2;
@@ -160,6 +148,5 @@ export default {
 .textlink:hover {
   scale: 1.1;
 }
-
 
 </style>

@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'City-About'
+  name: 'Greentech-About'
 }
 </script>
 

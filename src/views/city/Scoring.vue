@@ -133,6 +133,10 @@ export default {
   background-color: #9FA09F;  /* 預設 inactive 狀態 */
 }
 
+.btn:hover {
+  transform: scale(1.1);      /* 滑鼠移入時放大 */
+}
+
 /* 初賽的 active/hover 狀態 */
 .btn.btn-chu.active,
 .btn.btn-chu:hover {
@@ -156,23 +160,29 @@ export default {
 
 }
 
-/* 內容層 */
+
+/* 內容層：設定為 flex 以便置中內容 */
 .content {
-  margin-top: 100px;
-  padding-bottom: 50px;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -100px;
 }
 
-/* 圖片容器設為相對定位 */
+
+/* 圖片容器 */
 .img-container {
-  position: relative;
+  margin-top: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
 
-/* 圖片：保持原有樣式 */
+/* 圖片：寬度設為 90vh，自動保持原比例 */
 .img-container img {
   max-width: 70vw;
   max-height: 70vh;

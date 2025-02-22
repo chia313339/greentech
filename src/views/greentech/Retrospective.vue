@@ -5,10 +5,7 @@
 
     <!-- 標題欄 -->
     <div class="title_head">
-      <!-- 左側標題 -->
       <div class="title-bar">{{ $t('nav.retrospective') }}</div>
-
-      <!-- 按鈕容器 -->
       <div class="buttons">
         <button
           class="btn btn-chu"
@@ -31,38 +28,30 @@
         >
           2022
         </button>
-        <!-- 靠右的按鈕 -->
-        <button class="btn2">
-          瀏覽2022網站
-        </button>
+        <button class="btn2">瀏覽2022網站</button>
       </div>
     </div>
 
     <!-- 內容層 -->
     <div class="content">
-      <!-- 上排：兩個 YouTube 影片 -->
+      <!-- 上排 YouTube 影片 -->
       <div class="videos-wrapper">
-        <div class="video-item">
+        <div
+          class="video-item"
+          v-for="(video, index) in videos"
+          :key="index"
+        >
           <iframe
             width="100%"
             height="315"
-            src="https://www.youtube.com/embed/OTS9WwW3lQs?si=A5bBsvndVJI8E5sm"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video-item">
-          <iframe
-            width="100%"
-            height="315"
-            src="https://www.youtube.com/embed/rZuiP7bnO4k?si=nn1nk5cth69GX8ul"
+            :src="video"
             frameborder="0"
             allowfullscreen
           ></iframe>
         </div>
       </div>
 
-      <!-- 下排：一次顯示4張圖片、可重複輪播 -->
+      <!-- 下排 輪播 -->
       <div class="carousel-container">
         <div
           id="carouselExampleIndicators"
@@ -71,31 +60,17 @@
           data-bs-ride="carousel"
         >
           <div class="carousel-inner">
-            <!-- 第一組幻燈片：顯示 4 張圖 -->
-            <div class="carousel-item active">
+            <div
+              v-for="(chunk, index) in imagesChunks"
+              :key="index"
+              class="carousel-item"
+              :class="{ active: index === 0 }"
+            >
               <div class="multi-container">
                 <div
                   class="multi-item"
-                  v-for="(image, index) in images"
-                  :key="index"
-                  @click="showImage(image)"
-                >
-                  <img
-                    :src="image"
-                    class="d-block w-100"
-                    alt="Slide image"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- 第二組幻燈片：重複顯示同 4 張圖，用於「下一張」時的重複輪播 -->
-            <div class="carousel-item">
-              <div class="multi-container">
-                <div
-                  class="multi-item"
-                  v-for="(image, index) in images"
-                  :key="'repeat-'+index"
+                  v-for="(image, imgIndex) in chunk"
+                  :key="imgIndex"
                   @click="showImage(image)"
                 >
                   <img
@@ -108,24 +83,17 @@
             </div>
           </div>
 
-          <!-- 控制鈕（前一張） -->
           <button
             class="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleIndicators"
             data-bs-slide="prev"
           >
-            <span
-              class="carousel-control-prev-icon"
-              aria-hidden="true"
-              :style="{ color: currentColor }"
-            >
+            <span class="carousel-control-prev-icon" aria-hidden="true">
               &#10094;
             </span>
             <span class="visually-hidden">Previous</span>
           </button>
-
-          <!-- 控制鈕（下一張）始終為 #00CC99 -->
           <button
             class="carousel-control-next"
             type="button"
@@ -145,7 +113,7 @@
       <img src="@/assets/img/retrospective/bottom_bar.png" style="width: 100%;">
     </div>
 
-    <!-- 圖片放大顯示的 Modal -->
+    <!-- 圖片放大 Modal -->
     <div v-if="selectedImage" class="image-modal" @click.self="closeModal">
       <div class="image-modal-content">
         <span class="close" @click="closeModal">&times;</span>
@@ -156,107 +124,178 @@
 </template>
 
 <script>
-import p2024_001 from '@/assets/img/retrospective/2024_001.png';
-import p2024_002 from '@/assets/img/retrospective/2024_002.png';
-import p2024_003 from '@/assets/img/retrospective/2024_003.png';
-import p2024_004 from '@/assets/img/retrospective/2024_004.png';
+// 2024 年圖片 (17 張)
+import img2024_00001 from '@/assets/img/retrospective/greentech/2024_00001.jpg';
+import img2024_00002 from '@/assets/img/retrospective/greentech/2024_00002.jpg';
+import img2024_00003 from '@/assets/img/retrospective/greentech/2024_00003.jpg';
+import img2024_00004 from '@/assets/img/retrospective/greentech/2024_00004.jpg';
+import img2024_00005 from '@/assets/img/retrospective/greentech/2024_00005.jpg';
+import img2024_00006 from '@/assets/img/retrospective/greentech/2024_00006.jpg';
+import img2024_00007 from '@/assets/img/retrospective/greentech/2024_00007.jpg';
+import img2024_00008 from '@/assets/img/retrospective/greentech/2024_00008.jpg';
+import img2024_00009 from '@/assets/img/retrospective/greentech/2024_00009.jpg';
+import img2024_00010 from '@/assets/img/retrospective/greentech/2024_00010.jpg';
+import img2024_00011 from '@/assets/img/retrospective/greentech/2024_00011.jpg';
+import img2024_00012 from '@/assets/img/retrospective/greentech/2024_00012.jpg';
+import img2024_00013 from '@/assets/img/retrospective/greentech/2024_00013.jpg';
+import img2024_00014 from '@/assets/img/retrospective/greentech/2024_00014.jpg';
+import img2024_00015 from '@/assets/img/retrospective/greentech/2024_00015.jpg';
+import img2024_00016 from '@/assets/img/retrospective/greentech/2024_00016.jpg';
+import img2024_00017 from '@/assets/img/retrospective/greentech/2024_00017.jpg';
 
-import p2023_001 from '@/assets/img/retrospective/2023_001.png';
-import p2023_002 from '@/assets/img/retrospective/2023_002.png';
-import p2023_003 from '@/assets/img/retrospective/2023_003.png';
-import p2023_004 from '@/assets/img/retrospective/2023_004.png';
+// 2023 年圖片 (12 張)
+import img2023_00001 from '@/assets/img/retrospective/greentech/2023_00001.jpg';
+import img2023_00002 from '@/assets/img/retrospective/greentech/2023_00002.jpg';
+import img2023_00003 from '@/assets/img/retrospective/greentech/2023_00003.jpg';
+import img2023_00004 from '@/assets/img/retrospective/greentech/2023_00004.jpg';
+import img2023_00005 from '@/assets/img/retrospective/greentech/2023_00005.jpg';
+import img2023_00006 from '@/assets/img/retrospective/greentech/2023_00006.jpg';
+import img2023_00007 from '@/assets/img/retrospective/greentech/2023_00007.jpg';
+import img2023_00008 from '@/assets/img/retrospective/greentech/2023_00008.jpg';
+import img2023_00009 from '@/assets/img/retrospective/greentech/2023_00009.jpg';
+import img2023_00010 from '@/assets/img/retrospective/greentech/2023_00010.jpg';
+import img2023_00011 from '@/assets/img/retrospective/greentech/2023_00011.jpg';
+import img2023_00012 from '@/assets/img/retrospective/greentech/2023_00012.jpg';
 
-import p2022_001 from '@/assets/img/retrospective/2022_001.png';
-import p2022_002 from '@/assets/img/retrospective/2022_002.png';
-import p2022_003 from '@/assets/img/retrospective/2022_003.png';
-import p2022_004 from '@/assets/img/retrospective/2022_004.png';
+// 2022 年圖片 (7 張)
+import img2022_00001 from '@/assets/img/retrospective/greentech/2022_00001.jpg';
+import img2022_00002 from '@/assets/img/retrospective/greentech/2022_00002.jpg';
+import img2022_00003 from '@/assets/img/retrospective/greentech/2022_00003.jpg';
+import img2022_00004 from '@/assets/img/retrospective/greentech/2022_00004.jpg';
+import img2022_00005 from '@/assets/img/retrospective/greentech/2022_00005.jpg';
+import img2022_00006 from '@/assets/img/retrospective/greentech/2022_00006.jpg';
+import img2022_00007 from '@/assets/img/retrospective/greentech/2022_00007.jpg';
 
 export default {
   name: 'Retrospective',
   data() {
     return {
       activeTab: '2024',
-      selectedImage: null, // 用於控制 Modal 裡放大的圖片
-    };
+      selectedImage: null,
+      // 靜態導入的圖片陣列（初始為空，在 created() 中填入）
+      p2024: [],
+      p2023: [],
+      p2022: []
+    }
   },
   computed: {
-    // 動態回傳不同年份對應的圖片
     images() {
       switch (this.activeTab) {
-        case '2024':
-          return [p2024_001, p2024_002, p2024_003, p2024_004];
-        case '2023':
-          return [p2023_001, p2023_002, p2023_003, p2023_004];
-        case '2022':
-          return [p2022_001, p2022_002, p2022_003, p2022_004];
-        default:
-          return [p2024_001, p2024_002, p2024_003, p2024_004];
+        case '2024': return this.p2024;
+        case '2023': return this.p2023;
+        case '2022': return this.p2022;
+        default: return [];
       }
     },
-    // Carousel 的類別（控制上一張箭頭及指示點的顏色）
+    imagesChunks() {
+      const chunkSize = 4;
+      const chunks = [];
+      for (let i = 0; i < this.images.length; i += chunkSize) {
+        chunks.push(this.images.slice(i, i + chunkSize));
+      }
+      return chunks;
+    },
+    videos() {
+      const videos = {
+        '2024': [
+          'https://www.youtube.com/embed/1Vm3phKIDus',
+          'https://www.youtube.com/embed/AbOo_Snwx7o'
+        ],
+        '2023': [
+          'https://www.youtube.com/embed/OTS9WwW3lQs',
+          'https://www.youtube.com/embed/rZuiP7bnO4k'
+        ],
+        '2022': [
+          'https://www.youtube.com/embed/8dFalGEtcYk',
+          'https://www.youtube.com/embed/X4aeEyuzJcE'
+        ]
+      };
+      return videos[this.activeTab] || [];
+    },
     carouselClass() {
-      switch (this.activeTab) {
-        case '2024':
-          return 'chu';
-        case '2023':
-          return 'fu';
-        case '2022':
-          return 'jue';
-        default:
-          return 'chu';
-      }
-    },
-    // 回傳「前一張」箭頭的顏色
-    currentColor() {
-      switch (this.activeTab) {
-        case '2024':
-          return '#00CC99';
-        case '2023':
-          return '#00CC99'; // 與設計相符，統一使用 #00CC99
-        case '2022':
-          return '#00CC99'; // 與設計相符，統一使用 #00CC99
-        default:
-          return '#00CC99';
-      }
-    },
+      return {
+        '2024': 'chu',
+        '2023': 'fu',
+        '2022': 'jue'
+      }[this.activeTab];
+    }
   },
   methods: {
     setActive(tab) {
       this.activeTab = tab;
     },
-    // 點擊圖片時，打開放大視窗
     showImage(image) {
       this.selectedImage = image;
     },
-    // 關閉圖片放大視窗
     closeModal() {
       this.selectedImage = null;
-    },
+    }
   },
-};
+  created() {
+    // 將靜態導入的圖片放入對應的陣列
+    this.p2024 = [
+      img2024_00001,
+      img2024_00002,
+      img2024_00003,
+      img2024_00004,
+      img2024_00005,
+      img2024_00006,
+      img2024_00007,
+      img2024_00008,
+      img2024_00009,
+      img2024_00010,
+      img2024_00011,
+      img2024_00012,
+      img2024_00013,
+      img2024_00014,
+      img2024_00015,
+      img2024_00016,
+      img2024_00017
+    ];
+    this.p2023 = [
+      img2023_00001,
+      img2023_00002,
+      img2023_00003,
+      img2023_00004,
+      img2023_00005,
+      img2023_00006,
+      img2023_00007,
+      img2023_00008,
+      img2023_00009,
+      img2023_00010,
+      img2023_00011,
+      img2023_00012
+    ];
+    this.p2022 = [
+      img2022_00001,
+      img2022_00002,
+      img2022_00003,
+      img2022_00004,
+      img2022_00005,
+      img2022_00006,
+      img2022_00007
+    ];
+  }
+}
 </script>
 
 <style scoped>
-/* 外層設定 */
 .page-container {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-/* 固定背景層 */
 .fixed-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('@/assets/img/bk.png') no-repeat center center;
-  background-size: cover;
+  background: url('@/assets/img/bk.png') no-repeat center center/cover;
   z-index: -1;
 }
 
-/* 標題欄 */
 .title_head {
   position: fixed;
   top: 0;
@@ -264,10 +303,8 @@ export default {
   width: 100%;
   display: flex;
   align-items: center;
-  /* 讓標題在左，按鈕群在右 */
-  justify-content: flex-start;
-  z-index: 10;
   padding: 10px;
+  z-index: 10;
 }
 
 .title-bar {
@@ -281,27 +318,22 @@ export default {
   color: white;
   font-weight: 900;
   border: 5px solid white;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   font-size: calc(1.2vw + 1vh);
-  text-align: center;
 }
 
-/* 按鈕容器 */
 .buttons {
-  /* 讓前三個按鈕靠左，最後一個 btn2 靠右 */
   margin-left: 3vw;
   display: flex;
   gap: 20px;
   margin-top: 20px;
+  color: white;
 }
 
-/* 修改按鈕成圓形與預設樣式 */
 .btn {
   border: none;
   color: white;
   font-weight: bold;
-  white-space: nowrap;
-  cursor: pointer;
   font-size: 1vw;
   width: calc(2vw + 20px);
   height: calc(2vw + 20px);
@@ -315,150 +347,121 @@ export default {
 
 .btn:hover {
   transform: scale(1.1);
+  color: white;
 }
 
-/* 讓 btn2 靠到最右 */
 .btn2 {
   margin-left: 30vw;
-  border: none;
-  color: white;
   padding: 5px 10px;
-  cursor: pointer;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  color: white;
+  background-color: #00cc99;
+  border: none;
   border-radius: 5px;
-  width: 9vw;
   font-size: 1vw;
   font-weight: bold;
-  background-color: #00cc99;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   transition: transform 0.2s ease;
 }
 
 .btn2:hover {
   transform: scale(1.05);
-  color: white;
+  
 }
 
-/* 所有 active/hover 狀態統一用 #00cc99 */
-.btn.btn-chu.active,
-.btn.btn-chu:hover,
-.btn.btn-fu.active,
-.btn.btn-fu:hover,
-.btn.btn-jue.active,
-.btn.btn-jue:hover {
+.btn.active,
+.btn:hover {
   background-color: #00cc99;
-  color: white;
 }
 
-/* 內容層：margin-top 拉高一點避免被標題蓋住 */
 .content {
   width: 100%;
-  min-height: 100%;
-  margin-top: 8vh; /* 調整空間，避免標題列重疊 */
+  margin-top: 8vh;
   padding-top: 5vh;
-  box-sizing: border-box;
 }
 
-/* 上方兩個影片並排，寬度 80% 置中 */
 .videos-wrapper {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   display: flex;
-  justify-content: center;
   gap: 2rem;
-  margin-bottom: 3rem;
+  justify-content: center;
 }
 
 .video-item {
   flex: 0 0 40%;
-  /* 兩個影片各佔約40%，中間留 2rem */
+  height: 315px;
 }
 
-/* 下方輪播容器，同樣 80% 置中 */
 .carousel-container {
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
-  position: relative;
 }
 
-/* 一次顯示4張的容器：利用 flex 讓 4 張圖片並排 */
 .multi-container {
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: flex-start;
+  padding: 0 15px;
 }
 
 .multi-item {
-  flex: 1; /* 4 張等分 */
-  cursor: pointer; /* 滑鼠移入顯示可點擊 */
+  flex: 0 0 calc(25% - 0.75rem);
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.multi-item:hover {
+  transform: translateY(-5px);
 }
 
 .multi-item img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-/* 移除預設控制鈕背景圖，使用文字箭頭 */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-image: none;
-  font-size: 2rem;
-  line-height: 1;
+.multi-item:hover img {
+  transform: scale(1.05);
 }
 
-/* 左箭頭顏色根據年份動態變化，指示點顏色也相同 */
-.carousel.chu .carousel-control-prev-icon,
-.carousel.chu .carousel-indicators [data-bs-target],
-.carousel.fu .carousel-control-prev-icon,
-.carousel.fu .carousel-indicators [data-bs-target],
-.carousel.jue .carousel-control-prev-icon,
-.carousel.jue .carousel-indicators [data-bs-target] {
-  color: #00cc99; /* 與設計一致，改為統一 #00cc99 */
-}
-
-/* 指示點樣式 */
-.carousel-indicators [data-bs-target] {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: none;
-  margin: 0 4px;
-}
-
-/* 右箭頭始終為 #00CC99 */
-.carousel-control-next-icon {
-  color: #00cc99 !important;
-}
-
-/* 讓控制鈕更往外，position 設定在 .carousel-container 下 */
-.carousel-container .carousel-control-prev,
-.carousel-container .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
   width: auto;
   height: auto;
   top: 50%;
   transform: translateY(-50%);
 }
 
-.carousel-container .carousel-control-prev {
-  left: -2rem; /* 可依需求自行調整 */
+.carousel-control-prev {
+  left: -50px;
 }
 
-.carousel-container .carousel-control-next {
-  right: -2rem; /* 可依需求自行調整 */
+.carousel-control-next {
+  right: -50px;
 }
 
-/* 圖片放大顯示的 Modal */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  font-size: 2.5rem;
+  color: #00cc99;
+}
+
 .image-modal {
   position: fixed;
-  z-index: 9999;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background: rgba(0,0,0,0.8);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
 }
 
 .image-modal-content {
@@ -468,18 +471,18 @@ export default {
 }
 
 .image-modal-content img {
-  width: 100%;
-  height: auto;
-  display: block;
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 10px;
 }
 
-/* 關閉按鈕 */
 .close {
   position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: 3rem;
-  color: #fff;
+  top: 15px;
+  right: 25px;
+  color: white;
+  font-size: 40px;
   cursor: pointer;
+  z-index: 10000;
 }
 </style>

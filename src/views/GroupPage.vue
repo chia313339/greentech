@@ -378,7 +378,7 @@ export default {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease;
-  font-size: 1.1rem;
+  font-size: 0.8vw;
   border: 2px solid white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
 }
@@ -393,6 +393,26 @@ export default {
 }
 .lang-btn:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 1700px) {
+  .reg-btn,
+  .lang-btn {
+    font-size: 1vw;
+  }
+}
+@media (max-width: 1366px) {
+  .reg-btn,
+  .lang-btn {
+    font-size: 1.05vw;
+  }
+}
+
+@media (max-width: 1180px) {
+  .reg-btn,
+  .lang-btn {
+    font-size: 1.1vw;
+  }
 }
 
 /* 自訂 modal 尺寸 */

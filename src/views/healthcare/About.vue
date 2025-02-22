@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'Healthcare-About'
+  name: 'Greentech-About'
 }
 </script>
 

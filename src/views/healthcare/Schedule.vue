@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'Health-Schedule'
+  name: 'Greentech-Schedule'
 }
 </script>
 

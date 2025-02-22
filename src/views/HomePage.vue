@@ -340,6 +340,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 30px;
+  z-index: 999;
 }
 .left-sidebar button:nth-child(1) {
   z-index: 11;
@@ -504,6 +505,27 @@ export default {
   border: 2px solid white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+@media (max-width: 1700px) {
+  .reg-btn,
+  .lang-btn {
+    font-size: 1vw;
+  }
+}
+@media (max-width: 1366px) {
+  .reg-btn,
+  .lang-btn {
+    font-size: 1.05vw;
+  }
+}
+
+@media (max-width: 1180px) {
+  .reg-btn,
+  .lang-btn {
+    font-size: 1.1vw;
+  }
+}
+
 .reg-btn {
   background: linear-gradient(to right, #e63188, #f28d0f);
 }

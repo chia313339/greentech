@@ -342,13 +342,13 @@ export default {
   padding-bottom: 30px;
 }
 .left-sidebar button:nth-child(1) {
-  z-index: 1;
+  z-index: 11;
 }
 .left-sidebar button:nth-child(2) {
-  z-index: 2;
+  z-index: 12;
 }
 .left-sidebar button:nth-child(3) {
-  z-index: 3;
+  z-index: 13;
 }
 .group-btn {
   background-color: rgb(143, 143, 143);
@@ -390,6 +390,7 @@ export default {
 /* ------------------- 主要內容區 (Carousel) ------------------- */
 .content {
   padding: 30px;
+  padding-left: 100px;
 }
 .carousel {
   position: relative;

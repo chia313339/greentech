@@ -247,16 +247,17 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 30px;
+  z-index: 999;
 }
 /* 設定每個按鈕的 z-index (最上面的最低，最下面的最高) */
 .left-sidebar button:nth-child(1) {
-  z-index: 1;
+  z-index: 11;
 }
 .left-sidebar button:nth-child(2) {
-  z-index: 2;
+  z-index: 12;
 }
 .left-sidebar button:nth-child(3) {
-  z-index: 3;
+  z-index: 13;
 }
 .group-btn {
   background-color: rgb(143, 143, 143);
@@ -299,6 +300,8 @@ export default {
 .main-content {
   /* margin-left: 60px; */
   padding: 20px;
+  /* padding-left: 80px; */
+
 }
 
 /* 下方區塊：包含 Logo 與 Nav (同一列) */

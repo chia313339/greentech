@@ -187,22 +187,28 @@ export default {
   transform: scale(1.1);
   color: white;
 }
-
-/* 內容層 */
+/* 內容層：設定為 flex 以便置中內容 */
 .content {
-  margin-top: 100px;
-  padding-bottom: 50px;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -100px;
 }
 
+
+/* 圖片容器 */
 .img-container {
-  position: relative;
+  margin-top: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
 
+/* 圖片：寬度設為 90vh，自動保持原比例 */
 .img-container img {
   max-width: 70vw;
   max-height: 70vh;

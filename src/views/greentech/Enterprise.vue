@@ -115,11 +115,11 @@ export default {
   cursor: pointer;
   font-size: 1vw;
   width: 12vw;
-  transition: transform 0.1s ease;
+  transition: transform 0.2s ease;
 }
 
 .btn:hover {
-  transform: scale(1.01);
+  transform: scale(1.05);
   color: white;
 }
 

@@ -157,7 +157,7 @@ export default {
   background-color: #4DB233;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   z-index: 10;
   font-size: calc(1.2vw + 1vh);

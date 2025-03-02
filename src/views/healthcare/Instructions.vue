@@ -20,10 +20,6 @@
     <div class="content">
       <div class="img-container">
         <img src="@/assets/img/instructions/instructions.png" alt="About">
-        <div class="text-overlay">
-          <div><span class="textlink">提案簡報【附件二】</span>｜<span class="textlink">智慧財產權授權聲明書【附件三】</span></div>
-          <div>保密同意書【附件四】｜個人資料提供同意書【附件五】</div>
-        </div>
       </div>
     </div>
 
@@ -76,10 +72,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff9500;
+  background-color: #FFBA40;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   font-size: calc(1.2vw + 1vh);
   text-align: center;
@@ -109,7 +105,7 @@ export default {
 
 /* 內容層 */
 .content {
-  margin-top: 100px;
+  margin-top: 50px;
   padding-bottom: 50px;
   width: 100%;
 }
@@ -126,27 +122,12 @@ export default {
 }
 /* 圖片：保持原有樣式 */
 .img-container img {
-  max-width: 70vw;
-  max-height: 70vh;
+  max-width: 90vw;
+  max-height: 80vh;
   width: auto;
   height: auto;
   display: block;
 }
 
-/* 文字覆蓋層：絕對定位在圖片內的左下角 */
-.text-overlay {
-  position: absolute;
-  right: 51%;
-  bottom: 12%;
-  color: red;
-  text-align: right;
-  /* 可根據需求調整字體大小與行高 */
-  font-size: 0.8vw;
-  line-height: 2;
-}
-
-.textlink:hover {
-  scale: 1.1;
-}
 
 </style>

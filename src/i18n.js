@@ -5,19 +5,20 @@ const messages = {
   en: {
     nav: {
       about: "About",
-      schedule: "Schedule",
-      enterprise: "Competition",
-      instructions: "Instructions",
-      scoring: "Scoring",
-      awards: "Awards",
+      schedule: "Timeline",
+      enterprise: "Challenges",
+      instructions: "Submission",
+      scoring: "Criteria",
+      awards: "Awards Obligations",
       passed: "Shortlist",
-      retrospective: "Retrospective",
+      retrospective: "Media",
       faq: "FAQ",
-      contact: "Contact"
+      contact: "Contact Us"
     },
     pages: {
-      greentechAbout: "Greentech - About",
-      greentechSchedule: "Greentech - Schedule"
+      game1: "Preliminary",
+      game2: "Semi-Final",
+      game3: "Final"
     },
     buttons: {
       signup: "Sign\nUp",
@@ -41,8 +42,9 @@ const messages = {
       contact: "聯繫我們"
     },
     pages: {
-      greentechAbout: "Greentech - 關於競賽",
-      greentechSchedule: "Greentech - 競賽時程"
+      game1: "初賽",
+      game2: "複賽",
+      game3: "決賽"
     },
     buttons: {
       signup: "報名連結",

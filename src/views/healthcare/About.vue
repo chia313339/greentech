@@ -56,10 +56,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff9500;
+  background-color: #FFBA40;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   z-index: 10;
   font-size: calc(1.2vw + 1vh);
@@ -91,8 +91,8 @@ export default {
 
 /* 圖片：寬度設為 90vh，自動保持原比例 */
 .img-container img {
-  max-width: 70vw;
-  max-height: 70vh;
+  max-width: 90vw;
+  max-height: 80vh;
   width: auto;
   height: auto;
   display: block;

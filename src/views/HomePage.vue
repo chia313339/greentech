@@ -1,41 +1,46 @@
-<!-- src/views/GroupPage.vue -->
 <template>
   <div class="group-page">
     <!-- 開場全屏 overlay -->
     <div v-if="showOpening" class="opening-overlay">
-      <img src="@/assets/opening.png" alt="Opening" class="opening-image" />
-      <div class="opening-countdown">{{ countdown }}</div>
-      <button class="opening-skip" @click="skipOpening">SKIP</button>
+      <!-- 畫面內容依階段切換：影片或圖片 -->
+      <div v-if="openingStage === 'video'" class="opening-video-container">
+        <video
+          src="@/assets/opening.mp4"
+          class="opening-video"
+          autoplay
+          playsinline
+          muted
+          @ended="videoEnded"
+        ></video>
+      </div>
+      <div v-else-if="openingStage === 'image'" class="opening-image-container">
+        <img src="@/assets/opening.png" alt="Opening" class="opening-image" />
+        <div class="opening-buttons">
+          <button class="opening-btn greentech" @click="skipOpening">
+            Greentech
+          </button>
+          <button class="opening-btn city" @click="skipOpening">
+            City
+          </button>
+          <button class="opening-btn healthcare" @click="skipOpening">
+            Health care
+          </button>
+        </div>
+      </div>
+      <!-- Skip 按鈕只在影片階段顯示，位置置於右上角 -->
+      <button v-if="openingStage === 'video'" class="opening-skip" @click="skipOpening">SKIP</button>
     </div>
 
     <!-- 左側分組切換區 (固定於左側) -->
     <div class="left-sidebar">
-      <!-- Greentech 按鈕（預設皆加上 active-btn 類別） -->
-      <button
-        class="group-btn greentech active-btn"
-        @click="goToGroup('greentech')"
-      >
-        GREENTECH
-      </button>
-      <!-- City 按鈕 -->
-      <button
-        class="group-btn city active-btn"
-        @click="goToGroup('city')"
-      >
-        CITY
-      </button>
-      <!-- Healthcare 按鈕 -->
-      <button
-        class="group-btn healthcare active-btn"
-        @click="goToGroup('healthcare')"
-      >
-        HEALTHCARE
-      </button>
+      <button class="group-btn greentech active-btn" @click="goToGroup('greentech')">GREENTECH</button>
+      <button class="group-btn city active-btn" @click="goToGroup('city')">CITY</button>
+      <button class="group-btn healthcare active-btn" @click="goToGroup('healthcare')">HEALTH CARE</button>
     </div>
 
     <!-- 主要內容區：載入對應路由頁面 (這裡以 carousel 為例) -->
     <div class="content">
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"  data-bs-interval="90000">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="90000">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="@/assets/img/about/001.png" class="d-block w-100" alt="Image 1">
@@ -49,129 +54,45 @@
         </div>
         <!-- Carousel Indicators -->
         <div class="carousel-indicators custom-indicators">
-          <button type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"></button>
-          <button type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"></button>
-          <button type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
       </div>
     </div>
 
-    <!-- 下方整列：左側 Logo (1/6) + 導覽列 (5/6) -->
+    <!-- 下方導覽列 -->
     <div class="bottom-bar">
       <div class="bottom-logo" @click="goHome">
         <img src="../assets/logo.png" alt="Logo" />
       </div>
       <div class="bottom-nav">
-        <!-- 移除 about 的 active 判斷，與其他 nav 項目一致 -->
-        <router-link
-          :to="`/${currentGroup}/about`"
-          class="nav-link"
-          @click="updateNav('about')"
-        >
-          {{ $t('nav.about') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/about`" class="nav-link" @click="updateNav('about')">{{ $t('nav.about') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/schedule`"
-          class="nav-link"
-          :class="{ active: currentNav === 'schedule' }"
-          @click="updateNav('schedule')"
-        >
-          {{ $t('nav.schedule') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/schedule`" class="nav-link" :class="{ active: currentNav === 'schedule' }" @click="updateNav('schedule')">{{ $t('nav.schedule') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/enterprise`"
-          class="nav-link"
-          :class="{ active: currentNav === 'enterprise' }"
-          @click="updateNav('enterprise')"
-        >
-          {{ $t('nav.enterprise') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/enterprise`" class="nav-link" :class="{ active: currentNav === 'enterprise' }" @click="updateNav('enterprise')">{{ $t('nav.enterprise') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/instructions`"
-          class="nav-link"
-          :class="{ active: currentNav === 'instructions' }"
-          @click="updateNav('instructions')"
-        >
-          {{ $t('nav.instructions') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/instructions`" class="nav-link" :class="{ active: currentNav === 'instructions' }" @click="updateNav('instructions')">{{ $t('nav.instructions') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/scoring`"
-          class="nav-link"
-          :class="{ active: currentNav === 'scoring' }"
-          @click="updateNav('scoring')"
-        >
-          {{ $t('nav.scoring') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/scoring`" class="nav-link" :class="{ active: currentNav === 'scoring' }" @click="updateNav('scoring')">{{ $t('nav.scoring') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/awards`"
-          class="nav-link"
-          :class="{ active: currentNav === 'awards' }"
-          @click="updateNav('awards')"
-        >
-          {{ $t('nav.awards') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/awards`" class="nav-link" :class="{ active: currentNav === 'awards' }" @click="updateNav('awards')">{{ $t('nav.awards') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/passed`"
-          class="nav-link"
-          :class="{ active: currentNav === 'passed' }"
-          @click="updateNav('passed')"
-        >
-          {{ $t('nav.passed') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/passed`" class="nav-link" :class="{ active: currentNav === 'passed' }" @click="updateNav('passed')">{{ $t('nav.passed') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/retrospective`"
-          class="nav-link"
-          :class="{ active: currentNav === 'retrospective' }"
-          @click="updateNav('retrospective')"
-        >
-          {{ $t('nav.retrospective') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/retrospective`" class="nav-link" :class="{ active: currentNav === 'retrospective' }" @click="updateNav('retrospective')">{{ $t('nav.retrospective') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/faq`"
-          class="nav-link"
-          :class="{ active: currentNav === 'faq' }"
-          @click="updateNav('faq')"
-        >
-          {{ $t('nav.faq') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/faq`" class="nav-link" :class="{ active: currentNav === 'faq' }" @click="updateNav('faq')">{{ $t('nav.faq') }}</router-link>
         <span class="separator">|</span>
-        <router-link
-          :to="`/${currentGroup}/contact`"
-          class="nav-link"
-          :class="{ active: currentNav === 'contact' }"
-          @click="updateNav('contact')"
-        >
-          {{ $t('nav.contact') }}
-        </router-link>
+        <router-link :to="`/${currentGroup}/contact`" class="nav-link" :class="{ active: currentNav === 'contact' }" @click="updateNav('contact')">{{ $t('nav.contact') }}</router-link>
       </div>
     </div>
 
     <!-- 右下角懸浮按鈕區 -->
     <div class="floating-buttons">
-      <button class="reg-btn" v-html="$t('buttons.signup')" data-bs-toggle="modal" data-bs-target="#signModal"></button>
-
-      <button class="lang-btn" @click="toggleLanguage">
-        {{ languageBtnText }}
-      </button>
+      <button class="reg-btn" v-html="regBtnText" data-bs-toggle="modal" data-bs-target="#signModal"></button>
+      <button class="lang-btn" @click="toggleLanguage">{{ languageBtnText }}</button>
     </div>
 
     <!-- Modal -->
@@ -179,7 +100,6 @@
       <div class="modal-dialog modal-dialog-centered modal-custom-size">
         <div class="modal-content custom-modal-content">
           <div class="modal-header">
-            <!-- 僅保留右上角的關閉按鈕 -->
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -203,8 +123,8 @@ export default {
   data() {
     return {
       showOpening: true,
-      countdown: 5,
-      openingTimer: null
+      // 'video' 階段：全屏播放影片；'image' 階段：顯示圖片與三個按鈕
+      openingStage: 'video'
     }
   },
   computed: {
@@ -216,11 +136,15 @@ export default {
     },
     languageBtnText() {
       return this.$i18n.locale === 'zh' ? 'EN' : 'CN'
+    },
+    // 新增 computed 屬性
+    regBtnText() {
+      return this.$i18n.locale === 'zh' ? '報名<br>連結' : 'Sign<br>Up'
     }
+    
   },
   methods: {
     goToGroup(route) {
-      // 點選分組按鈕時，更新 store 並導向 /[group]/about
       store.currentGroup = route
       store.currentNav = 'about'
       this.$router.push(`/${route}/about`)
@@ -232,50 +156,38 @@ export default {
       this.$router.push('/')
     },
     showSignupForm(group) {
-      // 根據傳入的組別，顯示對應的報名表單
       alert(`${group} 報名表單`)
-    },
-    goToSignup() {
-      alert('前往報名頁面')
     },
     toggleLanguage() {
       this.$i18n.locale = (this.$i18n.locale === 'zh') ? 'en' : 'zh'
     },
+    // 當影片播放完畢，切換至圖片階段
+    videoEnded() {
+      this.openingStage = 'image'
+    },
+    // 點擊 Skip 按鈕或任一圖片上按鈕：如果在影片階段則跳到圖片階段；在圖片階段則關閉 overlay
     skipOpening() {
-      this.showOpening = false
-      if (this.openingTimer) {
-        clearInterval(this.openingTimer)
-        this.openingTimer = null
+      if (this.openingStage === 'video') {
+        this.openingStage = 'image'
+      } else {
+        this.showOpening = false
       }
     }
   },
   watch: {
     '$route.params.group'(newVal) {
-      // 如果 URL 帶有 group，則更新 store
       let segments = this.$route.path.split('/');
       store.currentGroup = segments[1] || 'greentech'
     },
     '$route.params.navItem'(newVal) {
-      // 從 URL 中解析 nav 項目
       let segments = this.$route.path.split('/');
       store.currentNav = segments[2] || 'about'
     }
   },
   mounted() {
-    // 解析 URL 分段
     let segments = this.$route.path.split('/');
     store.currentGroup = segments[1] || 'greentech';
     store.currentNav = segments[2] || 'about';
-
-    // 啟動開場倒數計時
-    this.openingTimer = setInterval(() => {
-      if (this.countdown > 1) {
-        this.countdown--
-      } else {
-        this.countdown = 0
-        this.skipOpening()
-      }
-    }, 1000)
   }
 }
 </script>
@@ -299,26 +211,61 @@ export default {
   background: #000;
 }
 
+/* 影片與圖片皆全屏 */
+.opening-video,
 .opening-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.opening-countdown {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  color: white;
-  background: rgba(0,0,0,0.5);
-  padding: 5px 10px;
-  border-radius: 5px;
+.opening-video-container,
+.opening-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
+/* 三個圓形按鈕的容器：置中並位於畫面 60% 處 */
+.opening-buttons {
+  margin-top: 17vh;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 7vw;
+}
+
+/* 按鈕樣式，強制文字不換行 */
+.opening-btn {
+  width: 14vw;
+  height: 14vw;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 2vw;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+.opening-btn:hover {
+  transform: scale(1.1);
+}
+.greentech {
+  background-color: #00DB00;
+}
+.city {
+  background-color: #009CFF;
+}
+.healthcare {
+  background-color: #FFB600;
+}
+
+/* Skip 按鈕：僅在影片階段顯示，位置置於右上角 */
 .opening-skip {
   position: absolute;
-  bottom: 5%;
+  top: 5%;
   right: 5%;
   font-size: 1.2rem;
   color: white;
@@ -327,6 +274,11 @@ export default {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.opening-skip:hover {
+  transform: scale(1.1);
 }
 
 /* ------------------- 左側分組按鈕 ------------------- */
@@ -458,7 +410,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 20px;
+  padding: 0 5px;
 }
 .nav-link {
   color: rgb(255, 255, 255);
@@ -501,7 +453,7 @@ export default {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border: 2px solid white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
@@ -518,7 +470,6 @@ export default {
     font-size: 1.05vw;
   }
 }
-
 @media (max-width: 1180px) {
   .reg-btn,
   .lang-btn {
@@ -538,7 +489,6 @@ export default {
 .lang-btn:hover {
   transform: scale(1.1);
 }
-
 
 /* 自訂 modal 尺寸 */
 .modal-custom-size {
@@ -576,16 +526,16 @@ export default {
 
 .signup-images-container {
   display: flex;
-  flex-wrap: nowrap;         /* 不換行 */
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: 3vw;                 /* 圖片間間隔 10px */
-  max-width: 70vw;           /* 整體容器不超過 70vw */
-  margin: 0 auto;            /* 水平置中 */
+  gap: 3vw;
+  max-width: 70vw;
+  margin: 0 auto;
 }
 
 .signup-images-container img {
-  width: calc((100% - 2 * 3vw) / 3);  /* 3張圖片，中間2個 gap */
+  width: calc((100% - 2 * 3vw) / 3);
   height: auto;
   max-height: 100%;
   cursor: pointer;
@@ -596,5 +546,11 @@ export default {
   transform: scale(1.05);
 }
 
-
+/* 在 scoped style 裡增加： */
+::v-deep .modal-backdrop {
+  z-index: 1600 !important;
+}
+::v-deep .modal {
+  z-index: 1601 !important;
+}
 </style>

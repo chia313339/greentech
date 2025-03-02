@@ -91,10 +91,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff9500;
+  background-color: #FFBA40;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   font-size: calc(1.2vw + 1vh);
   text-align: center;

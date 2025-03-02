@@ -28,7 +28,7 @@
         >
           2022
         </button>
-        <button class="btn2">瀏覽2022網站</button>
+        <button class="btn2" @click="openWebsite">{{ btn2Text }}</button>
       </div>
     </div>
 
@@ -109,8 +109,36 @@
       </div>
     </div>
 
-    <div style="margin-top: 60px;">
-      <img src="@/assets/img/retrospective/bottom_bar.png" style="width: 100%;">
+    <div class="bottom-marquee">
+      <div class="marquee-container">
+        <div class="marquee">
+          <img src="@/assets/img/retrospective/com/001.png" alt="Image 1">
+          <img src="@/assets/img/retrospective/com/002.png" alt="Image 2">
+          <img src="@/assets/img/retrospective/com/003.png" alt="Image 3">
+          <img src="@/assets/img/retrospective/com/004.png" alt="Image 4">
+          <img src="@/assets/img/retrospective/com/005.png" alt="Image 5">
+          <img src="@/assets/img/retrospective/com/006.png" alt="Image 6">
+          <img src="@/assets/img/retrospective/com/007.png" alt="Image 7">
+          <img src="@/assets/img/retrospective/com/008.png" alt="Image 8">
+          <img src="@/assets/img/retrospective/com/009.png" alt="Image 9">
+          <img src="@/assets/img/retrospective/com/010.png" alt="Image 10">
+          <img src="@/assets/img/retrospective/com/011.png" alt="Image 11">
+          <img src="@/assets/img/retrospective/com/012.png" alt="Image 12">
+          <!-- 複製一次，達成無縫循環 -->
+          <img src="@/assets/img/retrospective/com/001.png" alt="Image 1">
+          <img src="@/assets/img/retrospective/com/002.png" alt="Image 2">
+          <img src="@/assets/img/retrospective/com/003.png" alt="Image 3">
+          <img src="@/assets/img/retrospective/com/004.png" alt="Image 4">
+          <img src="@/assets/img/retrospective/com/005.png" alt="Image 5">
+          <img src="@/assets/img/retrospective/com/006.png" alt="Image 6">
+          <img src="@/assets/img/retrospective/com/007.png" alt="Image 7">
+          <img src="@/assets/img/retrospective/com/008.png" alt="Image 8">
+          <img src="@/assets/img/retrospective/com/009.png" alt="Image 9">
+          <img src="@/assets/img/retrospective/com/010.png" alt="Image 10">
+          <img src="@/assets/img/retrospective/com/011.png" alt="Image 11">
+          <img src="@/assets/img/retrospective/com/012.png" alt="Image 12">
+        </div>
+      </div>
     </div>
 
     <!-- 圖片放大 Modal -->
@@ -218,11 +246,32 @@ export default {
         '2023': 'fu',
         '2022': 'jue'
       }[this.activeTab];
+    },
+    btn2Text() {
+      if (this.$i18n.locale === 'zh') {
+        return '瀏覽' + this.activeTab + '網站';
+      } else {
+        return 'Visit ' + this.activeTab + ' website';
+      }
     }
   },
   methods: {
     setActive(tab) {
       this.activeTab = tab;
+    },
+    openWebsite() {
+      const websiteMapping = {
+        '2024': '',
+        '2023': '',
+        '2022': ''
+      };
+      const url = websiteMapping[this.activeTab];
+      // 若對應網址不為空則開啟新視窗，否則提示訊息
+      if (url) {
+        window.open(url, '_blank');
+      } else {
+        alert('網站連結待補');
+      }
     },
     showImage(image) {
       this.selectedImage = image;
@@ -317,7 +366,7 @@ export default {
   background-color: #4db233;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   font-size: calc(1.2vw + 1vh);
 }
@@ -343,6 +392,9 @@ export default {
   justify-content: center;
   transition: transform 0.3s ease;
   background-color: #9fa09f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn:hover {
@@ -351,7 +403,7 @@ export default {
 }
 
 .btn2 {
-  margin-left: 30vw;
+  margin-left: 43vw;
   padding: 5px 10px;
   color: white;
   background-color: #00cc99;
@@ -361,11 +413,13 @@ export default {
   font-weight: bold;
   box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   transition: transform 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn2:hover {
   transform: scale(1.05);
-  
 }
 
 .btn.active,
@@ -485,4 +539,43 @@ export default {
   cursor: pointer;
   z-index: 10000;
 }
+
+.bottom-marquee {
+  background-color: white;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.marquee-container {
+  width: 80%;
+  margin: 0 auto;
+  overflow: hidden; /* 保持無縫跑馬燈效果 */
+}
+
+.marquee {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  animation: marqueeAnimation 20s linear infinite;
+}
+
+/* 修改這裡，讓圖片高度自動滿足容器，高度固定、寬度自動 */
+.marquee img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+@keyframes marqueeAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 </style>

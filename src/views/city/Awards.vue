@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div class="page-container" :class="{ 'locale-en': $i18n.locale === 'en' }">
     <!-- 固定背景層 -->
     <div class="fixed-bg"></div>
 
@@ -8,14 +8,14 @@
       <div class="title-bar">{{ $t('nav.awards') }}</div>
       <div class="buttons">
         <button class="btn btn-fu" :class="{ active: activeTab === '複賽' }" @click="setActive('複賽')">
-          複賽
+          {{ $t('pages.game2') }}
         </button>
         <button class="btn btn-jue" :class="{ active: activeTab === '決賽' }" @click="setActive('決賽')">
-          決賽
+          {{ $t('pages.game3') }}
         </button>
         <!-- 使用 Bootstrap 的 data-bs-toggle 與 data-bs-target 開啟 Modal -->
         <button class="btn2" style="background-color: #BA2553;" data-bs-toggle="modal" data-bs-target="#noteModal">
-          注意事項
+          {{ noteButtonText }}
         </button>
       </div>
     </div>
@@ -23,7 +23,7 @@
     <!-- 內容層 -->
     <div class="content">
       <div class="img-container">
-        <img :src="imgSrc" alt="About">
+        <img :src="imgSrc" alt="Awards">
       </div>
     </div>
 
@@ -35,19 +35,24 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body text-center">
-            <!-- 圖片隨 modal 寬度放大，超出高度則可滾動 -->
-            <img src="@/assets/img/awards/note.png" class="img-fluid" alt="注意事項">
+            <!-- Modal 中的圖片隨 modal 寬度放大，超出高度則可滾動 -->
+            <img :src="modalNoteImg" class="img-fluid" alt="注意事項">
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import image1 from '@/assets/img/awards/001.png';
-import image2 from '@/assets/img/awards/002.png';
+import image1 from '@/assets/img/city/awards/001.png';
+import image2 from '@/assets/img/city/awards/002.png';
+
+import image1_en from '@/assets/img/city/awards/001_en.png';
+import image2_en from '@/assets/img/city/awards/002_en.png';
+
+import noteZh from '@/assets/img/city/awards/note.png';
+import noteEn from '@/assets/img/city/awards/note_en.png';
 
 export default {
   name: 'GT-awards',
@@ -57,12 +62,29 @@ export default {
     }
   },
   computed: {
+    // 根據 activeTab 與語系決定圖片來源
     imgSrc() {
-      switch(this.activeTab) {
-        case '複賽': return image1;
-        case '決賽': return image2;
-        default: return image1;
+      if (this.$i18n.locale === 'zh') {
+        switch(this.activeTab) {
+          case '複賽': return image1;
+          case '決賽': return image2;
+          default: return image1;
+        }
+      } else {
+        switch(this.activeTab) {
+          case '複賽': return image1_en;
+          case '決賽': return image2_en;
+          default: return image1_en;
+        }
       }
+    },
+    // Modal 注意事項圖片
+    modalNoteImg() {
+      return this.$i18n.locale === 'zh' ? noteZh : noteEn;
+    },
+    // 按鈕文字：若中文維持 '注意事項'，若英文則顯示 'Points of Note'
+    noteButtonText() {
+      return this.$i18n.locale === 'zh' ? '注意事項' : 'Points of Note';
     }
   },
   methods: {
@@ -107,15 +129,15 @@ export default {
 
 .title-bar {
   margin: 10px 0 0 7%;
-  width: 15vw;
+  min-width: 15vw;
   height: 6vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0070b5;
+  background-color: #0099FF;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   font-size: calc(1.2vw + 1vh);
   text-align: center;
@@ -134,9 +156,11 @@ export default {
   border: none;
   color: white;
   font-weight: bold;
-  white-space: nowrap;
+  white-space: nowrap;       /* 不換行 */
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
-  font-size: 1vw;
+  font-size: 1vw;            /* 預設中文為 1vw */
   width: calc(2vw + 20px);
   height: calc(2vw + 20px);
   border-radius: 50%;
@@ -159,13 +183,13 @@ export default {
 /* 複賽 active 與 hover 狀態 */
 .btn.btn-fu.active,
 .btn.btn-fu:hover {
-  background-color: #009933;
+  background-color: #429CCE;
 }
 
 /* 決賽 active 與 hover 狀態 */
 .btn.btn-jue.active,
 .btn.btn-jue:hover {
-  background-color: #1A5B2F;
+  background-color: #4268A0;
 }
 
 /* 注意事項按鈕 */
@@ -187,7 +211,13 @@ export default {
   transform: scale(1.1);
   color: white;
 }
-/* 內容層：設定為 flex 以便置中內容 */
+
+/* 當語系為英文時，調整 .btn 按鈕字型大小 */
+.locale-en .btn {
+  font-size: 0.5vw;
+}
+
+/* 內容層 */
 .content {
   width: 100%;
   height: 100%;
@@ -198,20 +228,19 @@ export default {
   margin-top: -100px;
 }
 
-
 /* 圖片容器 */
 .img-container {
-  margin-top: 25vh;
+  margin-top: 20vh;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
 
-/* 圖片：寬度設為 90vh，自動保持原比例 */
+/* 圖片 */
 .img-container img {
-  max-width: 70vw;
-  max-height: 70vh;
+  max-width: 90vw;
+  max-height: 80vh;
   width: auto;
   height: auto;
   display: block;

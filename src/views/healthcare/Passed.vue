@@ -21,7 +21,10 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <div class="carousel-container">
+      <div class="img-container">
+        <img src="@/assets/img/passed/none.png" alt="About">
+      </div>
+      <!-- <div class="carousel-container">
         <div
         :key="activeTab"
           id="carouselExampleIndicators"
@@ -29,7 +32,6 @@
           :class="carouselClass"
           data-bs-ride="carousel"
         >
-          <!-- 動態生成指示點 -->
           <div class="carousel-indicators">
             <button 
               v-for="(image, index) in images" 
@@ -42,7 +44,6 @@
               :aria-label="'Slide ' + (index + 1)">
             </button>
           </div>
-          <!-- Carousel 內容 -->
           <div class="carousel-inner">
             <div 
               v-for="(image, index) in images" 
@@ -51,7 +52,6 @@
               <img :src="image" class="d-block w-100" alt="Slide image">
             </div>
           </div>
-          <!-- 控制鈕 -->
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true" :style="{ color: currentColor }">&#10094;</span>
             <span class="visually-hidden">Previous</span>
@@ -61,7 +61,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -171,10 +171,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff9500;
+  background-color: #FFBA40;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   font-size: calc(1.2vw + 1vh);
   text-align: center;
@@ -289,5 +289,23 @@ export default {
   border-radius: 50%;
   border: none;
   margin: 0 4px;
+}
+
+/* 圖片容器 */
+.img-container {
+  margin-top: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* 圖片：寬度設為 90vh，自動保持原比例 */
+.img-container img {
+  max-width: 90vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  display: block;
 }
 </style>

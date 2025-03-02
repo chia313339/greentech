@@ -25,7 +25,7 @@
         :class="{ 'active-btn': currentGroup === 'healthcare' }"
         @click="goToGroup('healthcare')"
       >
-        HEALTHCARE
+        HEALTH CARE
       </button>
     </div>
 
@@ -135,8 +135,7 @@
 
     <!-- 右下角懸浮按鈕區 -->
     <div class="floating-buttons">
-      <button class="reg-btn" v-html="$t('buttons.signup')" data-bs-toggle="modal" data-bs-target="#signModal"></button>
-
+      <button class="reg-btn" v-html="regBtnText" data-bs-toggle="modal" data-bs-target="#signModal"></button>
       <button class="lang-btn" @click="toggleLanguage">
         {{ languageBtnText }}
       </button>
@@ -151,12 +150,13 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="signup-images-container">
-              <img src="@/assets/signup/greentech.png" alt="Greentech" @click="showSignupForm('greentech')">
-              <img src="@/assets/signup/city.png" alt="City" @click="showSignupForm('city')">
-              <img src="@/assets/signup/healthcare.png" alt="Healthcare" @click="showSignupForm('healthcare')">
-            </div>
-          </div>
+  <div class="signup-images-container">
+    <img :src="signupImages.greentech" alt="Greentech" @click="showSignupForm('greentech')">
+    <img :src="signupImages.city" alt="City" @click="showSignupForm('city')">
+    <img :src="signupImages.healthcare" alt="Healthcare" @click="showSignupForm('healthcare')">
+  </div>
+</div>
+
         </div>
       </div>
     </div>
@@ -169,6 +169,14 @@
 
 <script>
 import { store } from '../store'
+// 靜態導入圖片
+import greentechZh from '@/assets/signup/greentech.png'
+import greentechEn from '@/assets/signup/greentech_en.png'
+import cityZh from '@/assets/signup/city.png'
+import cityEn from '@/assets/signup/city_en.png'
+import healthcareZh from '@/assets/signup/healthcare.png'
+import healthcareEn from '@/assets/signup/healthcare_en.png'
+
 export default {
   name: 'GroupPage',
   computed: {
@@ -180,11 +188,21 @@ export default {
     },
     languageBtnText() {
       return this.$i18n.locale === 'zh' ? 'EN' : 'CN'
+    },
+    regBtnText() {
+      return this.$i18n.locale === 'zh' ? '報名<br>連結' : 'Sign<br>Up'
+    },
+    // 根據語系回傳不同圖片路徑
+    signupImages() {
+      return {
+        greentech: this.$i18n.locale === 'zh' ? greentechZh : greentechEn,
+        city: this.$i18n.locale === 'zh' ? cityZh : cityEn,
+        healthcare: this.$i18n.locale === 'zh' ? healthcareZh : healthcareEn
+      }
     }
   },
   methods: {
     goToGroup(route) {
-      // 當點選分組按鈕時，更新 store 並導向 /[group]/about
       store.currentGroup = route
       store.currentNav = 'about'
       this.$router.push(`/${route}/about`)
@@ -199,7 +217,6 @@ export default {
       alert('前往報名頁面!!!!')
     },
     showSignupForm(group) {
-      // 根據傳入的組別，顯示對應的報名表單
       alert(`${group} 報名表單`)
     },
     toggleLanguage() {
@@ -208,15 +225,11 @@ export default {
   },
   watch: {
     '$route.params.group'(newVal) {
-      // 如果 URL 帶有 group，則更新 store
       let segments = this.$route.path.split('/');
-      // segments[1] 為 group
       store.currentGroup = segments[1] || 'greentech'
     },
     '$route.params.navItem'(newVal) {
-      // 由於沒有 navItem 參數，從 URL 中解析
       let segments = this.$route.path.split('/');
-      // segments[2] 為 nav，若無則預設 'about'
       store.currentNav = segments[2] || 'about'
     }
   },
@@ -227,6 +240,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 /* 整體頁面：預留底部 60px (bottom-bar) 與右下懸浮按鈕區 */
@@ -335,7 +349,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 0 20px;
+  padding: 0 5px;
 }
 .nav-link {
   color: rgb(105, 105, 105);
@@ -378,7 +392,7 @@ export default {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease;
-  font-size: 0.8vw;
+  font-size: 1rem;
   border: 2px solid white;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
 }
@@ -469,6 +483,14 @@ export default {
 
 .signup-images-container img:hover {
   transform: scale(1.05);
+}
+
+/* 在 scoped style 裡增加： */
+::v-deep .modal-backdrop {
+  z-index: 1600 !important;
+}
+::v-deep .modal {
+  z-index: 1601 !important;
 }
 
 </style>

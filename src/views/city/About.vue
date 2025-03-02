@@ -10,15 +10,23 @@
     <div class="content">
       <!-- 圖片容器，圖片置中 -->
       <div class="img-container">
-        <img src="@/assets/img/about/about.png" alt="About">
+        <img :src="aboutImage" alt="About">
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import aboutZh from '@/assets/img/city/about/about.png'
+import aboutEn from '@/assets/img/city/about/about_en.png'
+
 export default {
-  name: 'Greentech-About'
+  name: 'Greentech-About',
+  computed: {
+    aboutImage() {
+      return this.$i18n.locale === 'zh' ? aboutZh : aboutEn
+    }
+  }
 }
 </script>
 
@@ -32,8 +40,6 @@ export default {
   overflow: hidden;
 }
 
-
-
 /* 固定背景層，覆滿整個螢幕 */
 .fixed-bg {
   position: fixed;
@@ -41,7 +47,7 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('@/assets/img/about/bk.png') no-repeat center center;
+  background: url('@/assets/img/city/about/bk.png') no-repeat center center;
   background-size: cover;
   z-index: -1;
 }
@@ -56,15 +62,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0070b5;
+  background-color: #0099FF;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   z-index: 10;
   font-size: calc(1.2vw + 1vh);
   text-align: center;
-  
 }
 
 /* 內容層：設定為 flex 以便置中內容 */
@@ -78,9 +83,6 @@ export default {
   margin-top: -100px;
 }
 
-
-
-
 /* 圖片容器 */
 .img-container {
   display: flex;
@@ -89,13 +91,12 @@ export default {
   width: 100%;
 }
 
-/* 圖片：寬度設為 90vh，自動保持原比例 */
+/* 圖片：設定最大寬度與最大高度 */
 .img-container img {
-  max-width: 70vw;
-  max-height: 70vh;
+  max-width: 90vw;
+  max-height: 80vh;
   width: auto;
   height: auto;
   display: block;
 }
-
 </style>

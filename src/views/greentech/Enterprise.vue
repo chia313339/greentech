@@ -8,10 +8,10 @@
       <div class="title-bar">{{ $t('nav.enterprise') }}</div>
       <div class="buttons">
         <button class="btn download-btn" style="background-color: #BA2553;">
-          <i class="fa-solid fa-download"></i>&nbsp;&nbsp;完整題目下載
+          <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ downloadText }}
         </button>
         <button class="btn video-btn" style="background-color: #336600;">
-          <i class="fa-regular fa-circle-play"></i>&nbsp;&nbsp;觀看題目說明影片
+          <i class="fa-regular fa-circle-play"></i>&nbsp;&nbsp;{{ videoText }}
         </button>
       </div>
     </div>
@@ -37,7 +37,7 @@
           <!-- 右上角的 X 按鈕，絕對定位 -->
           <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-body p-0">
-            <img src="@/assets/img/enterprise/com_content0.png" alt="公司詳細內容" class="img-fluid">
+            <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
           </div>
         </div>
       </div>
@@ -47,8 +47,22 @@
 </template>
 
 <script>
+import comContentZh from '@/assets/img/enterprise/com_content0.png'
+import comContentEn from '@/assets/img/enterprise/com_content_en.png'
+
 export default {
-  name: 'GT-Enterprise'
+  name: 'GT-Enterprise',
+  computed: {
+    downloadText() {
+      return this.$i18n.locale === 'zh' ? '完整題目下載' : 'Download All Topics'
+    },
+    videoText() {
+      return this.$i18n.locale === 'zh' ? '觀看題目說明影片' : 'Watch Question Explanation Video'
+    },
+    modalImage() {
+      return this.$i18n.locale === 'zh' ? comContentZh : comContentEn
+    }
+  }
 }
 </script>
 
@@ -94,7 +108,7 @@ export default {
   background-color: #4DB233;
   color: white;
   font-weight: 900;
-  border: 5px solid white;
+  border: 3px solid white;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   font-size: calc(1.2vw + 1vh);
   text-align: center;
@@ -114,7 +128,7 @@ export default {
   padding: 5px 10px;
   cursor: pointer;
   font-size: 1vw;
-  width: 12vw;
+  /* width: 12vw; */
   transition: transform 0.2s ease;
 }
 
@@ -191,8 +205,5 @@ export default {
   top: 10px;
   right: 10px;
   z-index: 1;
-  /* 若需要，可微調按鈕與邊框距離，例如：
-  margin: 5px;
-  */
 }
 </style>

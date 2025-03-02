@@ -1,0 +1,146 @@
+1. 片頭影片的SKIP要拿掉，那個會用程式去蓋住
+2. 標題文字如果用圖片取代會更容易跑版喔，而且沒法用中英互翻的框架，可以做但效果不一定好w
+3. 獎項及義務的陰影應該是有的，因為是整張圖貼上去，請再次確認
+4. 左下角Logo留空隙是為了配合不同畫面縮放預留，可以開F12自己調整看看，太擠容易被蓋到，可以先調整再近一點點
+5. 歷屆回顧的按鈕只能盡可能貼齊，無法完全貼齊，也是跟版面配置有關
+6. 左方標籤列會有空白是避免被左下角logo擋住，若填滿字體至中就會被蓋住，你們的設計圖其實也是沒有等距的，若是要healthcare按鈕特別長，也容易因為畫面尺寸調整變醜，你們再評估看看
+7. 歷屆回顧要跑馬燈，需要每一家的Logo圖，且需要尺寸一致的png
+8. 有修改的圖請一樣在AI檔上調整，我無法從pdf直接取用新圖片
+
+
+這是我用vue3+vite+boostrap建立的網站，請幫我根據需求進行修改
+1. 開場請幫我改成全屏播放src/assets/opening.mp4，維持右下角的opening-skip按鈕，但移除opening-countdown功能
+2. 開場影片播完後，全屏顯示圖片src/assets/opening.png，並且在圖片上有三個圓形按鈕，在畫面top60％的位子，水平置中呈現，由左至右 #00DB00色圓形寫Greentech， #009CFF色圓形寫City， #FFB600圓形寫Health care，每個按鈕hover會稍微放大，不管點哪一個按鈕，都會把全屏圖片關閉
+3. 關閉後就顯示原本的網站頁面，其餘功能皆不變
+
+
+
+我想要調整reg-btn的顯示方式，把v-html="$t('buttons.signup')"改掉，當我的語言$i18n.locale為中文，顯示'報名<br>連結'，中間必須換行，若為英文則顯示'Sign<br>Up'
+此外我點擊reg-btn跑出來的modal要在最上層，把floating-buttons蓋住，其餘功能都不變
+
+請幫我修改
+1. btn2幫我配合buttons點擊的年份，改為瀏覽OOOO網站，OOOO為年份
+2. btn2每個年份按鈕點開都是不同網站，請先幫我留空
+3. 其他功能維持不變
+
+若語言為中文，則維持現狀，若為英文時幫我修改
+1. '參賽應備文件'改為'Documents Needed for Entry'
+2. '一鍵下載'改為'Download'
+2. '競賽須知'改為'Competition instructions'
+3. instructions.png改為instructions_en.png
+
+我有使用i18n套件了，這個部分幫我重新修正
+* btn上的文字，且不要換行並自動縮到可以放進按鈕內
+初賽改為 {{ $t('pages.game1') }}
+複賽改為 {{ $t('pages.game2') }}
+決賽改為 {{ $t('pages.game3') }}
+* 若語言為中文，則維持現狀，若為英文時幫我修改
+'001.png' 改為 '001_en.png'
+'002.png' 改為 '002_en.png'
+'003.png' 改為 '003_en.png'
+
+
+我有使用i18n套件了，這個部分幫我重新修正
+* btn上的文字，且不要換行並自動縮到可以放進按鈕內
+初賽改為 {{ $t('pages.game1') }}
+複賽改為 {{ $t('pages.game2') }}
+決賽改為 {{ $t('pages.game3') }}
+* 當語系為英文時，調整btn按鈕字型大小為 0.5vw
+* 若語言為中文，則維持現狀，若為英文時幫我修改
+'none.png' 改為 'none_en.png'
+* 註解的程式碼請幫我保留，不要刪掉
+
+
+
+我有使用i18n套件了，這個部分幫我重新修正
+* 若語言為中文，則維持現狀，若為英文時幫我修改
+'unit.png' 改為 'unit_en.png'
+'call.png' 改為 'call_en.png'
+
+
+.btn.btn-chu.active,
+.btn.btn-chu:hover {
+  background-color: #80C3E8;
+  color: white;
+}
+  
+.btn.btn-fu.active,
+.btn.btn-fu:hover {
+  background-color: #429CCE;
+  color: white;
+}
+  
+.btn.btn-jue.active,
+.btn.btn-jue:hover {
+  background-color: #4268A0;
+  color: white;
+}
+
+/* 複賽 active 與 hover 狀態 */
+.btn.btn-fu.active,
+.btn.btn-fu:hover {
+  background-color: #429CCE;
+}
+
+/* 決賽 active 與 hover 狀態 */
+.btn.btn-jue.active,
+.btn.btn-jue:hover {
+  background-color: #4268A0;
+}
+
+
+請幫我把中文內容改成下面：
+{question: '1. 一家參賽新創企業最多可以獲得多少輔導費用?',
+answer: '一家參賽新創至多可獲得新臺幣 80 萬驗證費用，通過複賽可獲得新臺幣 20 萬驗證費用，通過決賽可再獲得新臺幣 60 萬驗證費用',},
+{question: '2. 可以同時投件多組城市題嗎?',
+answer: '參賽新創至多得挑選一題參賽，題目一經選定後，不得更換。',},
+{question: '3. 是否需繳交報名費用?',
+answer: '本競賽無需報名費。',},
+{question: '4. 如果報名或填寫申請文件遇到問題時，怎麼辦?',
+answer: '請至網頁下方【聯繫我們】填寫提問，或是來電洽詢執行團隊(02)2577-4249分機504/223/386。',},
+{question: '5. 初賽及複賽結果是否會通知?',
+answer: '會由執行單位以E-mail方式通知聯絡人，並請關注本網站公告。',},
+{question: '6. 是否可以同時提交多組企業類別與城市類別的主題?',
+answer: '每個參與企業類別(Enterprise Category)的新創團隊最多可選擇兩個主題，同時，在城市類別(City Category)中，則僅能選擇一個主題參賽。一旦選定後，無法更改。',},
+{question: '7. 有需要達成的義務嗎?',
+answer: '> 通過複賽者之優選新創須達成義務: 1.應配合主辦單位及執行單位安排，參與至少1場交流分享活動。 2.應提供Demo版本或影音媒體介紹1式(內容包含本競賽相關數據或產品等)予主辦單位及執行單位作為後續廣宣與展示。 > 通過決賽者之優勝新創須達成義務: 1.應配合主辦單位及執行單位安排，參與至少1場達50人次(含)以上的成果展示、推廣或體驗活動。活動後須提交參與活動之佐證資料予主辦單位及執行單位，如:活動照片、交流心得等。 2.應提供Demo版本或影音媒體介紹1式(內容包含本競賽相關數據或產品等)予主辦單位及執行單位作為後續廣宣與展示。 3.與林口新創園或亞灣新創園簽訂進駐同意書。(進駐日期:2026/1/1-12/31)',},
+{question: '8. 最後申請日是何時?',
+answer: '申請截止期間為2025年5月29日17點00分(GMT+8)點選報名選結填寫，完成後系統將寄送（申請確認信），以此封電子郵件顯示之時間為準。',},
+{question: '9. 參賽人員是否有人數及身分限制?',
+answer: '人數無限制，參賽人員須為公司員工；而報名系統中提列之參賽人員名單，皆須簽署附件五【個人資料提供同意書】，並親筆簽名。(成員可簽署於同一張同意書)',},
+{question: '10. 【附件六】填寫規則是什麼?',
+answer: '參賽新創若任一成員屬經濟部中小企業處之公職人員或關係人者，應填具【附件六】公職人員及關係人身分關係揭露表。請於繳交應備文件時一併提供。',},
+{question: '11. 若想提供6分鐘pitch影片，該影片內容的製作方向為何?',
+answer: '6分鐘pitch影片為呈現提案簡報的絕佳加分機會，建議參賽新創著重於解決方案之規劃與技術說明；如有實體產品或服務，也可一併於影片內呈現。',},
+{question: '12. 是否可提供競賽出題城市聯繫窗口?',
+answer: '本競賽相關聯繫皆透過執行單位(Taiwan Startup Terrace)與出題城市進行溝通，恕無法提供城市窗口資訊。',},
+{question: '13. 出題城市也會簽署保密同意書嗎?',
+answer: '是的，根據本競賽須知載明，出題城市及參賽新創均須簽署【附件四】之保密同意書。',}
+
+幫我把英文內容改成下面：
+{question: '1. How much prize money can a participating startup receive at most?',
+answer: 'A participating startup can receive up to NT$800,000 in prize. They can receive NT$200,000 in prize if they advance to the semi-finals, and an additional NT$600,000 if they advance to the finals.',},
+{question: '2. Can multiple sets of enterprise topics be submitted simultaneously?',
+answer: 'Each participating startup can select up to two topics to compete in. Once a topic is selected, it cannot be changed.',},
+{question: '3. Is there a registration fee required?',
+answer: 'No registration fee is required for this competition.',},
+{question: '4. What should I do if I encounter any issues during the registration or application document submission process?',
+answer: 'Please fill out the inquiry form located at the bottom of the webpage under "Contact Us," or contact the execution team at (02)2577-4249 ext. 290/546; (07)338-3827 ext. 309 by phone.',},
+{question: '5. Will the results of the preliminary and semi-final rounds be notified?',
+answer: 'The executing unit will notify the contact person via email, and please pay attention to announcements on this website.',},
+{question: '6. Are there any obligations that need to be fulfilled?',
+answer: '• Finalists must fulfill the following obligations: (1) Participate in at least one exchange or sharing event organized by the organizer and implementer. (2) Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. • Winners must fulfill the following obligations: (1) Participate in at least one exhibition, promotion, or experiential event, with at least 50 attendees, organized by the organizer and implementer. After the event, evidence of participation (such as event photos or lessons learned from the participation) must be submitted to the organizer and implementer. (2) Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. (3) Sign a residency agreement with Startup Terrace or Startup Terrace Kaohsiung.',},
+{question: '7. When is the deadline for application?',
+answer: 'The application deadline is at 23:59 on May 31, 2024 (Friday). After completing the application, the system will send an Application Confirmation Letter; the implementer will consider the time shown in this email to take precedence.',},
+{question: '8. Are there any restrictions on the number and identity of participants?',
+answer: 'There is no limit on the number of participants. Participants must be employees of the company. All members of the participating startup listed on the online application form must personally sign the consent form Personal Information Provision Consent Form (Attachment 5) (All members can sign on the same consent form.)',},
+{question: '9. What are the filling rules for Attachment 6?',
+answer: 'If any member of the participating startup is an SMESA public servant or related party, he or she must fill out the Disclosure Form for Public Servants and Related Persons (Attachment 6). Please provide the required documents together when submitting.',},
+{question: '10. If I want to provide a 6-minute pitch video, what should be the production direction of the video content?',
+answer: 'The 6-minute or less video presentation of the solution is an excellent opportunity to present the proposal. It is recommended that participating startups focus on planning the solution and providing technical explanations. If there are physical products or services, they can also be presented in the video.',},
+{question: '11. Can the contact person from the competition's topic-proposing company be provided?',
+answer: 'All the communication affairs for this competition are conducted through the executing units (Startup Terrace or Startup Terrace Kaohsiung) with the topic-providing company. We regret that we cannot provide contact information for individual companies.',},
+{question: '12. Will topic-proposing companies also sign Confidentiality Consent Form?',
+answer: 'Yes, both the topic-proposing companies and participating startups are required to sign the Confidentiality Consent Form (Attachment 4)',}
+
+其餘都不變，維持原狀

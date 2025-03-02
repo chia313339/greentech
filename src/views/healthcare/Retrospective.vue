@@ -261,7 +261,7 @@ export default {
       const websiteMapping = {
         '2024': '',
         '2023': '',
-        '2022': ''
+        '2022': 'https://gt2022-195939643258.asia-east1.run.app'
       };
       const url = websiteMapping[this.activeTab];
       // 若對應網址不為空則開啟新視窗，否則提示訊息

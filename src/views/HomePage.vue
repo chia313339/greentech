@@ -9,6 +9,7 @@
           class="opening-video"
           autoplay
           playsinline
+          muted
           @ended="videoEnded"
         ></video>
       </div>

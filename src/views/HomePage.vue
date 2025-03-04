@@ -9,21 +9,20 @@
           class="opening-video"
           autoplay
           playsinline
-          muted
           @ended="videoEnded"
         ></video>
       </div>
       <div v-else-if="openingStage === 'image'" class="opening-image-container">
         <img src="@/assets/opening.png" alt="Opening" class="opening-image" />
         <div class="opening-buttons">
-          <button class="opening-btn greentech" @click="skipOpening">
+          <button class="opening-btn greentech" @click="selectGroup('greentech')">
             Greentech
           </button>
-          <button class="opening-btn city" @click="skipOpening">
+          <button class="opening-btn city" @click="selectGroup('city')">
             City
           </button>
-          <button class="opening-btn healthcare" @click="skipOpening">
-            Health care
+          <button class="opening-btn healthcare" @click="selectGroup('healthcare')">
+            Health tech
           </button>
         </div>
       </div>
@@ -35,7 +34,7 @@
     <div class="left-sidebar">
       <button class="group-btn greentech active-btn" @click="goToGroup('greentech')">GREENTECH</button>
       <button class="group-btn city active-btn" @click="goToGroup('city')">CITY</button>
-      <button class="group-btn healthcare active-btn" @click="goToGroup('healthcare')">HEALTH CARE</button>
+      <button class="group-btn healthcare active-btn" @click="goToGroup('healthcare')">HEALTH TECH</button>
     </div>
 
     <!-- 主要內容區：載入對應路由頁面 (這裡以 carousel 為例) -->
@@ -141,7 +140,6 @@ export default {
     regBtnText() {
       return this.$i18n.locale === 'zh' ? '報名<br>連結' : 'Sign<br>Up'
     }
-    
   },
   methods: {
     goToGroup(route) {
@@ -165,13 +163,18 @@ export default {
     videoEnded() {
       this.openingStage = 'image'
     },
-    // 點擊 Skip 按鈕或任一圖片上按鈕：如果在影片階段則跳到圖片階段；在圖片階段則關閉 overlay
+    // 點擊 Skip 按鈕：如果在影片階段則切換到圖片階段；若已在圖片階段則關閉 overlay
     skipOpening() {
       if (this.openingStage === 'video') {
         this.openingStage = 'image'
       } else {
         this.showOpening = false
       }
+    },
+    // 新增方法：點選 opening-buttons 按鈕時更新 store.currentGroup 並關閉 overlay
+    selectGroup(group) {
+      store.currentGroup = group
+      this.showOpening = false
     }
   },
   watch: {

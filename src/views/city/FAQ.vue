@@ -91,11 +91,11 @@ export default {
           },
           {
             question: '7. Are there any obligations that need to be fulfilled?',
-            answer: `Semi-finalists must fulfill the following obligations: 
+            answer: `• Semi-finalists must fulfill the following obligations: 
             1. Participate in at least one exchange or sharing event organized by the organizer and implementer. 
             2. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. 
             
-            Finalists must fulfill the following obligations: 
+            • Finalists must fulfill the following obligations: 
             1. Participate in at least one exhibition, promotion, or experiential event, with at least 50 attendees, organized by the organizer and implementer. 
             2. After the event, evidence of participation (such as event photos or lessons learned from the participation) must be submitted to the organizer and implementer. 
             3. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. 4. Sign a residency agreement with Startup Terrace Linkou or Startup Terrace Kaohsiung. (Residency period: January 1, 2026 – December 31, 2026)`,
@@ -168,11 +168,11 @@ export default {
           },
           {
             question: '7. 有需要達成的義務嗎?',
-            answer: `通過複賽者之優選新創須達成義務: 
+            answer: `• 通過複賽者之優選新創須達成義務: 
             1.應配合主辦單位及執行單位安排，參與至少1場交流分享活動。 
             2.應提供Demo版本或影音媒體介紹1式(內容包含本競賽相關數據或產品等)予主辦單位及執行單位作為後續廣宣與展示。 
             
-            通過決賽者之優勝新創須達成義務: 
+            • 通過決賽者之優勝新創須達成義務: 
             1.應配合主辦單位及執行單位安排，參與至少1場達50人次(含)以上的成果展示、推廣或體驗活動。活動後須提交參與活動之佐證資料予主辦單位及執行單位，如:活動照片、交流心得等。 
             2.應提供Demo版本或影音媒體介紹1式(內容包含本競賽相關數據或產品等)予主辦單位及執行單位作為後續廣宣與展示。 
             3.與林口新創園或亞灣新創園簽訂進駐同意書。(進駐日期:2026/1/1-12/31)`,

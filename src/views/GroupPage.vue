@@ -25,7 +25,7 @@
         :class="{ 'active-btn': currentGroup === 'healthcare' }"
         @click="goToGroup('healthcare')"
       >
-        HEALTH CARE
+        HEALTH TECH
       </button>
     </div>
 

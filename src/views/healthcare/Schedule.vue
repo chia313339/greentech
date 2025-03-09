@@ -10,15 +10,23 @@
     <div class="content">
       <!-- 圖片容器，圖片置中 -->
       <div class="img-container">
-        <img src="@/assets/img/schedule/schedule.png" alt="schedule">
+        <img :src="scheduleImage" alt="schedule">
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import scheduleZh from '@/assets/img/hc/schedule/schedule.png'
+import scheduleEn from '@/assets/img/hc/schedule/schedule_en.png'
+
 export default {
-  name: 'Greentech-Schedule'
+  name: 'Greentech-Schedule',
+  computed: {
+    scheduleImage() {
+      return this.$i18n.locale === 'zh' ? scheduleZh : scheduleEn
+    }
+  }
 }
 </script>
 
@@ -31,8 +39,6 @@ export default {
   justify-content: center;
   overflow: hidden;
 }
-
-
 
 /* 固定背景層，覆滿整個螢幕 */
 .fixed-bg {
@@ -64,7 +70,6 @@ export default {
   z-index: 10;
   font-size: calc(1.2vw + 1vh);
   text-align: center;
-  
 }
 
 /* 內容層：設定為 flex 以便置中內容 */
@@ -75,11 +80,8 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: -100px;
+  margin-top: -70px;
 }
-
-
-
 
 /* 圖片容器 */
 .img-container {
@@ -89,13 +91,12 @@ export default {
   width: 100%;
 }
 
-/* 圖片：寬度設為 90vh，自動保持原比例 */
+/* 圖片：寬度設為 90vw，最大高度不超過 100vh，自動保持原比例 */
 .img-container img {
   max-width: 90vw;
-  max-height: 100vh;
+  max-height: 90vh;
   width: auto;
   height: auto;
   display: block;
 }
-
 </style>

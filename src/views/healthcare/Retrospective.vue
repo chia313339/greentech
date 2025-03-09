@@ -29,7 +29,6 @@
           2022
         </button>
         <button class="btn2" @click="openWebsite">{{ btn2Text }}</button>
-
       </div>
     </div>
 
@@ -111,37 +110,36 @@
     </div>
 
     <div class="bottom-marquee">
-  <div class="marquee-container">
-    <div class="marquee">
-      <img src="@/assets/img/retrospective/com/001.png" alt="Image 1">
-      <img src="@/assets/img/retrospective/com/002.png" alt="Image 2">
-      <img src="@/assets/img/retrospective/com/003.png" alt="Image 3">
-      <img src="@/assets/img/retrospective/com/004.png" alt="Image 4">
-      <img src="@/assets/img/retrospective/com/005.png" alt="Image 5">
-      <img src="@/assets/img/retrospective/com/006.png" alt="Image 6">
-      <img src="@/assets/img/retrospective/com/007.png" alt="Image 7">
-      <img src="@/assets/img/retrospective/com/008.png" alt="Image 8">
-      <img src="@/assets/img/retrospective/com/009.png" alt="Image 9">
-      <img src="@/assets/img/retrospective/com/010.png" alt="Image 10">
-      <img src="@/assets/img/retrospective/com/011.png" alt="Image 11">
-      <img src="@/assets/img/retrospective/com/012.png" alt="Image 12">
-      <!-- 複製一次，達成無縫循環 -->
-      <img src="@/assets/img/retrospective/com/001.png" alt="Image 1">
-      <img src="@/assets/img/retrospective/com/002.png" alt="Image 2">
-      <img src="@/assets/img/retrospective/com/003.png" alt="Image 3">
-      <img src="@/assets/img/retrospective/com/004.png" alt="Image 4">
-      <img src="@/assets/img/retrospective/com/005.png" alt="Image 5">
-      <img src="@/assets/img/retrospective/com/006.png" alt="Image 6">
-      <img src="@/assets/img/retrospective/com/007.png" alt="Image 7">
-      <img src="@/assets/img/retrospective/com/008.png" alt="Image 8">
-      <img src="@/assets/img/retrospective/com/009.png" alt="Image 9">
-      <img src="@/assets/img/retrospective/com/010.png" alt="Image 10">
-      <img src="@/assets/img/retrospective/com/011.png" alt="Image 11">
-      <img src="@/assets/img/retrospective/com/012.png" alt="Image 12">
+      <div class="marquee-container">
+        <div class="marquee">
+          <img src="@/assets/img/retrospective/com/001.png" alt="Image 1">
+          <img src="@/assets/img/retrospective/com/002.png" alt="Image 2">
+          <img src="@/assets/img/retrospective/com/003.png" alt="Image 3">
+          <img src="@/assets/img/retrospective/com/004.png" alt="Image 4">
+          <img src="@/assets/img/retrospective/com/005.png" alt="Image 5">
+          <img src="@/assets/img/retrospective/com/006.png" alt="Image 6">
+          <img src="@/assets/img/retrospective/com/007.png" alt="Image 7">
+          <img src="@/assets/img/retrospective/com/008.png" alt="Image 8">
+          <img src="@/assets/img/retrospective/com/009.png" alt="Image 9">
+          <img src="@/assets/img/retrospective/com/010.png" alt="Image 10">
+          <img src="@/assets/img/retrospective/com/011.png" alt="Image 11">
+          <img src="@/assets/img/retrospective/com/012.png" alt="Image 12">
+          <!-- 複製一次，達成無縫循環 -->
+          <img src="@/assets/img/retrospective/com/001.png" alt="Image 1">
+          <img src="@/assets/img/retrospective/com/002.png" alt="Image 2">
+          <img src="@/assets/img/retrospective/com/003.png" alt="Image 3">
+          <img src="@/assets/img/retrospective/com/004.png" alt="Image 4">
+          <img src="@/assets/img/retrospective/com/005.png" alt="Image 5">
+          <img src="@/assets/img/retrospective/com/006.png" alt="Image 6">
+          <img src="@/assets/img/retrospective/com/007.png" alt="Image 7">
+          <img src="@/assets/img/retrospective/com/008.png" alt="Image 8">
+          <img src="@/assets/img/retrospective/com/009.png" alt="Image 9">
+          <img src="@/assets/img/retrospective/com/010.png" alt="Image 10">
+          <img src="@/assets/img/retrospective/com/011.png" alt="Image 11">
+          <img src="@/assets/img/retrospective/com/012.png" alt="Image 12">
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
 
     <!-- 圖片放大 Modal -->
     <div v-if="selectedImage" class="image-modal" @click.self="closeModal">
@@ -250,7 +248,11 @@ export default {
       }[this.activeTab];
     },
     btn2Text() {
-      return '瀏覽' + this.activeTab + '網站'
+      if (this.$i18n.locale === 'zh') {
+        return '瀏覽' + this.activeTab + '網站';
+      } else {
+        return 'Visit ' + this.activeTab + ' website';
+      }
     }
   },
   methods: {
@@ -390,6 +392,9 @@ export default {
   justify-content: center;
   transition: transform 0.3s ease;
   background-color: #9fa09f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn:hover {
@@ -401,23 +406,25 @@ export default {
   margin-left: 43vw;
   padding: 5px 10px;
   color: white;
-  background-color: #00cc99;
+  background-color: #FFB600;
   border: none;
   border-radius: 5px;
   font-size: 1vw;
   font-weight: bold;
   box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   transition: transform 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn2:hover {
   transform: scale(1.05);
-  
 }
 
 .btn.active,
 .btn:hover {
-  background-color: #00cc99;
+  background-color: #FFB600;
 }
 
 .content {
@@ -495,7 +502,7 @@ export default {
 .carousel-control-next-icon {
   background-image: none;
   font-size: 2.5rem;
-  color: #00cc99;
+  color: #FFB600;
 }
 
 .image-modal {
@@ -570,6 +577,5 @@ export default {
     transform: translateX(-50%);
   }
 }
-
 
 </style>

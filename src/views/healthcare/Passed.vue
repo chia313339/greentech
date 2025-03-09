@@ -7,14 +7,20 @@
     <div class="title_head">
       <div class="title-bar">{{ $t('nav.passed') }}</div>
       <div class="buttons">
-        <button class="btn btn-chu" :class="{ active: activeTab === '初賽' }" @click="setActive('初賽')">
-          初賽
+        <button class="btn btn-chu" 
+          :class="{ active: activeTab === '初賽', 'btn-en': $i18n.locale !== 'zh' }" 
+          @click="setActive('初賽')">
+          {{ $t('pages.game1') }}
         </button>
-        <button class="btn btn-fu" :class="{ active: activeTab === '複賽' }" @click="setActive('複賽')">
-          複賽
+        <button class="btn btn-fu" 
+          :class="{ active: activeTab === '複賽', 'btn-en': $i18n.locale !== 'zh' }" 
+          @click="setActive('複賽')">
+          {{ $t('pages.game2') }}
         </button>
-        <button class="btn btn-jue" :class="{ active: activeTab === '決賽' }" @click="setActive('決賽')">
-          決賽
+        <button class="btn btn-jue" 
+          :class="{ active: activeTab === '決賽', 'btn-en': $i18n.locale !== 'zh' }" 
+          @click="setActive('決賽')">
+          {{ $t('pages.game3') }}
         </button>
       </div>
     </div>
@@ -22,11 +28,11 @@
     <!-- 內容層 -->
     <div class="content">
       <div class="img-container">
-        <img src="@/assets/img/passed/none.png" alt="About">
+        <img :src="passedImg" alt="About">
       </div>
       <!-- <div class="carousel-container">
         <div
-        :key="activeTab"
+          :key="activeTab"
           id="carouselExampleIndicators"
           class="carousel slide"
           :class="carouselClass"
@@ -67,18 +73,8 @@
 </template>
 
 <script>
-import chu1 from '@/assets/img/passed/chu001.png';
-import chu2 from '@/assets/img/passed/chu002.png';
-import chu3 from '@/assets/img/passed/chu003.png';
-import chu4 from '@/assets/img/passed/chu004.png';
-import chu5 from '@/assets/img/passed/chu005.png';
-
-import fu1 from '@/assets/img/passed/fu001.png';
-import fu2 from '@/assets/img/passed/fu002.png';
-import fu3 from '@/assets/img/passed/fu003.png';
-
-import jue1 from '@/assets/img/passed/jue001.png';
-import jue2 from '@/assets/img/passed/jue002.png';
+import noneZh from '@/assets/img/hc/passed/none.png';
+import noneEn from '@/assets/img/hc/passed/none_en.png';
 
 export default {
   name: 'GT-Scoring',
@@ -88,39 +84,28 @@ export default {
     }
   },
   computed: {
-    // 根據目前階段返回對應圖片陣列
-    images() {
-      switch(this.activeTab) {
-        case '初賽':
-          return [chu1, chu2, chu3, chu4, chu5];
-        case '複賽':
-          return [fu1, fu2, fu3];
-        case '決賽':
-          return [jue1, jue2];
-        default:
-          return [chu1, chu2, chu3, chu4, chu5];
-      }
+    passedImg() {
+      return this.$i18n.locale === 'zh' ? noneZh : noneEn;
     },
-    // 用於設定 carousel 上的 class，以便針對不同階段設定控制鈕與指示點顏色
+    // 以下 computed 保留原 carousel 相關邏輯（若有需要使用時）
+    images() {
+      // 此處留空或自行補上 carousel 圖片資料
+      return [];
+    },
     carouselClass() {
       switch(this.activeTab) {
-        case '初賽':
-          return 'chu';
-        case '複賽':
-          return 'fu';
-        case '決賽':
-          return 'jue';
-        default:
-          return 'chu';
+        case '初賽': return 'chu';
+        case '複賽': return 'fu';
+        case '決賽': return 'jue';
+        default: return 'chu';
       }
     },
-    // 根據階段返回顏色
     currentColor() {
       switch(this.activeTab) {
-        case '初賽': return '#00CC99';
-        case '複賽': return '#009933';
-        case '決賽': return '#1A5B2F';
-        default: return '#00CC99';
+        case '初賽': return '#FFB600';
+        case '複賽': return '#FF9900';
+        case '決賽': return '#FF6600';
+        default: return '#FFB600';
       }
     }
   },
@@ -188,14 +173,16 @@ export default {
   margin-top: 20px;
 }
 
-/* 修改按鈕成圓形與預設樣式 */
+/* 基本按鈕樣式 */
 .btn {
   border: none;
   color: white;
   font-weight: bold;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
-  font-size: 1vw;
+  font-size: 1vw;  /* 中文時預設 1vw */
   width: calc(2vw + 20px);
   height: calc(2vw + 20px);
   border-radius: 50%;
@@ -210,24 +197,33 @@ export default {
   transform: scale(1.1);
 }
 
+.btn.active {
+  color: white;
+}
+
+/* 當語系為英文時，調整按鈕字型大小為 0.5vw */
+.btn-en {
+  font-size: 0.5vw;
+}
+
 /* 初賽的 active/hover 狀態 */
 .btn.btn-chu.active,
 .btn.btn-chu:hover {
-  background-color: #00CC99;
+  background-color: #FFB600;
   color: white;
 }
 
 /* 複賽的 active/hover 狀態 */
 .btn.btn-fu.active,
 .btn.btn-fu:hover {
-  background-color: #009933;
+  background-color: #FF9900;
   color: white;
 }
 
 /* 決賽的 active/hover 狀態 */
 .btn.btn-jue.active,
 .btn.btn-jue:hover {
-  background-color: #1A5B2F;
+  background-color: #FF6600;
   color: white;
 }
 
@@ -243,53 +239,53 @@ export default {
 }
 
 /* Carousel container 調整 */
-.carousel-container {
+/* .carousel-container {
   width: 90vw;
   margin-top: 25vh;
-}
+} */
 
 /* Carousel 圖片 */
-.carousel-inner img {
+/* .carousel-inner img {
   max-width: 100%;
   max-height: 70vh;
   object-fit: contain;
-}
+} */
 
 /* 移除預設控制鈕背景圖，使用文字箭頭 */
-.carousel-control-prev-icon,
+/* .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-image: none;
   font-size: 2rem;
   line-height: 1;
-}
+} */
 
 /* 根據不同階段改變控制鈕及指示點顏色 */
-.carousel.chu .carousel-control-prev-icon,
+/* .carousel.chu .carousel-control-prev-icon,
 .carousel.chu .carousel-control-next-icon,
 .carousel.chu .carousel-indicators [data-bs-target] {
-  color: #00CC99;
+  color: #FFB600;
 }
 
 .carousel.fu .carousel-control-prev-icon,
 .carousel.fu .carousel-control-next-icon,
 .carousel.fu .carousel-indicators [data-bs-target] {
-  color: #009933;
+  color: #FF9900;
 }
 
 .carousel.jue .carousel-control-prev-icon,
 .carousel.jue .carousel-control-next-icon,
 .carousel.jue .carousel-indicators [data-bs-target] {
-  color: #1A5B2F;
-}
+  color: #FF6600;
+} */
 
 /* 指示點樣式 */
-.carousel-indicators [data-bs-target] {
+/* .carousel-indicators [data-bs-target] {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   border: none;
   margin: 0 4px;
-}
+} */
 
 /* 圖片容器 */
 .img-container {
@@ -300,7 +296,7 @@ export default {
   width: 100%;
 }
 
-/* 圖片：寬度設為 90vh，自動保持原比例 */
+/* 圖片 */
 .img-container img {
   max-width: 90vw;
   max-height: 80vh;

@@ -144,3 +144,33 @@ answer: 'All the communication affairs for this competition are conducted throug
 answer: 'Yes, both the topic-proposing companies and participating startups are required to sign the Confidentiality Consent Form (Attachment 4)',}
 
 其餘都不變，維持原狀
+
+
+
+
+這是我的store.js
+請幫我修改：
+1. 我希望我的開頭影片有聲音
+<video
+          src="@/assets/opening.mp4"
+          class="opening-video"
+          autoplay
+          playsinline
+          muted
+          @ended="videoEnded"
+        ></video>
+
+2. 當我點選opening-buttons按鈕時，將 store.js的currentGroup改為對應的內容，'greentech','city','healthcare'
+<div class="opening-buttons">
+          <button class="opening-btn greentech" @click="skipOpening">
+            Greentech
+          </button>
+          <button class="opening-btn city" @click="skipOpening">
+            City
+          </button>
+          <button class="opening-btn healthcare" @click="skipOpening">
+            Health care
+          </button>
+        </div>
+
+3. 其餘功能都不變，改好給我完整的程式碼

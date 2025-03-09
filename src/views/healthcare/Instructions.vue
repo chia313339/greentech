@@ -8,10 +8,10 @@
       <div class="title-bar">{{ $t('nav.instructions') }}</div>
       <div class="buttons">
         <button class="btn download-btn" style="background-color: #BA2553;">
-          <i class="fa-solid fa-download"></i>&nbsp;&nbsp;參賽應備文件 <span style="color: yellow; font-weight: bolder;">一鍵下載</span>
+          <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ entryDocsText }} <span style="color: yellow; font-weight: bolder;">{{ downloadText }}</span>
         </button>
-        <button class="btn video-btn" style="background-color: #336600;">
-          <i class="fa-solid fa-download"></i>&nbsp;&nbsp;競賽須知
+        <button class="btn video-btn" style="background-color: #FF9900;">
+          <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ competitionInstructionsText }}
         </button>
       </div>
     </div>
@@ -19,17 +19,40 @@
     <!-- 內容層 -->
     <div class="content">
       <div class="img-container">
-        <img src="@/assets/img/instructions/instructions.png" alt="About">
+        <img :src="instructionsImage" alt="About">
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
+import instructionsZh from '@/assets/img/hc/instructions/instructions.png'
+import instructionsEn from '@/assets/img/hc/instructions/instructions_en.png'
+
 export default {
-  name: 'GT-Enterprise'
+  name: 'GT-Instructions',
+  computed: {
+    entryDocsText() {
+      return this.$i18n.locale === 'zh'
+        ? '參賽應備文件'
+        : 'Documents Needed for Entry'
+    },
+    downloadText() {
+      return this.$i18n.locale === 'zh'
+        ? '一鍵下載'
+        : 'Download'
+    },
+    competitionInstructionsText() {
+      return this.$i18n.locale === 'zh'
+        ? '競賽須知'
+        : 'Competition instructions'
+    },
+    instructionsImage() {
+      return this.$i18n.locale === 'zh'
+        ? instructionsZh
+        : instructionsEn
+    }
+  }
 }
 </script>
 
@@ -110,7 +133,7 @@ export default {
   width: 100%;
 }
 
-/* Grid 排版 */
+/* 圖片容器 */
 .img-container {
   position: relative;
   display: flex;
@@ -120,14 +143,13 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
 /* 圖片：保持原有樣式 */
 .img-container img {
   max-width: 90vw;
-  max-height: 80vh;
+  max-height: 90vh;
   width: auto;
   height: auto;
   display: block;
 }
-
-
 </style>

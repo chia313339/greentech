@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import aboutZh from '@/assets/img/city/about/about.png'
-import aboutEn from '@/assets/img/city/about/about_en.png'
+import aboutZh from '@/assets/img/about/about.png'
+import aboutEn from '@/assets/img/about/about_en.png'
 
 export default {
   name: 'Greentech-About',
@@ -47,7 +47,7 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('@/assets/img/city/about/bk.png') no-repeat center center;
+  background: url('@/assets/img/about/bk.png') no-repeat center center;
   background-size: cover;
   z-index: -1;
 }
@@ -62,7 +62,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0099FF;
+  background-color: #009CFF;
   color: white;
   font-weight: 900;
   border: 3px solid white;

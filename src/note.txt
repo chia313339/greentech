@@ -13,6 +13,13 @@
 2. 開場影片播完後，全屏顯示圖片src/assets/opening.png，並且在圖片上有三個圓形按鈕，在畫面top60％的位子，水平置中呈現，由左至右 #00DB00色圓形寫Greentech， #009CFF色圓形寫City， #FFB600圓形寫Health care，每個按鈕hover會稍微放大，不管點哪一個按鈕，都會把全屏圖片關閉
 3. 關閉後就顯示原本的網站頁面，其餘功能皆不變
 
+#FFBA40
+#FF9900
+
+#FFB600
+#FF9900
+#FF6600
+
 
 
 我想要調整reg-btn的顯示方式，把v-html="$t('buttons.signup')"改掉，當我的語言$i18n.locale為中文，顯示'報名<br>連結'，中間必須換行，若為英文則顯示'Sign<br>Up'

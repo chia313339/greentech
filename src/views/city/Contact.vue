@@ -1,24 +1,26 @@
 <template>
   <div class="page-container">
-    <!-- 固定背景層 -->
-    <div class="fixed-bg"></div>
+    <!-- 固定背景層，改用綁定 style -->
+    <div class="fixed-bg" :style="bgStyle"></div>
 
     <!-- 內容層 -->
     <div class="content">
       <!-- 圖片容器 -->
       <div class="img-container">
-        <img :src="unitImg" style="width: 70vw; margin-left: 150px; margin-top: 0px;">
-        <img :src="callImg" style="width: 40vw; margin-left: 50%; margin-top: 100px;" alt="">
+        <!-- <img :src="unitImg" style="width: 70vw; margin-left: 150px; margin-top: 0px;"> -->
+        <!-- <img :src="callImg" style="width: 40vw; margin-left: 50%; margin-top: 100px;" alt=""> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import unitImgZh from '@/assets/img/city/contact/unit.png'
-import unitImgEn from '@/assets/img/city/contact/unit_en.png'
-import callImgZh from '@/assets/img/city/contact/call.png'
-import callImgEn from '@/assets/img/city/contact/call_en.png'
+import unitImgZh from '@/assets/img/contact/unit.png'
+import unitImgEn from '@/assets/img/contact/unit_en.png'
+import callImgZh from '@/assets/img/contact/call.png'
+import callImgEn from '@/assets/img/contact/call_en.png'
+import bkImgZh from '@/assets/img/contact/bk.png'
+import bkImgEn from '@/assets/img/contact/bk_en.png'
 
 export default {
   name: 'Healthcare-About',
@@ -28,6 +30,13 @@ export default {
     },
     callImg() {
       return this.$i18n.locale === 'en' ? callImgEn : callImgZh;
+    },
+    bgStyle() {
+      const bgImage = this.$i18n.locale === 'en' ? bkImgEn : bkImgZh;
+      return {
+        background: `url(${bgImage}) no-repeat center center`,
+        backgroundSize: 'cover'
+      };
     }
   }
 }
@@ -43,15 +52,13 @@ export default {
   overflow: hidden;
 }
 
-/* 固定背景層，覆滿整個螢幕 */
+/* 固定背景層 */
 .fixed-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('@/assets/img/contact/bk.png') no-repeat center center;
-  background-size: cover;
   z-index: -1;
 }
 

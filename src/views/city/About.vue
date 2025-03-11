@@ -93,10 +93,10 @@ export default {
 
 /* 圖片：設定最大寬度與最大高度 */
 .img-container img {
-  max-width: 90vw;
-  max-height: 80vh;
+  /* max-width: 90vw; */
+  /* max-height: 100vh; */
   width: auto;
-  height: auto;
+  height: 800px;
   display: block;
 }
 </style>

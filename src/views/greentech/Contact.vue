@@ -1,14 +1,14 @@
 <template>
   <div class="page-container">
-    <!-- 固定背景層，改用綁定 style -->
+    <!-- 固定背景層 -->
     <div class="fixed-bg" :style="bgStyle"></div>
 
     <!-- 內容層 -->
     <div class="content">
       <!-- 圖片容器 -->
       <div class="img-container">
-        <!-- <img :src="unitImg" style="width: 70vw; margin-left: 150px; margin-top: 0px;"> -->
-        <!-- <img :src="callImg" style="width: 40vw; margin-left: 50%; margin-top: 100px;" alt=""> -->
+        <img :src="unitImg" class="unit-img" alt="Unit Image">
+        <img :src="callImg" class="call-img" alt="Call Image">
       </div>
     </div>
   </div>
@@ -19,8 +19,8 @@ import unitImgZh from '@/assets/img/contact/unit.png'
 import unitImgEn from '@/assets/img/contact/unit_en.png'
 import callImgZh from '@/assets/img/contact/call.png'
 import callImgEn from '@/assets/img/contact/call_en.png'
-import bkImgZh from '@/assets/img/contact/bk.png'
-import bkImgEn from '@/assets/img/contact/bk_en.png'
+import bkImgZh from '@/assets/img/contact/bk_b.png'
+import bkImgEn from '@/assets/img/contact/bk_b.png'
 
 export default {
   name: 'Healthcare-About',
@@ -70,12 +70,29 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: -100px;
+  /* 若需要，這邊的 margin-top 也可以調整為相對單位 */
+  margin-top: -10vh;
 }
 
 /* 圖片容器 */
 .img-container {
   position: relative;
   width: 100%;
+}
+
+/* 將圖片樣式移到 CSS 中，使用相對單位 */
+.unit-img {
+  width: 70vw;
+  /* 將原本 150px 調整成相對單位，例如 10vw，可依需求微調 */
+  margin-left: 10vw;
+  margin-top: 0;
+}
+
+.call-img {
+  width: 40vw;
+  /* 保持 45% 可依需求調整 */
+  margin-left: 45%;
+  /* 將 100px 轉換為相對單位，例如 10vh */
+  margin-top: 10vh;
 }
 </style>

@@ -209,10 +209,10 @@ export default {
   
 /* 圖片 */
 .img-container img {
-  max-width: 90vw;
-  max-height: 100vh;
+  /* max-width: 90vw; */
+  /* max-height: 100vh; */
   width: auto;
-  height: auto;
+  height: 800px;
   display: block;
 }
 </style>

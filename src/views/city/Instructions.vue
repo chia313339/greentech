@@ -146,10 +146,10 @@ export default {
 
 /* 圖片：保持原有樣式 */
 .img-container img {
-  max-width: 90vw;
-  max-height: 90vh;
+  /* max-width: 90vw; */
+  /* max-height: 100vh; */
   width: auto;
-  height: auto;
+  height: 800px;
   display: block;
 }
 </style>

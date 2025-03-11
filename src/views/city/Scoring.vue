@@ -148,7 +148,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   cursor: pointer;
-  font-size: 1vw; /* 中文時預設 1vw */
+  font-size: 1vw; 
   width: calc(2vw + 20px);
   height: calc(2vw + 20px);
   border-radius: 50%;
@@ -209,10 +209,10 @@ export default {
   
 /* 圖片 */
 .img-container img {
-  max-width: 90vw;
-  max-height: 100vh;
+  /* max-width: 90vw; */
+  /* max-height: 100vh; */
   width: auto;
-  height: auto;
+  height: 800px;
   display: block;
 }
 </style>

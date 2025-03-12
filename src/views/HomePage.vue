@@ -22,7 +22,7 @@
           <button class="opening-btn city" @click="selectGroup('city')">
             City
           </button>
-          <button class="opening-btn healthcare" @click="selectGroup('healthcare')">
+          <button class="opening-btn healthtech" @click="selectGroup('healthtech')">
             Health tech
           </button>
         </div>
@@ -35,7 +35,7 @@
     <div class="left-sidebar">
       <button class="group-btn greentech active-btn" @click="goToGroup('greentech')">GREENTECH</button>
       <button class="group-btn city active-btn" @click="goToGroup('city')">CITY</button>
-      <button class="group-btn healthcare active-btn" @click="goToGroup('healthcare')">HEALTH TECH</button>
+      <button class="group-btn healthtech active-btn" @click="goToGroup('healthtech')">HEALTH TECH</button>
     </div>
 
     <!-- 主要內容區：載入對應路由頁面 (這裡以 carousel 為例) -->
@@ -106,7 +106,7 @@
             <div class="signup-images-container">
               <img src="@/assets/signup/greentech.png" alt="Greentech" @click="showSignupForm('greentech')">
               <img src="@/assets/signup/city.png" alt="City" @click="showSignupForm('city')">
-              <img src="@/assets/signup/healthcare.png" alt="Healthcare" @click="showSignupForm('healthcare')">
+              <img src="@/assets/signup/healthtech.png" alt="Healthtech" @click="showSignupForm('healthtech')">
             </div>
           </div>
         </div>
@@ -262,7 +262,7 @@ export default {
 .city {
   background-color: #009CFF;
 }
-.healthcare {
+.healthtech {
   background-color: #FFB600;
 }
 
@@ -340,7 +340,7 @@ export default {
 .city.active-btn {
   background-color: #009CFF;
 }
-.healthcare.active-btn {
+.healthtech.active-btn {
   background-color: #FFB600;
 }
 

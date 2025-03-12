@@ -5,7 +5,7 @@ import os
 # Vue 檔案範本，會將 {name} 替換為檔案名稱（不含副檔名）
 template = """<template>
   <div class="page-content">
-    <h1>healthcare-{name}</h1>
+    <h1>healthtech-{name}</h1>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ def main():
 
     # 指定產生檔案的資料夾，例如存放於 src/views/<subfolder>
     # 這裡以當前資料夾下的 "views" 為例
-    output_dir = "src/views/healthcare/"
+    output_dir = "src/views/healthtech/"
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 

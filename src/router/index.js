@@ -26,17 +26,17 @@ import CityRetrospective from '../views/city/Retrospective.vue'
 import CityFAQ from '../views/city/FAQ.vue'
 import CityContact from '../views/city/Contact.vue'
 
-// Healthcare 頁面
-import HealthcareAbout from '../views/healthcare/About.vue'
-import HealthcareSchedule from '../views/healthcare/Schedule.vue'
-import HealthcareEnterprise from '../views/healthcare/Enterprise.vue'
-import HealthcareInstructions from '../views/healthcare/Instructions.vue'
-import HealthcareScoring from '../views/healthcare/Scoring.vue'
-import HealthcareAwards from '../views/healthcare/Awards.vue'
-import HealthcarePassed from '../views/healthcare/Passed.vue'
-import HealthcareRetrospective from '../views/healthcare/Retrospective.vue'
-import HealthcareFAQ from '../views/healthcare/FAQ.vue'
-import HealthcareContact from '../views/healthcare/Contact.vue'
+// Healthtech 頁面
+import HealthtechAbout from '../views/healthtech/About.vue'
+import HealthtechSchedule from '../views/healthtech/Schedule.vue'
+import HealthtechEnterprise from '../views/healthtech/Enterprise.vue'
+import HealthtechInstructions from '../views/healthtech/Instructions.vue'
+import HealthtechScoring from '../views/healthtech/Scoring.vue'
+import HealthtechAwards from '../views/healthtech/Awards.vue'
+import HealthtechPassed from '../views/healthtech/Passed.vue'
+import HealthtechRetrospective from '../views/healthtech/Retrospective.vue'
+import HealthtechFAQ from '../views/healthtech/FAQ.vue'
+import HealthtechContact from '../views/healthtech/Contact.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: HomePage },
@@ -75,20 +75,20 @@ const routes = [
     ]
   },
   {
-    path: '/healthcare',
+    path: '/healthtech',
     component: GroupPage,
     children: [
       { path: '', redirect: 'about' },
-      { path: 'about', name: 'HealthcareAbout', component: HealthcareAbout },
-      { path: 'schedule', name: 'HealthcareSchedule', component: HealthcareSchedule },
-      { path: 'enterprise', name: 'HealthcareEnterprise', component: HealthcareEnterprise },
-      { path: 'instructions', name: 'HealthcareInstructions', component: HealthcareInstructions },
-      { path: 'scoring', name: 'HealthcareScoring', component: HealthcareScoring },
-      { path: 'awards', name: 'HealthcareAwards', component: HealthcareAwards },
-      { path: 'passed', name: 'HealthcarePassed', component: HealthcarePassed },
-      { path: 'retrospective', name: 'HealthcareRetrospective', component: HealthcareRetrospective },
-      { path: 'faq', name: 'HealthcareFAQ', component: HealthcareFAQ },
-      { path: 'contact', name: 'HealthcareContact', component: HealthcareContact }
+      { path: 'about', name: 'HealthtechAbout', component: HealthtechAbout },
+      { path: 'schedule', name: 'HealthtechSchedule', component: HealthtechSchedule },
+      { path: 'enterprise', name: 'HealthtechEnterprise', component: HealthtechEnterprise },
+      { path: 'instructions', name: 'HealthtechInstructions', component: HealthtechInstructions },
+      { path: 'scoring', name: 'HealthtechScoring', component: HealthtechScoring },
+      { path: 'awards', name: 'HealthtechAwards', component: HealthtechAwards },
+      { path: 'passed', name: 'HealthtechPassed', component: HealthtechPassed },
+      { path: 'retrospective', name: 'HealthtechRetrospective', component: HealthtechRetrospective },
+      { path: 'faq', name: 'HealthtechFAQ', component: HealthtechFAQ },
+      { path: 'contact', name: 'HealthtechContact', component: HealthtechContact }
     ]
   }
 ]

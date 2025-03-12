@@ -23,7 +23,7 @@ import bkImgZh from '@/assets/img/contact/bk_b.png'
 import bkImgEn from '@/assets/img/contact/bk_b.png'
 
 export default {
-  name: 'Healthcare-About',
+  name: 'Healthtech-About',
   computed: {
     unitImg() {
       return this.$i18n.locale === 'en' ? unitImgEn : unitImgZh;

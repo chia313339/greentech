@@ -19,11 +19,11 @@
       >
         CITY
       </button>
-      <!-- Healthcare 按鈕 -->
+      <!-- Healthtech 按鈕 -->
       <button
-        class="group-btn healthcare"
-        :class="{ 'active-btn': currentGroup === 'healthcare' }"
-        @click="goToGroup('healthcare')"
+        class="group-btn healthtech"
+        :class="{ 'active-btn': currentGroup === 'healthtech' }"
+        @click="goToGroup('healthtech')"
       >
         HEALTH TECH
       </button>
@@ -153,7 +153,7 @@
   <div class="signup-images-container">
     <img :src="signupImages.greentech" alt="Greentech" @click="showSignupForm('greentech')">
     <img :src="signupImages.city" alt="City" @click="showSignupForm('city')">
-    <img :src="signupImages.healthcare" alt="Healthcare" @click="showSignupForm('healthcare')">
+    <img :src="signupImages.healthtech" alt="Healthtech" @click="showSignupForm('healthtech')">
   </div>
 </div>
 
@@ -174,8 +174,8 @@ import greentechZh from '@/assets/signup/greentech.png'
 import greentechEn from '@/assets/signup/greentech_en.png'
 import cityZh from '@/assets/signup/city.png'
 import cityEn from '@/assets/signup/city_en.png'
-import healthcareZh from '@/assets/signup/healthcare.png'
-import healthcareEn from '@/assets/signup/healthcare_en.png'
+import healthtechZh from '@/assets/signup/healthtech.png'
+import healthtechEn from '@/assets/signup/healthtech_en.png'
 
 export default {
   name: 'GroupPage',
@@ -197,7 +197,7 @@ export default {
       return {
         greentech: this.$i18n.locale === 'zh' ? greentechZh : greentechEn,
         city: this.$i18n.locale === 'zh' ? cityZh : cityEn,
-        healthcare: this.$i18n.locale === 'zh' ? healthcareZh : healthcareEn
+        healthtech: this.$i18n.locale === 'zh' ? healthtechZh : healthtechEn
       }
     }
   },
@@ -306,7 +306,7 @@ export default {
 .city.active-btn {
   background-color: #009CFF;
 }
-.healthcare.active-btn {
+.healthtech.active-btn {
   background-color: #FFB600;
 }
 

@@ -15,12 +15,12 @@
 </template>
 
 <script>
-import unitImgZh from '@/assets/img/contact/unit.png'
-import unitImgEn from '@/assets/img/contact/unit_en.png'
-import callImgZh from '@/assets/img/contact/call.png'
-import callImgEn from '@/assets/img/contact/call_en.png'
-import bkImgZh from '@/assets/img/contact/bk_b.png'
-import bkImgEn from '@/assets/img/contact/bk_b.png'
+import unitImgZh from '@/assets/img/city/contact/unit.png'
+import unitImgEn from '@/assets/img/city/contact/unit_en.png'
+import callImgZh from '@/assets/img/city/contact/call.png'
+import callImgEn from '@/assets/img/city/contact/call_en.png'
+import bkImgZh from '@/assets/img/city/contact/bk_b.png'
+import bkImgEn from '@/assets/img/city/contact/bk_b.png'
 
 export default {
   name: 'Healthtech-About',

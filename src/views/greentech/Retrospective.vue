@@ -227,7 +227,7 @@ export default {
       const videos = {
         '2024': [
           'https://www.youtube.com/embed/1Vm3phKIDus',
-          'https://www.youtube.com/embed/AbOo_Snwx7o'
+          'https://www.youtube.com/embed/bIuWgA2FyHI?si=ySxOcwmgKIGe_Vrx'
         ],
         '2023': [
           'https://www.youtube.com/embed/OTS9WwW3lQs',
@@ -261,9 +261,9 @@ export default {
     },
     openWebsite() {
       const websiteMapping = {
-        '2024': '',
-        '2023': '',
-        '2022': 'https://gt2022-195939643258.asia-east1.run.app'
+        '2024': 'https://gt.taiwanstartup.cc/',
+        '2023': 'https://gt.taiwanstartup.cc/2023%E5%B9%B4/',
+        '2022': 'https://gt.taiwanstartup.cc/2022/'
       };
       const url = websiteMapping[this.activeTab];
       // 若對應網址不為空則開啟新視窗，否則提示訊息

@@ -44,7 +44,6 @@ export default {
 
 <style scoped>
 .page-container {
-  width: 100vw;
   height: 100vh; /* 確保不超出畫面 */
   display: flex;
   align-items: center;

@@ -32,8 +32,7 @@ export default {
 
 <style scoped>
 .page-container {
-  width: 100vw;
-  height: 100vh; /* 確保不超出畫面 */
+  margin-left: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +53,7 @@ export default {
 
 /* 標題欄 */
 .title-bar {
-  position: fixed;
+  position: absolute;
   top: 5%;
   left: 7%;
   width: 15vw;
@@ -80,7 +79,7 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: -70px;
+
 }
 
 /* 圖片容器 */

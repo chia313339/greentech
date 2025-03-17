@@ -98,8 +98,7 @@ export default {
 <style scoped>
 /* 外層設定 */
 .page-container {
-  width: 100vw;
-  min-height: 100vh;
+  margin-left: 60px;
   overflow-x: hidden;
 }
 
@@ -117,7 +116,7 @@ export default {
 
 /* 標題欄 */
 .title_head {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;

@@ -223,8 +223,7 @@ export default {
 <style scoped>
 /* ★★ 修改重點：改用 min-height 而非 height，並讓內容可垂直滾動 */
 .page-container {
-  width: 100vw;
-  min-height: 100vh;
+  margin-left: 60px;
   position: relative;
   overflow-x: hidden; 
   overflow-y: auto;
@@ -244,7 +243,7 @@ export default {
 
 /* 標題欄 */
 .title-bar {
-  position: fixed;
+  position: absolute;
   top: 5%;
   left: 7%;
   width: 15vw;
@@ -287,7 +286,7 @@ export default {
   background-color: #114E96;
   color: #fff;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.3em;
   padding: 1em;
   display: flex;
   justify-content: space-between;
@@ -301,7 +300,7 @@ export default {
   color: #000;
   padding: 1em;
   line-height: 1.6;
-  font-size: 0.95em;
+  font-size: 1.1em;
   white-space: pre-line;
 }
 

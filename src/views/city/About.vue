@@ -32,8 +32,7 @@ export default {
 
 <style scoped>
 .page-container {
-  width: 100vw;
-  height: 100vh; /* 確保不超出畫面 */
+  margin-left: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +53,7 @@ export default {
 
 /* 標題欄 */
 .title-bar {
-  position: fixed;
+  position: absolute;
   top: 5%;
   left: 7%;
   width: 15vw;
@@ -62,11 +61,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #009CFF;
+  background-color: #4DB233;
   color: white;
   font-weight: 900;
   border: 3px solid white;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to right, #4DB233, #0099FF, #FFBA40);
   z-index: 10;
   font-size: calc(1.2vw + 1vh);
   text-align: center;
@@ -80,7 +79,7 @@ export default {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: -100px;
+  margin-top: 0px;
 }
 
 /* 圖片容器 */

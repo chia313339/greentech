@@ -330,8 +330,7 @@ export default {
 
 <style scoped>
 .page-container {
-  width: 100vw;
-  min-height: 100vh;
+  margin-left: 60px;
   overflow-x: hidden;
 }
 
@@ -346,7 +345,7 @@ export default {
 }
 
 .title_head {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;

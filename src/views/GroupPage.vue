@@ -1,4 +1,3 @@
-<!-- src/views/GroupPage.vue -->
 <template>
   <div class="group-page">
     <!-- 左側分組切換區 (固定於左側) -->
@@ -6,7 +5,7 @@
       <!-- Greentech 按鈕 -->
       <button
         class="group-btn greentech"
-        :class="{ 'active-btn': currentGroup === 'greentech' }"
+        :class="{ 'active-btn': isExemptNav || currentGroup === 'greentech' }"
         @click="goToGroup('greentech')"
       >
         GREENTECH
@@ -14,7 +13,7 @@
       <!-- City 按鈕 -->
       <button
         class="group-btn city"
-        :class="{ 'active-btn': currentGroup === 'city' }"
+        :class="{ 'active-btn': isExemptNav || currentGroup === 'city' }"
         @click="goToGroup('city')"
       >
         CITY
@@ -22,7 +21,7 @@
       <!-- Healthtech 按鈕 -->
       <button
         class="group-btn healthtech"
-        :class="{ 'active-btn': currentGroup === 'healthtech' }"
+        :class="{ 'active-btn': isExemptNav || currentGroup === 'healthtech' }"
         @click="goToGroup('healthtech')"
       >
         HEALTH TECH
@@ -150,20 +149,15 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-  <div class="signup-images-container">
-    <img :src="signupImages.greentech" alt="Greentech" @click="showSignupForm('greentech')">
-    <img :src="signupImages.city" alt="City" @click="showSignupForm('city')">
-    <img :src="signupImages.healthtech" alt="Healthtech" @click="showSignupForm('healthtech')">
-  </div>
-</div>
-
+            <div class="signup-images-container">
+              <img :src="signupImages.greentech" alt="Greentech" @click="showSignupForm('greentech')" />
+              <img :src="signupImages.city" alt="City" @click="showSignupForm('city')" />
+              <img :src="signupImages.healthtech" alt="Healthtech" @click="showSignupForm('healthtech')" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-
-
-
   </div>
 </template>
 
@@ -186,6 +180,10 @@ export default {
     currentNav() {
       return store.currentNav
     },
+    // 判斷目前 nav 是否屬於 exempt 項目 (about, retrospective, contact)
+    isExemptNav() {
+      return ['about', 'retrospective', 'contact'].includes(store.currentNav)
+    },
     languageBtnText() {
       return this.$i18n.locale === 'zh' ? 'EN' : 'CN'
     },
@@ -203,9 +201,14 @@ export default {
   },
   methods: {
     goToGroup(route) {
-      store.currentGroup = route
-      store.currentNav = 'about'
-      this.$router.push(`/${route}/about`)
+      // 如果當前底部 nav 不是 exempt 頁面，則更新 currentGroup 並切換到同一頁籤
+      if (!this.isExemptNav) {
+        store.currentGroup = route
+        this.$router.push(`/${route}/${store.currentNav}`)
+      } else {
+        // 若為 exempt 頁面，不更新 currentGroup，直接維持原路由
+        this.$router.push(`/${store.currentGroup}/${store.currentNav}`)
+      }
     },
     updateNav(key) {
       store.currentNav = key
@@ -220,27 +223,26 @@ export default {
       alert(`${group} 報名表單`)
     },
     toggleLanguage() {
-      this.$i18n.locale = (this.$i18n.locale === 'zh') ? 'en' : 'zh'
+      this.$i18n.locale = this.$i18n.locale === 'zh' ? 'en' : 'zh'
     }
   },
   watch: {
     '$route.params.group'(newVal) {
-      let segments = this.$route.path.split('/');
+      let segments = this.$route.path.split('/')
       store.currentGroup = segments[1] || 'greentech'
     },
     '$route.params.navItem'(newVal) {
-      let segments = this.$route.path.split('/');
+      let segments = this.$route.path.split('/')
       store.currentNav = segments[2] || 'about'
     }
   },
   mounted() {
-    let segments = this.$route.path.split('/');
-    store.currentGroup = segments[1] || 'greentech';
-    store.currentNav = segments[2] || 'about';
+    let segments = this.$route.path.split('/')
+    store.currentGroup = segments[1] || 'greentech'
+    store.currentNav = segments[2] || 'about'
   }
 }
 </script>
-
 
 <style scoped>
 /* 整體頁面：預留底部 60px (bottom-bar) 與右下懸浮按鈕區 */
@@ -312,10 +314,7 @@ export default {
 
 /* 主要內容區 */
 .main-content {
-  /* margin-left: 60px; */
   padding: 20px;
-  /* padding-left: 80px; */
-
 }
 
 /* 下方區塊：包含 Logo 與 Nav (同一列) */
@@ -330,7 +329,7 @@ export default {
   z-index: 1000;
 }
 .bottom-logo {
-  width: 16.67%;
+  width: 14.67%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -394,7 +393,7 @@ export default {
   transition: transform 0.2s ease;
   font-size: 1rem;
   border: 2px solid white;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 .reg-btn {
   background: linear-gradient(to right, #e63188, #f28d0f);
@@ -421,7 +420,6 @@ export default {
     font-size: 1.05vw;
   }
 }
-
 @media (max-width: 1180px) {
   .reg-btn,
   .lang-btn {
@@ -449,14 +447,12 @@ export default {
   border-bottom: none;
   padding-bottom: 0;
 }
-
 .modal-body {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
 }
-
 .custom-modal-content {
   background: url('@/assets/signup/bk.png') no-repeat center center;
   background-size: cover;
@@ -465,32 +461,29 @@ export default {
 
 .signup-images-container {
   display: flex;
-  flex-wrap: nowrap;         /* 不換行 */
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: 3vw;                 /* 圖片間間隔 10px */
-  max-width: 70vw;           /* 整體容器不超過 70vw */
-  margin: 0 auto;            /* 水平置中 */
+  gap: 3vw;
+  max-width: 70vw;
+  margin: 0 auto;
 }
-
 .signup-images-container img {
-  width: calc((100% - 2 * 3vw) / 3);  /* 3張圖片，中間2個 gap */
+  width: calc((100% - 2 * 3vw) / 3);
   height: auto;
   max-height: 100%;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .signup-images-container img:hover {
   transform: scale(1.05);
 }
 
-/* 在 scoped style 裡增加： */
+/* 調整 modal backdrop 與 modal 的 z-index */
 ::v-deep .modal-backdrop {
   z-index: 1600 !important;
 }
 ::v-deep .modal {
   z-index: 1601 !important;
 }
-
 </style>

@@ -377,7 +377,7 @@ export default {
   border-color: #66CC66;
 }
 .carousel img {
-  max-height: 80vh;
+  max-height: 90vh;
   width: 100%;
   object-fit: contain;
   padding: 100px;
@@ -395,7 +395,7 @@ export default {
   z-index: 1000;
 }
 .bottom-logo {
-  width: 16.67%;
+  width: 14.67%;
   display: flex;
   align-items: flex-end;
   justify-content: center;

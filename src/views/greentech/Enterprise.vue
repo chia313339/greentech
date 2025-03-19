@@ -7,12 +7,16 @@
     <div class="title_head">
       <div class="title-bar">{{ $t('nav.enterprise') }}</div>
       <div class="buttons">
-        <button class="btn download-btn" style="background-color: #BA2553;">
+        <a href="https://drive.google.com/drive/folders/1M1KVTKi09n1gRECPDTfAn1Y0UjFMVZAb?usp=drive_link" target="_blank">
+          <button class="btn download-btn" style="background-color: #BA2553;">
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ downloadText }}
         </button>
-        <button class="btn video-btn" style="background-color: #336600;">
+        </a>
+        <a href="" target="_blank">
+          <button class="btn video-btn" style="background-color: #336600;">
           <i class="fa-regular fa-circle-play"></i>&nbsp;&nbsp;{{ videoText }}
         </button>
+        </a>
       </div>
     </div>
 

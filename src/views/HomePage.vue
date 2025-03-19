@@ -17,7 +17,7 @@
         <img src="@/assets/opening.png" alt="Opening" class="opening-image" />
         <div class="opening-buttons">
           <button class="opening-btn greentech" @click="selectGroup('greentech')">
-            Greentech
+            Green tech
           </button>
           <button class="opening-btn city" @click="selectGroup('city')">
             City
@@ -33,7 +33,7 @@
 
     <!-- 左側分組切換區 (固定於左側) -->
     <div class="left-sidebar">
-      <button class="group-btn greentech active-btn" @click="goToGroup('greentech')">GREENTECH</button>
+      <button class="group-btn greentech active-btn" @click="goToGroup('greentech')">GREEN TECH</button>
       <button class="group-btn city active-btn" @click="goToGroup('city')">CITY</button>
       <button class="group-btn healthtech active-btn" @click="goToGroup('healthtech')">HEALTH TECH</button>
     </div>
@@ -104,9 +104,9 @@
           </div>
           <div class="modal-body">
             <div class="signup-images-container">
-              <img src="@/assets/signup/greentech.png" alt="Greentech" @click="showSignupForm('greentech')">
-              <img src="@/assets/signup/city.png" alt="City" @click="showSignupForm('city')">
-              <img src="@/assets/signup/healthtech.png" alt="Healthtech" @click="showSignupForm('healthtech')">
+              <img src="@/assets/signup/greentech.png" alt="Greentech" @click="openWebsite('greentech')">
+              <img src="@/assets/signup/city.png" alt="City" @click="openWebsite('city')">
+              <img src="@/assets/signup/healthtech.png" alt="Healthtech" @click="openWebsite('healthtech')">
             </div>
           </div>
         </div>
@@ -156,6 +156,19 @@ export default {
     },
     showSignupForm(group) {
       alert(`${group} 報名表單`)
+    },
+    openWebsite(tab) {
+      const websiteMapping = {
+        greentech: 'https://seminars.tca.org.tw/D10v00082.aspx',
+        city: 'https://seminars.tca.org.tw/D10w00238.aspx ',
+        healthtech: 'https://seminars.tca.org.tw/D10t00107.aspx'
+      };
+      const url = websiteMapping[tab];
+      if (url) {
+        window.open(url, '_blank');
+      } else {
+        alert('網站連結待補');
+      }
     },
     toggleLanguage() {
       this.$i18n.locale = (this.$i18n.locale === 'zh') ? 'en' : 'zh'

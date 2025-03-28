@@ -26,7 +26,12 @@ const messages = {
     },
     signupmodal:{
       signup: "Sign Up",
-    }
+    },
+    class: {
+      gt: "Green tech",
+      city: "City",
+      hc: "Health care"
+    },
   },
   zh: {
     nav: {
@@ -52,7 +57,12 @@ const messages = {
     },
     signupmodal:{
       signup: "報名連結",
-    }
+    },
+    class: {
+      gt: "綠色科技組",
+      city: "城市組",
+      hc: "健康科技組"
+    },
   }
 }
 

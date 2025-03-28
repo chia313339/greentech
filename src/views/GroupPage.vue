@@ -150,9 +150,9 @@
           </div>
           <div class="modal-body">
             <div class="signup-images-container">
-              <img src="@/assets/signup/greentech.png" alt="Greentech" @click="openWebsite('greentech')">
-              <img src="@/assets/signup/city.png" alt="City" @click="openWebsite('city')">
-              <img src="@/assets/signup/healthtech.png" alt="Healthtech" @click="openWebsite('healthtech')">
+              <img :src="signupGreentechSrc" alt="Greentech" @click="openWebsite('greentech')">
+              <img :src="signupCitySrc" alt="City" @click="openWebsite('city')">
+              <img :src="signupHealthtechSrc" alt="Healthtech" @click="openWebsite('healthtech')">
             </div>
           </div>
         </div>
@@ -190,13 +190,14 @@ export default {
     regBtnText() {
       return this.$i18n.locale === 'zh' ? '報名<br>連結' : 'Sign<br>Up'
     },
-    // 根據語系回傳不同圖片路徑
-    signupImages() {
-      return {
-        greentech: this.$i18n.locale === 'zh' ? greentechZh : greentechEn,
-        city: this.$i18n.locale === 'zh' ? cityZh : cityEn,
-        healthtech: this.$i18n.locale === 'zh' ? healthtechZh : healthtechEn
-      }
+    signupGreentechSrc() {
+      return this.$i18n.locale === 'zh' ? greentechZh : greentechEn
+    },
+    signupCitySrc() {
+      return this.$i18n.locale === 'zh' ? cityZh : cityEn
+    },
+    signupHealthtechSrc() {
+      return this.$i18n.locale === 'zh' ? healthtechZh : healthtechEn
     }
   },
   methods: {

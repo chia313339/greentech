@@ -116,7 +116,7 @@ export default {
 
 /* 標題欄 */
 .title_head {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

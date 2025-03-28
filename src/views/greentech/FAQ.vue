@@ -232,7 +232,7 @@ export default {
 
 /* 標題欄 */
 .title-bar {
-  position: absolute;
+  position: fixed;
   top: 5%;
   left: 7%;
   width: 15vw;

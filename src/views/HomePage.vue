@@ -16,15 +16,15 @@
       <div v-else-if="openingStage === 'image'" class="opening-image-container">
         <img src="@/assets/opening.png" alt="Opening" class="opening-image" />
         <div class="opening-buttons">
-          <button class="opening-btn greentech" @click="selectGroup('greentech')">
-            Green tech
-          </button>
-          <button class="opening-btn city" @click="selectGroup('city')">
-            City
-          </button>
-          <button class="opening-btn healthtech" @click="selectGroup('healthtech')">
-            Health tech
-          </button>
+          <a @click.prevent="selectGroup('greentech')" class="opening-link">
+            <img src="@/assets/gotog.png" alt="Green tech" class="opening-img" />
+          </a>
+          <a @click.prevent="selectGroup('city')" class="opening-link">
+            <img src="@/assets/gotoc.png" alt="City" class="opening-img" />
+          </a>
+          <a @click.prevent="selectGroup('healthtech')" class="opening-link">
+            <img src="@/assets/gotoh.png" alt="Health tech" class="opening-img" />
+          </a>
         </div>
       </div>
       <!-- Skip 按鈕只在影片階段顯示，位置置於右上角 -->
@@ -104,9 +104,9 @@
           </div>
           <div class="modal-body">
             <div class="signup-images-container">
-              <img src="@/assets/signup/greentech.png" alt="Greentech" @click="openWebsite('greentech')">
-              <img src="@/assets/signup/city.png" alt="City" @click="openWebsite('city')">
-              <img src="@/assets/signup/healthtech.png" alt="Healthtech" @click="openWebsite('healthtech')">
+              <img :src="signupGreentechSrc" alt="Greentech" @click="openWebsite('greentech')">
+              <img :src="signupCitySrc" alt="City" @click="openWebsite('city')">
+              <img :src="signupHealthtechSrc" alt="Healthtech" @click="openWebsite('healthtech')">
             </div>
           </div>
         </div>
@@ -118,6 +118,13 @@
 
 <script>
 import { store } from '../store'
+import greentechZh from '@/assets/signup/greentech.png'
+import greentechEn from '@/assets/signup/greentech_en.png'
+import cityZh from '@/assets/signup/city.png'
+import cityEn from '@/assets/signup/city_en.png'
+import healthtechZh from '@/assets/signup/healthtech.png'
+import healthtechEn from '@/assets/signup/healthtech_en.png'
+
 export default {
   name: 'GroupPage',
   data() {
@@ -137,9 +144,17 @@ export default {
     languageBtnText() {
       return this.$i18n.locale === 'zh' ? 'EN' : 'CN'
     },
-    // 新增 computed 屬性
     regBtnText() {
       return this.$i18n.locale === 'zh' ? '報名<br>連結' : 'Sign<br>Up'
+    },
+    signupGreentechSrc() {
+      return this.$i18n.locale === 'zh' ? greentechZh : greentechEn
+    },
+    signupCitySrc() {
+      return this.$i18n.locale === 'zh' ? cityZh : cityEn
+    },
+    signupHealthtechSrc() {
+      return this.$i18n.locale === 'zh' ? healthtechZh : healthtechEn
     }
   },
   methods: {
@@ -160,7 +175,7 @@ export default {
     openWebsite(tab) {
       const websiteMapping = {
         greentech: 'https://seminars.tca.org.tw/D10v00082.aspx',
-        city: 'https://seminars.tca.org.tw/D10w00238.aspx ',
+        city: 'https://seminars.tca.org.tw/D10w00238.aspx',
         healthtech: 'https://seminars.tca.org.tw/D10t00107.aspx'
       };
       const url = websiteMapping[tab];
@@ -171,7 +186,7 @@ export default {
       }
     },
     toggleLanguage() {
-      this.$i18n.locale = (this.$i18n.locale === 'zh') ? 'en' : 'zh'
+      this.$i18n.locale = this.$i18n.locale === 'zh' ? 'en' : 'zh'
     },
     // 當影片播放完畢，切換至圖片階段
     videoEnded() {
@@ -185,7 +200,7 @@ export default {
         this.showOpening = false
       }
     },
-    // 新增方法：點選 opening-buttons 按鈕時更新 store.currentGroup 並關閉 overlay
+    // 點選 opening-buttons 按鈕時更新 store.currentGroup 並關閉 overlay
     selectGroup(group) {
       store.currentGroup = group
       this.showOpening = false
@@ -242,7 +257,7 @@ export default {
   height: 100%;
 }
 
-/* 三個圓形按鈕的容器：置中並位於畫面 60% 處 */
+/* 三個圖片按鈕的容器：置中並位於畫面 60% 處 */
 .opening-buttons {
   margin-top: 17vh;
   position: absolute;
@@ -250,33 +265,26 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  gap: 7vw;
+  gap: 5vw;
 }
 
-/* 按鈕樣式，強制文字不換行 */
-.opening-btn {
-  width: 14vw;
-  height: 14vw;
-  border-radius: 50%;
-  border: none;
-  color: white;
-  font-size: 2vw;
+/* 圖片連結樣式 */
+.opening-link {
+  display: inline-block;
   cursor: pointer;
-  font-weight: bold;
-  white-space: nowrap;
   transition: transform 0.2s ease;
 }
-.opening-btn:hover {
+
+/* 圖片按鈕樣式 */
+.opening-img {
+  width: 15vw;
+  height: auto;
+  /* border-radius: 50%; */
+  object-fit: cover;
+  transition: transform 0.2s ease;
+}
+.opening-link:hover .opening-img {
   transform: scale(1.1);
-}
-.greentech {
-  background-color: #00DB00;
-}
-.city {
-  background-color: #009CFF;
-}
-.healthtech {
-  background-color: #FFB600;
 }
 
 /* Skip 按鈕：僅在影片階段顯示，位置置於右上角 */

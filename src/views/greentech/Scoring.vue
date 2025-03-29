@@ -2,12 +2,16 @@
   <div class="page-container">
     <!-- 固定背景層 -->
     <div class="fixed-bg"></div>
-  
+
+    <!-- 小標題 -->
+    <div class="title-little">{{ $t('class.gt') }}</div>
+
     <!-- 標題欄 -->
-    <div class="title_head">
-      <div class="title-bar">{{ $t('nav.scoring') }}</div>
-      <div class="buttons">
-        <button
+    <div class="title-bar">{{ $t('nav.scoring') }}</div>
+
+    <!-- 按鈕 -->
+    <div class="buttons">
+      <button
           class="btn btn-chu"
           :class="{ active: activeTab === '初賽', 'btn-en': $i18n.locale !== 'zh' }"
           @click="setActive('初賽')"
@@ -28,7 +32,6 @@
         >
           {{ $t('pages.game3') }}
         </button>
-      </div>
     </div>
   
     <!-- 內容層 -->
@@ -102,40 +105,55 @@ export default {
   z-index: -1;
 }
   
+
 /* 標題欄 */
-.title_head {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-  padding: 10px;
-}
-  
 .title-bar {
-  margin: 10px 0 0 7%;
+  position: fixed;
+  top: 5%;
+  left: 7%;
   width: 15vw;
   height: 6vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #4DB233;
-  color: white;
+  background: #ffffff;
+  color: #474947;
   font-weight: 900;
-  border: 3px solid white;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  border: 3px solid #4DB233;
+  border-image: linear-gradient(to right, #4DB233, #0099FF, #FFBA40) 1;
+  border-image-slice: 1;
+  z-index: 10;
   font-size: calc(1.2vw + 1vh);
   text-align: center;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
-  
+
+.title-little {
+  position: fixed;
+  top: 2%;
+  left: 8%;
+  border-radius: 5px 5px 0 0;
+  padding: 0.5vh 1vw;
+  padding-bottom: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #02D703;
+  color: #ffffff;
+  font-weight: 900;
+  z-index: 9;
+  font-size: calc(0.5vw + 0.6vh);
+  text-align: center;
+}
+
 /* 按鈕容器 */
 .buttons {
-  margin-left: 3vw;
+  position: fixed;
+  top: 5.5%;
+  left: calc(7% + 15vw + 50px);
   display: flex;
   gap: 20px;
-  margin-top: 20px;
+  z-index: 9;
 }
   
 /* 基本按鈕樣式 */

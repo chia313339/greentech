@@ -53,11 +53,11 @@
           </div>
         </div>
         <!-- Carousel Indicators -->
-        <div class="carousel-indicators custom-indicators">
+        <!-- <div class="carousel-indicators custom-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -230,6 +230,7 @@ export default {
   position: relative;
   min-height: 100vh;
   padding-bottom: 100px;
+  /* background-color: #ededed; */
 }
 
 /* ------------------- 開場畫面相關樣式 ------------------- */
@@ -367,7 +368,7 @@ export default {
 
 /* ------------------- 主要內容區 (Carousel) ------------------- */
 .content {
-  padding: 30px;
+  /* margin-top: 10px; */
   padding-left: 100px;
 }
 .carousel {

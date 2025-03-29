@@ -3,7 +3,10 @@
     <!-- 固定背景層 -->
     <div class="fixed-bg"></div>
 
-    <!-- 標題欄 -->
+    <!-- 小標題 -->
+    <div class="title-little">{{ $t('class.hc') }}</div>
+
+    <!-- 標題欄，固定在畫面上 -->
     <div class="title-bar">{{ $t('nav.faq') }}</div>
 
     <!-- 內容層 -->
@@ -241,15 +244,42 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #FFBA40;
-  color: white;
+  /* 白色背景 */
+  background: #ffffff;
+  /* 文字顏色改為 #474947 */
+  color: #474947;
+  /* 粗體 */
   font-weight: 900;
-  border: 3px solid white;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  /* 設定外框 + 漸層邊框 */
+  border: 3px solid #4DB233; /* 作為舊版瀏覽器的 fallback */
+  border-image: linear-gradient(to right, #4DB233, #0099FF, #FFBA40) 1;
+  border-image-slice: 1;
   z-index: 10;
   font-size: calc(1.2vw + 1vh);
   text-align: center;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
+
+.title-little{
+  position: fixed;
+  top: 2%;
+  left: 8%;
+  border-radius: 5px 5px 0 0;
+  padding: 0.5vh 1vw;
+  padding-bottom: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 白色背景 */
+  background: #ffffff;
+  color: #FFBA40;
+  /* 粗體 */
+  font-weight: 900;
+  z-index: 9;
+  font-size: calc(0.5vw + 0.6vh);
+  text-align: center;
+}
+
 
 /* ★★ 修改重點：不再用 flex 置中，而是留白讓內容在下方展開 */
 .content {

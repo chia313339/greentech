@@ -5,8 +5,7 @@
 
     <!-- 標題欄 -->
     <div class="title_head">
-      <div class="title-bar">{{ $t('nav.retrospective') }}</div>
-      <div class="buttons">
+      <div class="buttons" style="margin-left: 10%;">
         <button
           class="btn btn-chu"
           :class="{ active: activeTab === '2024' }"
@@ -261,9 +260,9 @@ export default {
     },
     openWebsite() {
       const websiteMapping = {
-        '2024': 'https://gt.taiwanstartup.cc/',
-        '2023': 'https://gt.taiwanstartup.cc/2023%E5%B9%B4/',
-        '2022': 'https://gt.taiwanstartup.cc/2022/'
+        '2024': 'https://gt.startupterrace.tw/',
+        '2023': 'https://gt.startupterrace.tw/2023%E5%B9%B4/',
+        '2022': 'https://gt.startupterrace.tw/2022/'
       };
       const url = websiteMapping[this.activeTab];
       // 若對應網址不為空則開啟新視窗，否則提示訊息
@@ -362,7 +361,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #FFBA40;
+  background-color: #4db233;
   color: white;
   font-weight: 900;
   border: 3px solid white;
@@ -402,10 +401,10 @@ export default {
 }
 
 .btn2 {
-  margin-left: 43vw;
+  margin-left: 55vw;
   padding: 5px 10px;
   color: white;
-  background-color: #FFB600;
+  background-color: #00cc99;
   border: none;
   border-radius: 5px;
   font-size: 1vw;
@@ -423,7 +422,7 @@ export default {
 
 .btn.active,
 .btn:hover {
-  background-color: #FFB600;
+  background-color: #00cc99;
 }
 
 .content {
@@ -501,7 +500,7 @@ export default {
 .carousel-control-next-icon {
   background-image: none;
   font-size: 2.5rem;
-  color: #FFB600;
+  color: #00cc99;
 }
 
 .image-modal {

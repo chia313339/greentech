@@ -9,7 +9,7 @@ export default {
   name: 'App',
   mounted() {
     if (window.innerWidth < 1200) {
-      alert("您的裝置尺寸可能無法達到最佳瀏覽效果，建議將螢幕橫式觀看");
+      alert("您的裝置尺寸可能無法達到最佳瀏覽效果，建議調整為全螢幕或橫式觀看");
     }
   }
 }

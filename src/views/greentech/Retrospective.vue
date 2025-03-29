@@ -5,8 +5,7 @@
 
     <!-- 標題欄 -->
     <div class="title_head">
-      <div class="title-bar">{{ $t('nav.retrospective') }}</div>
-      <div class="buttons">
+      <div class="buttons" style="margin-left: 10%;">
         <button
           class="btn btn-chu"
           :class="{ active: activeTab === '2024' }"
@@ -261,9 +260,9 @@ export default {
     },
     openWebsite() {
       const websiteMapping = {
-        '2024': 'https://gt.taiwanstartup.cc/',
-        '2023': 'https://gt.taiwanstartup.cc/2023%E5%B9%B4/',
-        '2022': 'https://gt.taiwanstartup.cc/2022/'
+        '2024': 'https://gt.startupterrace.tw/',
+        '2023': 'https://gt.startupterrace.tw/2023%E5%B9%B4/',
+        '2022': 'https://gt.startupterrace.tw/2022/'
       };
       const url = websiteMapping[this.activeTab];
       // 若對應網址不為空則開啟新視窗，否則提示訊息
@@ -402,7 +401,7 @@ export default {
 }
 
 .btn2 {
-  margin-left: 43vw;
+  margin-left: 55vw;
   padding: 5px 10px;
   color: white;
   background-color: #00cc99;

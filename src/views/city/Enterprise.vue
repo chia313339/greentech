@@ -3,38 +3,45 @@
     <!-- 固定背景層 -->
     <div class="fixed-bg"></div>
 
+    <!-- 小標題 -->
+    <div class="title-little">{{ $t('class.city') }}</div>
+
     <!-- 標題欄 -->
-    <div class="title_head">
-      <div class="title-bar">{{ $t('nav.enterprise') }}</div>
-      <div class="buttons">
+    <div class="title-bar">{{ $t('nav.enterprise') }}</div>
+
+    <!-- 下載按鈕 -->
+    <div class="buttons">
+      <a href="https://drive.google.com/drive/folders/1mrCzP9NUBxpvZst8gNbBgi-lN4Zy8DLV?usp=drive_link" target="_blank">
         <button class="btn download-btn" style="background-color: #BA2553;">
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ downloadText }}
         </button>
+      </a>
+      <a href="" target="_blank">
         <button class="btn video-btn" style="background-color: #114E96;">
           <i class="fa-regular fa-circle-play"></i>&nbsp;&nbsp;{{ videoText }}
         </button>
-      </div>
+      </a>
     </div>
 
     <!-- 內容層 -->
     <div class="content">
       <div class="grid-container">
-        <!-- 使用 v-for 重複 36 個區塊 -->
-        <div class="grid-item" v-for="i in 36" :key="i">
-          <!-- 利用 data-bs-toggle 與 data-bs-target 觸發 Bootstrap Modal -->
-          <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#companyModal">
-            <img src="@/assets/img/city/enterprise/com.png" alt="公司">
+        <!-- 依序產生 22 個公司區塊 -->
+        <div class="grid-item" v-for="(company, index) in companies" :key="index">
+          <!-- 點擊公司時更新 selectedCompanyIndex 並觸發 modal -->
+          <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#companyModal" @click="openModal(index)">
+            <img :src="getCompanyLogo(index)" alt="公司">
           </a>
-          <div class="company-label">公司{{ i }}</div>
+          <div class="company-label">{{ company.name }}</div>
         </div>
       </div>
     </div>
 
-    <!-- Bootstrap Modal：只顯示圖片，內部無額外內距 -->
+    <!-- Bootstrap Modal：顯示公司詳細內容 -->
     <div class="modal fade" id="companyModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content p-0 border-0">
-          <!-- 右上角的 X 按鈕，絕對定位 -->
+          <!-- 右上角的 X 按鈕 -->
           <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-body p-0">
             <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
@@ -42,35 +49,90 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import comContentZh from '@/assets/img/city/enterprise/com_content.png'
-import comContentEn from '@/assets/img/city/enterprise/com_content_en.png'
-
 export default {
-  name: 'GT-Enterprise',
+  name: 'Greentech-Enterprise',
+  data() {
+    return {
+      // 記錄目前點擊的公司（索引：0～21）
+      selectedCompanyIndex: null,
+      // 公司列表，共 22 間，依照需求順序與名稱設定
+      companies: [
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' },
+        { name: '公司' }
+      ]
+    }
+  },
   computed: {
     downloadText() {
-      return this.$i18n.locale === 'zh' ? '完整題目下載' : 'Download All Topics'
+      return this.$i18n.locale === 'zh' ? '完整題目下載' : 'Download All Topics';
     },
     videoText() {
-      return this.$i18n.locale === 'zh' ? '觀看題目說明影片' : 'Watch Question Explanation Video'
+      return this.$i18n.locale === 'zh' ? '觀看題目說明影片' : 'Watch Question Explanation Video';
     },
+    // 根據目前選擇的公司及語系，動態回傳 modal 詳細內容圖片
     modalImage() {
-      return this.$i18n.locale === 'zh' ? comContentZh : comContentEn
+      if (this.selectedCompanyIndex === null) return '';
+      const number = (this.selectedCompanyIndex + 1).toString().padStart(3, '0');
+      if (this.$i18n.locale === 'zh') {
+        return new URL(`../../assets/img/city/enterprise/content/zh/com_content_${number}.png`, import.meta.url).href;
+      } else {
+        return new URL(`../../assets/img/city/enterprise/content/en/com_content_en_${number}.png`, import.meta.url).href;
+      }
     }
+  },
+  methods: {
+    // 點擊公司時記錄目前索引
+    openModal(index) {
+      this.selectedCompanyIndex = index;
+    },
+    // 根據 index 動態回傳該公司 logo 的圖片路徑
+    getCompanyLogo(index) {
+      const number = (index + 1).toString().padStart(3, '0');
+      return new URL(`../../assets/img/city/enterprise/logo/com_content_${number}.png`, import.meta.url).href;
+    }
+  },
+  mounted() {
+    // 確保頁面內容渲染完成後再延遲顯示 alert
+    this.$nextTick(() => {
+      setTimeout(() => {
+        alert('最新題目細節請至完整題目下載（詳見附件一）');
+      }, 300);
+    });
   }
 }
 </script>
 
 <style scoped>
-/* 外層設定 */
 .page-container {
   margin-left: 60px;
-  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* 固定背景層 */
@@ -86,39 +148,53 @@ export default {
 }
 
 /* 標題欄 */
-.title_head {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-  padding: 10px;
-}
-
 .title-bar {
-  margin: 10px 0 0 7%;
+  position: fixed;
+  top: 5%;
+  left: 7%;
   width: 15vw;
   height: 6vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0099FF;
-  color: white;
+  background: #ffffff;
+  color: #474947;
   font-weight: 900;
-  border: 3px solid white;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  border: 3px solid #4DB233;
+  border-image: linear-gradient(to right, #4DB233, #0099FF, #FFBA40) 1;
+  border-image-slice: 1;
+  z-index: 10;
   font-size: calc(1.2vw + 1vh);
+  text-align: center;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.title-little {
+  position: fixed;
+  top: 2%;
+  left: 8%;
+  border-radius: 5px 5px 0 0;
+  padding: 0.5vh 1vw;
+  padding-bottom: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0099FF;
+  color: #ffffff;
+  font-weight: 900;
+  z-index: 9;
+  font-size: calc(0.5vw + 0.6vh);
   text-align: center;
 }
 
 /* 按鈕容器 */
 .buttons {
-  margin-left: 3vw;
+  position: fixed;
+  top: 5.5%;
+  left: calc(7% + 15vw + 50px);
   display: flex;
   gap: 20px;
-  margin-top: 20px;
+  z-index: 9;
 }
 
 .btn {
@@ -127,7 +203,6 @@ export default {
   padding: 5px 10px;
   cursor: pointer;
   font-size: 1vw;
-  /* width: 12vw; */
   transition: transform 0.2s ease;
 }
 
@@ -138,9 +213,13 @@ export default {
 
 /* 內容層 */
 .content {
-  margin-top: 100px;
-  padding-bottom: 50px;
   width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: 10%;
 }
 
 /* Grid 排版 */
@@ -177,6 +256,7 @@ export default {
   transition: transform 0.3s ease;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .grid-item img:hover {
@@ -189,7 +269,7 @@ export default {
   font-weight: bold;
 }
 
-/* 自訂 modal 樣式：移除內距，讓圖片與 modal 邊框貼齊 */
+/* Modal 樣式 */
 .modal-content {
   border: none;
 }
@@ -198,11 +278,16 @@ export default {
   padding: 0;
 }
 
-/* 右上角的 X 按鈕 */
 .custom-close {
   position: absolute;
   top: 10px;
   right: 10px;
   z-index: 1;
+}
+
+/* 覆寫 modal-dialog 大小 */
+.modal-dialog {
+  max-width: 90vw !important;
+  max-height: 90vh !important;
 }
 </style>

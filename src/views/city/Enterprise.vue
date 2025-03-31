@@ -25,7 +25,10 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <div class="grid-container">
+      <div class="img-container" >
+        <img :src="passedImg" alt="" />
+      </div>
+      <div class="grid-container" style="display: none;">
         <!-- 依序產生 22 個公司區塊 -->
         <div class="grid-item" v-for="(company, index) in companies" :key="index">
           <!-- 點擊公司時更新 selectedCompanyIndex 並觸發 modal -->
@@ -53,6 +56,9 @@
 </template>
 
 <script>
+import noneZh from '@/assets/img/city/passed/none.png';
+import noneEn from '@/assets/img/city/passed/none_en.png';
+
 export default {
   name: 'Greentech-Enterprise',
   data() {
@@ -87,6 +93,9 @@ export default {
     }
   },
   computed: {
+    passedImg() {
+      return this.$i18n.locale === 'zh' ? noneZh : noneEn;
+    },
     downloadText() {
       return this.$i18n.locale === 'zh' ? '完整題目下載' : 'Download All Topics';
     },
@@ -290,4 +299,22 @@ export default {
   max-width: 90vw !important;
   max-height: 90vh !important;
 }
+
+/* 圖片容器 */
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: -5%;
+}
+
+.img-container img {
+  max-width: 90vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  display: block;
+}
+
 </style>

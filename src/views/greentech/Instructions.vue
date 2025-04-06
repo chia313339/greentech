@@ -11,7 +11,7 @@
 
     <!-- 下載按鈕 -->
     <div class="buttons">
-      <a href="https://drive.google.com/drive/folders/1czKGyZ8VtOTWZ1EwuQXGOflAPeAn5ePi?usp=drive_link" target="_blank">
+      <a href="https://drive.google.com/file/d/1c87zNkFF9j30KpK-1yFoKcerTfrQs60R/view?usp=drive_link" target="_blank">
           <button class="btn download-btn" style="background-color: #BA2553;">
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ entryDocsText }} <span style="color: yellow; font-weight: bolder;">{{ downloadText }}</span>
         </button>

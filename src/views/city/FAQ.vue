@@ -79,7 +79,7 @@ export default {
           },
           {
             question: '4. What should I do if I encounter any issues during the registration or application document submission process?',
-            answer: 'Please fill out the inquiry form located at the bottom of the webpage under "Contact Us," or contact the execution team at (02)2577-4249 ext. 504/223/386 by phone.',
+            answer: 'Please fill out the inquiry form located at the bottom of the webpage under "Contact Us," or contact the execution team at (02)2577-4249 ext. 223/386 by phone.',
             isOpen: false
           },
           {
@@ -106,7 +106,7 @@ export default {
           },
           {
             question: '8. When is the deadline for application?',
-            answer: 'The application deadline is at 17:00 on May 29, 2024 (Thursday). After completing the application, the system will send an Application Confirmation Letter; the implementer will consider the time shown in this email to take precedence.',
+            answer: 'The application deadline is at 23:59 on May 30, 2025 (Friday). After completing the application, the system will send an Application Confirmation Letter; the implementer will consider the time shown in this email to take precedence.',
             isOpen: false
           },
           {
@@ -156,7 +156,7 @@ export default {
           },
           {
             question: '4. 如果報名或填寫申請文件遇到問題時，怎麼辦?',
-            answer: '請至網頁下方【聯繫我們】填寫提問，或是來電洽詢執行團隊(02)2577-4249分機504/223/386。',
+            answer: '請至網頁下方【聯繫我們】填寫提問，或是來電洽詢執行團隊(02)2577-4249分機223/386。',
             isOpen: false
           },
           {
@@ -173,17 +173,17 @@ export default {
             question: '7. 有需要達成的義務嗎?',
             answer: `• 通過複賽者之優選新創須達成義務: 
             1.應配合主辦單位及執行單位安排，參與至少1場交流分享活動。 
-            2.應提供Demo版本或影音媒體介紹1式(內容包含本競賽相關數據或產品等)予主辦單位及執行單位作為後續廣宣與展示。 
+            2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。 
             
             • 通過決賽者之優勝新創須達成義務: 
             1.應配合主辦單位及執行單位安排，參與至少1場達50人次(含)以上的成果展示、推廣或體驗活動。活動後須提交參與活動之佐證資料予主辦單位及執行單位，如:活動照片、交流心得等。 
-            2.應提供Demo版本或影音媒體介紹1式(內容包含本競賽相關數據或產品等)予主辦單位及執行單位作為後續廣宣與展示。 
+            2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。 
             3.與林口新創園或亞灣新創園簽訂進駐同意書。(進駐日期:2026/1/1-12/31)`,
             isOpen: false
           },
           {
             question: '8. 最後申請日是何時?',
-            answer: '申請截止期間為2025年5月29日17點00分(GMT+8)點選報名選結填寫，完成後系統將寄送（申請確認信），以此封電子郵件顯示之時間為準。',
+            answer: '申請截止期間為2025年5月30日23點59分(GMT+8)點選報名選結填寫，完成後系統將寄送（申請確認信），以此封電子郵件顯示之時間為準。',
             isOpen: false
           },
           {

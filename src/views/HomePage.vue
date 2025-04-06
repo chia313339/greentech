@@ -46,18 +46,25 @@
             <img src="@/assets/img/about/001.png" class="d-block w-100" alt="Image 1">
           </div>
           <div class="carousel-item">
-            <img src="@/assets/img/about/002.png" class="d-block w-100" alt="Image 2">
+            <!-- 讓影片自動維持 16:9，並在寬度上跟其他圖片保持一致 -->
+            <div class="ratio ratio-16x9 w-75 mx-auto" style="margin-bottom: 105px;">
+              <iframe
+                src="https://www.youtube.com/embed/1Vm3phKIDus?si=t1E1J_YRcHl15GZ5"
+                title="YouTube video player"
+                allowfullscreen
+              ></iframe>
+            </div>
           </div>
           <div class="carousel-item">
-            <img src="@/assets/img/about/003.png" class="d-block w-100" alt="Image 3">
+            <img src="@/assets/img/about/002.png" class="d-block w-100" alt="Image 3">
           </div>
         </div>
         <!-- Carousel Indicators -->
-        <!-- <div class="carousel-indicators custom-indicators">
+        <div class="carousel-indicators custom-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div> -->
+        </div>
       </div>
     </div>
 
@@ -113,6 +120,10 @@
       </div>
     </div>
 
+    <!-- showOpening 結束後，顯示指示圖片 -->
+    <div v-if="!showOpening" class="finger-container">
+      <img src="@/assets/finger.png" alt="finger" class="finger-img" />
+    </div>
   </div>
 </template>
 
@@ -572,11 +583,46 @@ export default {
   transform: scale(1.05);
 }
 
+/* ------------------- 指示圖片 (finger) ------------------- */
+.finger-container {
+  position: fixed;
+  top: 10%;
+  left: 2%;
+  z-index: 2100;
+}
+.finger-img {
+  width: auto;
+  max-width: 80px; /* 可依需求調整大小 */
+  animation: pulse 2s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 /* 在 scoped style 裡增加： */
 ::v-deep .modal-backdrop {
   z-index: 1600 !important;
 }
 ::v-deep .modal {
   z-index: 1601 !important;
+}
+
+.carousel .carousel-item iframe {
+  max-height: 90vh;
+  width: 100%;
+  /* object-fit: contain; // object-fit 不適用於 iframe，可以拿掉 */
+  padding-top: 100px;
+  display: block;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: none;
 }
 </style>

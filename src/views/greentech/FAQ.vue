@@ -90,18 +90,18 @@ export default {
           {
             question: '6. Are there any obligations that need to be fulfilled?',
             answer: `• Finalists must fulfill the following obligations: 
-            (1) Participate in at least one exchange or sharing event organized by the organizer and implementer. 
-            (2) Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. 
-            
-            • Winners must fulfill the following obligations: 
-            (1) Participate in at least one exhibition, promotion, or experiential event, with at least 50 attendees, organized by the organizer and implementer. After the event, evidence of participation (such as event photos or lessons learned from the participation) must be submitted to the organizer and implementer. 
-            (2) Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. 
-            (3) Sign a residency agreement with Startup Terrace or Startup Terrace Kaohsiung.`,
+(1)Participate in at least one exchange or sharing event organized by the organizer and  implementer. 
+(2)A presentation explaining the competition solution must be provided to the or ganizer for administrative processing and record-keeping.
+
+• Winners must fulfill the following obligations: 
+(1)Participate in at least one exhibition, promotion, or experiential event, with at least 50 attendees, organized by the organizer and implementer. After the event, evidence of participation (such as event photos or lessons learned from the participation) must be submitted to the organizer and implementer. 
+(2)A presentation explaining the competition solution must be provided to the or ganizer for administrative processing and record-keeping.
+(3)Sign a residency agreement with Startup Terrace or Startup Terrace Kaohsiung.`,
             isOpen: false
           },
           {
             question: '7. When is the deadline for application?',
-            answer: 'The application deadline is at 23:59 on May 31, 2024 (Friday). After completing the application, the system will send an Application Confirmation Letter; the implementer will consider the time shown in this email to take precedence.',
+            answer: 'The application deadline is at 23:59 on  May 30, 2025 (Friday). After completing the application, the system will send an Application Confirmation Letter; the implementer will consider the time shown in this email to take precedence.',
             isOpen: false
           },
           {
@@ -110,8 +110,8 @@ export default {
             isOpen: false
           },
           {
-            question: '9. What are the filling rules for Attachment 6?',
-            answer: 'If any member of the participating startup is an SMESA public servant or related party, he or she must fill out the Disclosure Form for Public Servants and Related Persons (Attachment 6). Please provide the required documents together when submitting.',
+            question: '9. What are the filling rules for Attachment 7?',
+            answer: 'If any member of the participating startup is an SMESA public servant or related party, he or she must fill out the Disclosure Form for Public Servants and Related Persons (Attachment 7). Please provide the required documents together when submitting.',
             isOpen: false
           },
           {
@@ -135,12 +135,12 @@ export default {
         this.faqs = [
           {
             question: '1. 一家參賽新創最多可以獲得多少驗證費用？',
-            answer: '一家參賽新創最多可申請 80 萬驗證費用，透過複賽可獲得 20 萬驗證費用，並在決賽階段再度獲得 60 萬驗證費用。',
+            answer: '一家參賽新創企業至多可獲得新臺幣 80 萬驗證費用，通過複賽可獲得新臺幣 20 萬驗證費用，通過決賽可再獲得新臺幣 60 萬驗證費用。',
             isOpen: false
           },
           {
             question: '2. 可以同時投件多組企業題嗎？',
-            answer: '參賽新創至多得挑選兩題參賽，題目一經選定後，不得更換。',
+            answer: '參賽新創企業至多得挑選２題參賽，題目一經選定後，不得更換。',
             isOpen: false
           },
           {
@@ -150,7 +150,7 @@ export default {
           },
           {
             question: '4. 如果報名或填寫申請文件遇到問題時，怎麼辦？',
-            answer: '請至網頁下方[聯繫我們]填寫提問，或是來電洽詢執行團隊(02)2577-4249分機 #539 #290',
+            answer: '請至網頁下方[聯繫我們]填寫提問，或是來電洽詢執行團隊(02)2577-4249分機 #539 #290 #535',
             isOpen: false
           },
           {
@@ -160,20 +160,20 @@ export default {
           },
           {
             question: '6. 有需要達成的義務嗎？',
-            answer: `• 通過複賽者之優選新創須達成義務：
-          1. 應配合主辦單位及執行單位安排，參與至少 1 場交流分享活動。
-          2. 應提供 Demo 版本或影音媒體介紹 1 式(內容包含本競賽相關數據或產品等)予主辦單位及執行單位作為後續廣宣與展示。
+            answer: `• 通過複賽者之優選新創企業須達成義務:
+1.應配合主辦單位及執行單位安排，參與至少 1 場交流分享活動。
+2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。
 
-          • 通過決賽者之優勝新創須達成義務：
-          1. 應配合主辦單位及執行單位安排，參與至少 1 場達 50 人次(含)以上的成果展示、推廣或體驗活動。活動後須提交參與活動之佐證資料予主辦單位及執行單位，如:活動照片、交流心得等。
-          2. 應提供 Demo 版本或影音媒體介紹 1 式(內容包含本競賽相關數據或產品等)予主辦單位及執行單位作為後續廣宣與展示。
-          3. 與林口新創園或亞灣新創園簽訂進駐合約。
+• 通過決賽者之優勝新創企業須達成義務:
+1.應配合主辦單位及執行單位安排，參與至少 1 場達 50 人次(含)以上的成果展示、推廣或體驗活動。活動後須提交參與活動之佐證資料予主辦單位及執行單位，如:活動照片、交流心得等。
+2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。
+3.與林口新創園或亞灣新創園簽訂進駐同意書。
           `,
             isOpen: false
           },
           {
             question: '7. 最後申請日是何時？',
-            answer: '申請截止期間為2025年5月29日17點00分點選報名連結填寫，完成後系統將寄送[申請確認信]，以此封電子郵件顯示之時間為準。',
+            answer: '申請截止時間為2025年5月30日(五)23時59分，填寫完成後，系統將寄送【申請確認信】，執行單位將以此封信電子郵件顯示之時間為準。',
             isOpen: false
           },
           {
@@ -182,13 +182,13 @@ export default {
             isOpen: false
           },
           {
-            question: '9. 【附件六】填寫規則是什麼？',
+            question: '9. 【附件七】填寫規則是什麼？',
             answer: '參賽新創若任一成員屬經濟部中小企業處之公職人員或關係人者，應填具[附件六]公職人員及關係人身分關係揭露表，請於繳交應備文件時一併提供。',
             isOpen: false
           },
           {
             question: '10. 若想提供6分鐘pitch影片，該影片內容的製作方向為何？',
-            answer: '6分鐘pitch影片為呈現提案簡報的組佳加分機會，建議參賽新創著重於解決方案之預劃與技術說明；如有實體產品或服務，也可一併於影片內呈現。',
+            answer: '6 分鐘 pitch 影片為呈現提案簡報的絕佳加分機會，建議參賽新創企業著重於解決方案之規劃與技術說明;如有實體產品或服務，也可一併於影片內呈現。',
             isOpen: false
           },
           {
@@ -198,7 +198,7 @@ export default {
           },
           {
             question: '12. 出題企業也會簽署保密同意書嗎？',
-            answer: '是的，根據本競賽須知說明，出題企業及參賽新創均須簽署[附件四]之保密同意書。',
+            answer: '是的。根據本競賽須知載明，出題企業及參賽新創企業均須簽署【附件四】之保密同意書。',
             isOpen: false
           },
         ];

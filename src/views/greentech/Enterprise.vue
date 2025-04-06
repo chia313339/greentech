@@ -44,7 +44,31 @@
           <!-- 右上角的 X 按鈕 -->
           <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-body p-0">
-            <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
+            <!-- 若選擇的公司為第8間（台灣萊雅），使用輪播呈現兩張圖片 -->
+            <template v-if="selectedCompanyIndex === 7">
+              <div id="companyCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img :src="modalImage1" alt="公司詳細內容 1" class="img-fluid">
+                  </div>
+                  <div class="carousel-item">
+                    <img :src="modalImage2" alt="公司詳細內容 2" class="img-fluid">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#companyCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#companyCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </template>
+            <!-- 其他公司顯示單張圖片 -->
+            <template v-else>
+              <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
+            </template>
           </div>
         </div>
       </div>
@@ -93,14 +117,36 @@ export default {
     videoText() {
       return this.$i18n.locale === 'zh' ? '觀看題目說明影片' : 'Watch Question Explanation Video';
     },
-    // 根據目前選擇的公司及語系，動態回傳 modal 詳細內容圖片
+    // 對於一般公司，依據所選索引回傳單張圖片
     modalImage() {
       if (this.selectedCompanyIndex === null) return '';
+      // 若為台灣萊雅（索引 7），則不使用單一圖片
+      if (this.selectedCompanyIndex === 7) return '';
       const number = (this.selectedCompanyIndex + 1).toString().padStart(3, '0');
       if (this.$i18n.locale === 'zh') {
         return new URL(`../../assets/img/enterprise/content/zh/com_content_${number}.png`, import.meta.url).href;
       } else {
         return new URL(`../../assets/img/enterprise/content/en/com_content_en_${number}.png`, import.meta.url).href;
+      }
+    },
+    // 台灣萊雅第一張詳細內容圖片
+    modalImage1() {
+      if (this.selectedCompanyIndex !== 7) return '';
+      const number = '008';
+      if (this.$i18n.locale === 'zh') {
+        return new URL(`../../assets/img/enterprise/content/zh/com_content_${number}_1.png`, import.meta.url).href;
+      } else {
+        return new URL(`../../assets/img/enterprise/content/en/com_content_en_${number}_1.png`, import.meta.url).href;
+      }
+    },
+    // 台灣萊雅第二張詳細內容圖片
+    modalImage2() {
+      if (this.selectedCompanyIndex !== 7) return '';
+      const number = '008';
+      if (this.$i18n.locale === 'zh') {
+        return new URL(`../../assets/img/enterprise/content/zh/com_content_${number}_2.png`, import.meta.url).href;
+      } else {
+        return new URL(`../../assets/img/enterprise/content/en/com_content_en_${number}_2.png`, import.meta.url).href;
       }
     }
   },
@@ -290,4 +336,18 @@ export default {
   max-width: 90vw !important;
   max-height: 90vh !important;
 }
+
+.carousel-control-prev {
+  left: -5%; /* 向右移動 */
+}
+
+.carousel-control-next {
+  right: -5%; /* 向右移動 */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: brightness(0) invert(0);
+}
+
 </style>

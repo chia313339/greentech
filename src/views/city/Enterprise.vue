@@ -25,10 +25,7 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <div class="img-container" >
-        <img :src="passedImg" alt="" />
-      </div>
-      <div class="grid-container" style="display: none;">
+      <div class="grid-container">
         <!-- 依序產生 22 個公司區塊 -->
         <div class="grid-item" v-for="(company, index) in companies" :key="index">
           <!-- 點擊公司時更新 selectedCompanyIndex 並觸發 modal -->
@@ -47,7 +44,31 @@
           <!-- 右上角的 X 按鈕 -->
           <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-body p-0">
-            <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
+            <!-- 若選擇的公司為第8間（台灣萊雅），使用輪播呈現兩張圖片 -->
+            <template v-if="selectedCompanyIndex === 0">
+              <div id="companyCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img :src="modalImage1" alt="公司詳細內容 1" class="img-fluid">
+                  </div>
+                  <div class="carousel-item">
+                    <img :src="modalImage2" alt="公司詳細內容 2" class="img-fluid">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#companyCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#companyCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </template>
+            <!-- 其他公司顯示單張圖片 -->
+            <template v-else>
+              <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
+            </template>
           </div>
         </div>
       </div>
@@ -65,30 +86,9 @@ export default {
     return {
       // 記錄目前點擊的公司（索引：0～21）
       selectedCompanyIndex: null,
-      // 公司列表，共 22 間，依照需求順序與名稱設定
+      // 公司列表，共1間，依照需求順序與名稱設定
       companies: [
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' }
+        { name: 'Sidec' },
       ]
     }
   },
@@ -111,8 +111,29 @@ export default {
       } else {
         return new URL(`../../assets/img/city/enterprise/content/en/com_content_en_${number}.png`, import.meta.url).href;
       }
+    },
+  // 台灣萊雅第一張詳細內容圖片
+  modalImage1() {
+      if (this.selectedCompanyIndex !== 0) return '';
+      const number = '001';
+      if (this.$i18n.locale === 'zh') {
+        return new URL(`../../assets/img/city/enterprise/content/zh/com_content_${number}_1.png`, import.meta.url).href;
+      } else {
+        return new URL(`../../assets/img/city/enterprise/content/en/com_content_en_${number}_1.png`, import.meta.url).href;
+      }
+    },
+    // 台灣萊雅第二張詳細內容圖片
+    modalImage2() {
+      if (this.selectedCompanyIndex !== 0) return '';
+      const number = '001';
+      if (this.$i18n.locale === 'zh') {
+        return new URL(`../../assets/img/city/enterprise/content/zh/com_content_${number}_2.png`, import.meta.url).href;
+      } else {
+        return new URL(`../../assets/img/city/enterprise/content/en/com_content_en_${number}_2.png`, import.meta.url).href;
+      }
     }
   },
+  
   methods: {
     // 點擊公司時記錄目前索引
     openModal(index) {
@@ -316,5 +337,20 @@ export default {
   height: auto;
   display: block;
 }
+
+
+.carousel-control-prev {
+  left: -5%; /* 向右移動 */
+}
+
+.carousel-control-next {
+  right: -5%; /* 向右移動 */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: brightness(0) invert(0);
+}
+
 
 </style>

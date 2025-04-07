@@ -328,7 +328,7 @@ export default {
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 1;
+  z-index: 999;
 }
 
 /* 覆寫 modal-dialog 大小 */

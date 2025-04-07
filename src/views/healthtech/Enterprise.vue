@@ -25,10 +25,7 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <div class="img-container" >
-        <img :src="passedImg" alt="" />
-      </div>
-      <div class="grid-container" style="display: none;">
+      <div class="grid-container">
         <!-- 依序產生 22 個公司區塊 -->
         <div class="grid-item" v-for="(company, index) in companies" :key="index">
           <!-- 點擊公司時更新 selectedCompanyIndex 並觸發 modal -->
@@ -67,28 +64,18 @@ export default {
       selectedCompanyIndex: null,
       // 公司列表，共 22 間，依照需求順序與名稱設定
       companies: [
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' },
-        { name: '公司' }
+        { name: '旭安健康事業有限公司' },
+        { name: '財團法人彰化縣私立秀和慈善事業基金會' },
+        { name: '醫療財團法人徐元智先生醫藥基金會亞東紀念醫院' },
+        { name: '奇美食品股份有限公司' },
+        { name: '欣辰健康股份有限公司' },
+        { name: '屏基醫療財團法人屏東基督教醫院' },
+        { name: '凌羣電腦股份有限公司' },
+        { name: '高雄醫學大學附設高醫岡山醫院' },
+        { name: '康博健康生活股份有限公司' },
+        { name: '敏盛智慧健康管理中心' },
+        { name: '普達康股份有限公司' },
+        { name: '福樂多事業股份有限公司' },
       ]
     }
   },

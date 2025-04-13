@@ -115,8 +115,8 @@ export default {
             isOpen: false
           },
           {
-            question: '10. What are the filling rules for Attachment 6?',
-            answer: 'If any member of the participating startup is an SMESA public servant or related party, he or she must fill out the Disclosure Form for Public Servants and Related Persons (Attachment 6). Please provide the required documents together when submitting.',
+            question: '10. What are the filling rules for Attachment 7?',
+            answer: 'If any member of the participating startup is an SMESA public servant or related party, he or she must fill out the Disclosure Form for Public Servants and Related Persons (Attachment 7). Please provide the required documents together when submitting.',
             isOpen: false
           },
           {
@@ -192,13 +192,13 @@ export default {
             isOpen: false
           },
           {
-            question: '10. 【附件六】填寫規則是什麼?',
-            answer: '參賽新創若任一成員屬經濟部中小企業處之公職人員或關係人者，應填具【附件六】公職人員及關係人身分關係揭露表。請於繳交應備文件時一併提供。',
+            question: '10. 【附件七】填寫規則是什麼?',
+            answer: '參賽新創若任一成員屬經濟部中小企業處之公職人員或關係人者，應填具【附件七】公職人員及關係人身分關係揭露表。請於繳交應備文件時一併提供。',
             isOpen: false
           },
           {
-            question: '11. 若想提供6分鐘pitch影片，該影片內容的製作方向為何?',
-            answer: '6分鐘pitch影片為呈現提案簡報的絕佳加分機會，建議參賽新創著重於解決方案之規劃與技術說明；如有實體產品或服務，也可一併於影片內呈現。',
+            question: '11. 若想提供6分鐘解題方案英文說明影片，該影片內容的製作方向為何?',
+            answer: '6分鐘解題方案英文說明影片為呈現提案簡報的絕佳加分機會，建議參賽新創著重於解決方案之規劃與技術說明；如有實體產品或服務，也可一併於影片內呈現。',
             isOpen: false
           },
           {

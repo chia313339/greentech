@@ -94,7 +94,7 @@ export default {
 2. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display.
 
 • Winners must fulfill the following obligations:
-1. Participate in at least one exhibition, promotion, or experiential event organized by the organizer and implementer. After the event, evidence of participation (such as event photos or activity questionnaire) must be submitted to the organizer and implementer.
+1. Participate in at least one exhibition, promotion, or experiential event, with at least 50 attendees, organized by the organizer and implementer. After the event, evidence of participation (such as event photos or activity questionnaire) must be submitted to the organizer and implementer. 
 2. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display.
 3. Sign a residency agreement with Startup Terrace or Startup Terrace Kaohsiung.`,
             isOpen: false
@@ -110,8 +110,8 @@ export default {
             isOpen: false
           },
           {
-            question: '9. What are the filling rules for Attachment 6?',
-            answer: 'If any member of the participating startup is an SMESA public servant or related party, he or she must fill out the Disclosure Form for Public Servants and Related Persons (Attachment 6). Please provide the required documents together when submitting.',
+            question: '9. What are the filling rules for Attachment 7?',
+            answer: 'If any member of the participating startup is an SMESA public servant or related party, he or she must fill out the Disclosure Form for Public Servants and Related Persons (Attachment 7). Please provide the required documents together when submitting.',
             isOpen: false
           },
           {
@@ -124,24 +124,19 @@ export default {
             answer: 'All the communication affairs for this competition are conducted through the executing units (Startup Terrace or Startup Terrace Kaohsiung) with the topic-providing company. We regret that we cannot provide contact information for individual companies.',
             isOpen: false
           },
-          {
-            question: '12. Will topic-proposing cities also sign Confidentiality Consent Form?',
-            answer: 'Yes, both the topic-proposing city and participating startups are required to sign the Confidentiality Consent Form (Attachment 4)',
-            isOpen: false
-          }
         ];
 
       } else {
         // 中文 FAQ 資料（預設，共 13 筆）
         this.faqs = [
           {
-            question: '1. 一家參賽新創企業最多可以獲得多少輔導費用?',
-            answer: '一家參賽新創至多可獲得新臺幣 80 萬驗證費用，通過複賽可獲得新臺幣 20 萬驗證費用，通過決賽可再獲得新臺幣 60 萬驗證費用',
+            question: '1. 一家參賽新創企業最多可以獲得多少驗證費用?',
+            answer: '一家參賽新創企業至多可獲得新臺幣 80 萬驗證費用，通過複賽可獲得新臺幣 20 萬驗證費用，通過決賽可再獲得新臺幣 60 萬驗證費用。',
             isOpen: false
           },
           {
             question: '2. 可以同時投件多組企業題嗎?',
-            answer: '參賽新創參與健康照護組至多挑選一道題目參賽，題目一經選定後，不得更換。',
+            answer: '參賽新創企業參與健康照護組至多挑選一道題目參賽，題目一經選定後，不得更換。',
             isOpen: false
           },
           {
@@ -161,14 +156,14 @@ export default {
           },
           {
             question: '6. 有需要達成的義務嗎?',
-            answer: `• 通過複賽者之優選新創須達成義務: 
-            1. 應配合主辦單位及執行單位安排，參與至少1場交流分享活動。 
-            2. 應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。 
+            answer: `• 通過複賽者之優選新創企業須達成義務:
+1.應配合主辦單位及執行單位安排，參與至少 1 場交流分享活動。
+2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。
             
-            • 通過決賽者之優勝新創須達成義務: 
-            1. 應配合主辦單位及執行單位安排，參與成果展示、推廣或體驗活動，活動後須提交參與活動之佐證資料予主辦單位及執行單位，如：活動照片、活動問卷等。 
-            2. 應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。 
-            3. 與林口新創園或亞灣新創園簽訂進駐合約`,
+            • 通過決賽者之優勝新創企業須達成義務:
+1.應配合主辦單位及執行單位安排，參與至少1場達50人次(含)以上的成果展示、推廣或體驗活動。活動後須提交參與活動之佐證資料予主辦單位及執行單位，如：活動照片、交流心得。
+2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。
+3.與林口新創園或亞灣新創園簽訂進駐合約。`,
             isOpen: false
           },
           {
@@ -182,13 +177,13 @@ export default {
             isOpen: false
           },
           {
-            question: '9. 【附件六】填寫規則是什麼?',
-            answer: '參賽新創若任一成員屬經濟部中小企業處之公職人員或關係人者，應填具【附件六】公職人員及關係人身分關係揭露表。請於繳交應備文件時一併提供。',
+            question: '9. 【附件七】填寫規則是什麼?',
+            answer: '參賽新創企業若任一成員屬經濟部中小企業署之公職人員或關係人者，應填具【附件七】公職人員及關係人身分關係揭露表。請於繳交應備文件時 一併提供。',
             isOpen: false
           },
           {
             question: '10. 若想提供6分鐘pitch影片，該影片內容的製作方向為何?',
-            answer: '6分鐘pitch影片為呈現提案簡報的絕佳加分機會，建議參賽新創著重於解決方案之規劃與技術說明；如有實體產品或服務，也可一併於影片內呈現。',
+            answer: '6 分鐘 pitch 影片為呈現提案簡報的絕佳加分機會，建議參賽新創企業著重於解決方案之規劃與技術說明;如有實體產品或服務，也可一併於影片內呈現。',
             isOpen: false
           },
           {
@@ -196,11 +191,6 @@ export default {
             answer: '本競賽相關聯繫皆透過執行單位與出題企業進行溝通，恕無法提供企業窗口資訊。',
             isOpen: false
           },
-          {
-            question: '12. 出題城市也會簽署保密同意書嗎?',
-            answer: '是的，根據本競賽須知載明，出題城市及參賽新創均須簽署【附件四】之保密同意書。',
-            isOpen: false
-          }
         ];
 
       }

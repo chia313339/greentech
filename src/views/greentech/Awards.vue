@@ -137,6 +137,30 @@ export default {
   font-size: calc(1.2vw + 1vh);
   text-align: center;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* 中文預設寬度可以維持 15vw，不動 */
+.page-container:not(.locale-en) .title-bar {
+  width: 15vw;
+}
+
+/* 英文情況下，讓寬度再拉大一些，避免換行 */
+.locale-en .title-bar {
+  width: 20vw; /* 可以視實際字數再調大一點 */
+}
+
+/* 按鈕的容器在中文時的定位 */
+.page-container:not(.locale-en) .buttons {
+  left: calc(7% + 15vw + 50px);
+}
+
+/* 英文情況下，因為 title-bar 變寬，要往右移動按鈕 */
+.locale-en .buttons {
+  left: calc(7% + 20vw + 50px);
 }
 
 .title-little {

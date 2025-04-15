@@ -52,7 +52,7 @@ export default {
     competitionInstructionsText() {
       return this.$i18n.locale === 'zh'
         ? '競賽須知'
-        : 'Competition instructions'
+        : 'Application instructions'
     },
     instructionsImage() {
       return this.$i18n.locale === 'zh'

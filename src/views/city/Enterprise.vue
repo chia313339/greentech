@@ -7,7 +7,7 @@
     <div class="title-little">{{ $t('class.city') }}</div>
 
     <!-- 標題欄 -->
-    <div class="title-bar">{{ $t('nav.enterprise') }}</div>
+    <div class="title-bar">{{ $t('nav.enterprise2') }}</div>
 
     <!-- 下載按鈕 -->
     <div class="buttons">

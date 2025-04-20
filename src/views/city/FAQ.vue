@@ -68,7 +68,7 @@ export default {
             isOpen: false
           },
           {
-            question: '2. Can multiple sets of enterprise topics be submitted simultaneously?',
+            question: '2. Can multiple sets of city topics be submitted simultaneously?',
             answer: 'Each participating startup can select up to one topic to compete in. Once a topic is selected, it cannot be changed.',
             isOpen: false
           },
@@ -87,13 +87,13 @@ export default {
             answer: 'The implementer will notify the contact person via email, and please pay attention to announcements on this website.',
             isOpen: false
           },
+          // {
+          //   question: '6. Can multiple sets of enterprise and city topics be submitted simultaneously?',
+          //   answer: 'Each participating startup in the Enterprise Category may choose up to two topics, at the same time, in the City Category, it may choose just one topic for participation in the competition. Once the topics are selected, they cannot be changed.',
+          //   isOpen: false
+          // },
           {
-            question: '6. Can multiple sets of enterprise and city topics be submitted simultaneously?',
-            answer: 'Each participating startup in the Enterprise Category may choose up to two topics, at the same time, in the City Category, it may choose just one topic for participation in the competition. Once the topics are selected, they cannot be changed.',
-            isOpen: false
-          },
-          {
-            question: '7. Are there any obligations that need to be fulfilled?',
+            question: '6. Are there any obligations that need to be fulfilled?',
             answer: `• Semi-finalists must fulfill the following obligations: 
             1. Participate in at least one exchange or sharing event organized by the organizer and implementer. 
             2. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. 
@@ -105,32 +105,32 @@ export default {
             isOpen: false
           },
           {
-            question: '8. When is the deadline for application?',
+            question: '7. When is the deadline for application?',
             answer: 'The application deadline is at 23:59 on May 30, 2025 (Friday). After completing the application, the system will send an Application Confirmation Letter; the implementer will consider the time shown in this email to take precedence.',
             isOpen: false
           },
           {
-            question: '9. Are there any restrictions on the number and identity of participants?',
+            question: '8. Are there any restrictions on the number and identity of participants?',
             answer: 'There is no limit on the number of participants. Participants must be employees of the company. All members of the participating startup listed on the online application form must personally sign the consent form Personal Information Provision Consent Form (Attachment 5) (All members can sign on the same consent form.)',
             isOpen: false
           },
           {
-            question: '10. What are the filling rules for Attachment 7?',
+            question: '9. What are the filling rules for Attachment 7?',
             answer: 'If any member of the participating startup is an SMESA public servant or related party, he or she must fill out the Disclosure Form for Public Servants and Related Persons (Attachment 7). Please provide the required documents together when submitting.',
             isOpen: false
           },
           {
-            question: '11. About the 6-minute pitch video, what should be the production direction of the video content?',
+            question: '10. About the 6-minute pitch video, what should be the production direction of the video content?',
             answer: 'Preliminary round is conducted by documentation review. The 6-minute or less video presentation of the solution is an excellent opportunity to showcase the proposal. It is recommended that participating startups focus on planning of the solution and related technical explanations. If there are physical products or services, please include them in the video.',
             isOpen: false
           },
           {
-            question: '12. Can the contact person from the competition\'s topic-proposing company be provided?',
-            answer: 'All the communication affairs for this competition are conducted through the executing units (Taiwan Startup Terrace) with the topic-providing company. We regret that we cannot provide contact information for individual cities.',
+            question: '11. Can the contact person from the competition\'s topic-proposing city be provided?',
+            answer: 'All the communication affairs for this competition are conducted through the executing units (Taiwan Startup Terrace) with the topic-proposing city. We regret that we cannot provide contact information.',
             isOpen: false
           },
           {
-            question: '13. Will topic-proposing cities also sign Confidentiality Consent Form?',
+            question: '12. Will topic-proposing cities also sign Confidentiality Consent Form?',
             answer: 'Yes, both the topic-proposing city and participating startups are required to sign the Confidentiality Consent Form (Attachment 4)',
             isOpen: false
           }
@@ -164,13 +164,13 @@ export default {
             answer: '會由執行單位以E-mail方式通知聯絡人，並請關注本網站公告。',
             isOpen: false
           },
+          // {
+          //   question: '6. 是否可以同時提交多組企業類別與城市類別的主題?',
+          //   answer: '每個參與企業類別(Enterprise Category)的新創團隊最多可選擇兩個主題，同時，在城市類別(City Category)中，則僅能選擇一個主題參賽。一旦選定後，無法更改。',
+          //   isOpen: false
+          // },
           {
-            question: '6. 是否可以同時提交多組企業類別與城市類別的主題?',
-            answer: '每個參與企業類別(Enterprise Category)的新創團隊最多可選擇兩個主題，同時，在城市類別(City Category)中，則僅能選擇一個主題參賽。一旦選定後，無法更改。',
-            isOpen: false
-          },
-          {
-            question: '7. 有需要達成的義務嗎?',
+            question: '6. 有需要達成的義務嗎?',
             answer: `• 通過複賽者之優選新創須達成義務: 
             1.應配合主辦單位及執行單位安排，參與至少1場交流分享活動。 
             2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。 
@@ -182,32 +182,32 @@ export default {
             isOpen: false
           },
           {
-            question: '8. 最後申請日是何時?',
+            question: '7. 最後申請日是何時?',
             answer: '申請截止期間為2025年5月30日23點59分(GMT+8)點選報名選結填寫，完成後系統將寄送（申請確認信），以此封電子郵件顯示之時間為準。',
             isOpen: false
           },
           {
-            question: '9. 參賽人員是否有人數及身分限制?',
+            question: '8. 參賽人員是否有人數及身分限制?',
             answer: '人數無限制，參賽人員須為公司員工；而報名系統中提列之參賽人員名單，皆須簽署附件五【個人資料提供同意書】，並親筆簽名。(成員可簽署於同一張同意書)',
             isOpen: false
           },
           {
-            question: '10. 【附件七】填寫規則是什麼?',
+            question: '9. 【附件七】填寫規則是什麼?',
             answer: '參賽新創若任一成員屬經濟部中小企業處之公職人員或關係人者，應填具【附件七】公職人員及關係人身分關係揭露表。請於繳交應備文件時一併提供。',
             isOpen: false
           },
           {
-            question: '11. 若想提供6分鐘解題方案英文說明影片，該影片內容的製作方向為何?',
+            question: '10. 若想提供6分鐘解題方案英文說明影片，該影片內容的製作方向為何?',
             answer: '6分鐘解題方案英文說明影片為呈現提案簡報的絕佳加分機會，建議參賽新創著重於解決方案之規劃與技術說明；如有實體產品或服務，也可一併於影片內呈現。',
             isOpen: false
           },
           {
-            question: '12. 是否可提供競賽出題城市聯繫窗口?',
+            question: '11. 是否可提供競賽出題城市聯繫窗口?',
             answer: '本競賽相關聯繫皆透過執行單位(Taiwan Startup Terrace)與出題城市進行溝通，恕無法提供城市窗口資訊。',
             isOpen: false
           },
           {
-            question: '13. 出題城市也會簽署保密同意書嗎?',
+            question: '12. 出題城市也會簽署保密同意書嗎?',
             answer: '是的，根據本競賽須知載明，出題城市及參賽新創均須簽署【附件四】之保密同意書。',
             isOpen: false
           }

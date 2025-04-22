@@ -16,7 +16,7 @@
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ downloadText }}
         </button>
       </a>
-      <a href="" target="_blank">
+      <a href="https://www.youtube.com/playlist?list=PLgmrgOoGmAXquGZeSGo2LGSXmAgZki-g8" target="_blank">
         <button class="btn video-btn" style="background-color: #114E96;">
           <i class="fa-regular fa-circle-play"></i>&nbsp;&nbsp;{{ videoText }}
         </button>

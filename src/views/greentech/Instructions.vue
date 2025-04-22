@@ -16,7 +16,7 @@
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ entryDocsText }} <span style="color: yellow; font-weight: bolder;">{{ downloadText }}</span>
         </button>
       </a>
-      <a href="https://drive.google.com/drive/folders/1kM71MlGAVnZB7argXNe7Y0P5c3oQsIZO?usp=drive_link" target="_blank">
+      <a href="https://drive.google.com/drive/folders/1exnLlZLhrjKfbCmM_gv18_X0TjhxeYIf?usp=sharing" target="_blank">
         <button class="btn video-btn" style="background-color: #336600;">
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ competitionInstructionsText }}
         </button>

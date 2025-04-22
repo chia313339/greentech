@@ -111,14 +111,6 @@ export default {
       return new URL(`../../assets/img/hc/enterprise/logo/com_content_${number}.png`, import.meta.url).href;
     }
   },
-  mounted() {
-    // 確保頁面內容渲染完成後再延遲顯示 alert
-    this.$nextTick(() => {
-      setTimeout(() => {
-        alert('最新題目細節請至完整題目下載（詳見附件一）');
-      }, 300);
-    });
-  }
 }
 </script>
 

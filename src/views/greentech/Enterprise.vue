@@ -16,7 +16,7 @@
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ downloadText }}
         </button>
       </a>
-      <a href="https://www.youtube.com/playlist?list=PLgmrgOoGmAXo7h0NJE95kDlLvSvNrA7Xv" target="_blank">
+      <a href="https://www.youtube.com/playlist?list=PLZnsWhlOFuXISC3nkrNXG35mbTSNG-F0i" target="_blank">
         <button class="btn video-btn" style="background-color: #336600;">
           <i class="fa-regular fa-circle-play"></i>&nbsp;&nbsp;{{ videoText }}
         </button>
@@ -46,7 +46,7 @@
           <div class="modal-body p-0">
             <!-- 若選擇的公司為第8間（台灣萊雅），使用輪播呈現兩張圖片 -->
             <template v-if="selectedCompanyIndex === 7">
-              <div id="companyCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div id="companyCarousel" class="carousel slide" data-bs-interval="false">
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img :src="modalImage1" alt="公司詳細內容 1" class="img-fluid">
@@ -161,14 +161,6 @@ export default {
       return new URL(`../../assets/img/enterprise/logo/com_content_${number}.png`, import.meta.url).href;
     }
   },
-  mounted() {
-    // 確保頁面內容渲染完成後再延遲顯示 alert
-    this.$nextTick(() => {
-      setTimeout(() => {
-        alert('最新題目細節請至完整題目下載（詳見附件一）');
-      }, 300);
-    });
-  }
 }
 </script>
 

@@ -79,7 +79,7 @@ export default {
           },
           {
             question: '4. What should I do if I encounter any issues during the registration or application document submission process?',
-            answer: 'Please fill out the inquiry form located at the bottom of the webpage under "Contact Us," or contact the execution team at (02)2577-4249 ext. 290/546; (07)338-3827 ext. 309 by phone.',
+            answer: 'Please fill out the inquiry form located at the bottom of the webpage under "Contact Us," or contact the execution team at (02)2577-4249ext.539/290/535',
             isOpen: false
           },
           {

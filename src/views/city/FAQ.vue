@@ -101,7 +101,8 @@ export default {
             • Finalists must fulfill the following obligations: 
             1. Participate in at least one exhibition, promotion, or experiential event, with at least 50 attendees, organized by the organizer and implementer. 
             2. After the event, evidence of participation (such as event photos or lessons learned from the participation) must be submitted to the organizer and implementer. 
-            3. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. 4. Sign a residency agreement with Startup Terrace Linkou or Startup Terrace Kaohsiung. (Residency period: January 1, 2026 – December 31, 2026)`,
+            3. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. 
+            4. Sign a residency agreement with Startup Terrace Linkou or Startup Terrace Kaohsiung. (Residency period: January 1, 2026 – December 31, 2026)`,
             isOpen: false
           },
           {

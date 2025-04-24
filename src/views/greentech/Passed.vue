@@ -36,10 +36,10 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <div class="img-container" >
+      <div class="img-container" style="display: none;">
         <img :src="passedImg" alt="About" />
       </div>
-      <div class="carousel-container" style="display: none;">
+      <div class="carousel-container" >
         <div
           :key="activeTab"
           id="carouselExampleIndicators"

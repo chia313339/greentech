@@ -101,7 +101,7 @@ export default {
         { name: '太古可口可樂' },
         { name: '凌羣電腦' },
         { name: '理想大地' },
-        { name: '統一實業' },
+        { name: '統一企業' },
         { name: '華碩電腦' },
         { name: '群光電子' },
         { name: '聚陽實業' },

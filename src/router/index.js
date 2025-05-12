@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../views/HomePage.vue'
 import GroupPage from '../views/GroupPage.vue'
+import page2024 from '../views/2024.vue'
+import page2023 from '../views/2023.vue'
 
 // Greentech 頁面
 import GreentechAbout from '../views/greentech/About.vue'
@@ -90,6 +92,16 @@ const routes = [
       { path: 'faq', name: 'HealthtechFAQ', component: HealthtechFAQ },
       { path: 'contact', name: 'HealthtechContact', component: HealthtechContact }
     ]
+  },
+  {
+    path: '/2024',
+    name: '2024',
+    component: page2024
+  },
+  {
+    path: '/2023',
+    name: '2023',
+    component: page2023
   }
 ]
 

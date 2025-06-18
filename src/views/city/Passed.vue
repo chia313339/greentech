@@ -48,7 +48,7 @@
           data-bs-ride="carousel"
         >
           <div class="carousel-indicators custom-indicators">
-            <button
+            <!-- <button
               v-for="(image, index) in images"
               :key="index"
               type="button"
@@ -57,7 +57,7 @@
               :class="{ active: index === 0 }"
               :aria-current="index === 0 ? 'true' : undefined"
               :aria-label="'Slide ' + (index + 1)"
-            ></button>
+            ></button> -->
           </div>
           <div class="carousel-inner">
             <div
@@ -68,7 +68,7 @@
               <img :src="image" class="d-block w-100" alt="Slide image" />
             </div>
           </div>
-          <button
+          <!-- <button
             class="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleIndicators"
@@ -95,7 +95,7 @@
               >&#10095;</span
             >
             <span class="visually-hidden">Next</span>
-          </button>
+          </button> -->
         </div>
       </div>
     </div>

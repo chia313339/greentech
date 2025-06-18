@@ -36,10 +36,10 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <div class="img-container" >
+      <div class="img-container" style="display: none;">
         <img :src="passedImg" alt="About" />
       </div>
-      <div class="carousel-container" style="display: none;">
+      <div class="carousel-container" >
         <div
           :key="activeTab"
           id="carouselExampleIndicators"
@@ -121,21 +121,21 @@ export default {
       let arr = [];
       if (this.activeTab === '初賽') {
         // 初賽： chu001 ~ chu005
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 1; i++) {
           let num = i.toString().padStart(3, '0');
           let url = new URL(`../../assets/img/city/passed/chu${num}.png`, import.meta.url).href;
           arr.push(url);
         }
       } else if (this.activeTab === '複賽') {
         // 複賽： fu001 ~ fu003
-        for (let i = 1; i <= 3; i++) {
+        for (let i = 1; i <= 1; i++) {
           let num = i.toString().padStart(3, '0');
           let url = new URL(`../../assets/img/city/passed/fu${num}.png`, import.meta.url).href;
           arr.push(url);
         }
       } else if (this.activeTab === '決賽') {
         // 決賽： jue001 ~ jue002
-        for (let i = 1; i <= 2; i++) {
+        for (let i = 1; i <= 1; i++) {
           let num = i.toString().padStart(3, '0');
           let url = new URL(`../../assets/img/city/passed/jue${num}.png`, import.meta.url).href;
           arr.push(url);

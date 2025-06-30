@@ -36,10 +36,10 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <div class="img-container" >
+      <div class="img-container" style="display: none;">
         <img :src="passedImg" alt="About" />
       </div>
-      <div class="carousel-container" style="display: none;">
+      <div class="carousel-container">
         <div
           :key="activeTab"
           id="carouselExampleIndicators"
@@ -47,7 +47,8 @@
           :class="carouselClass"
           data-bs-ride="carousel"
         >
-          <div class="carousel-indicators custom-indicators">
+          <!-- 只有當圖片數量大於1時才顯示指示器 -->
+          <div v-if="images.length > 1" class="carousel-indicators custom-indicators">
             <button
               v-for="(image, index) in images"
               :key="index"
@@ -68,7 +69,9 @@
               <img :src="image" class="d-block w-100" alt="Slide image" />
             </div>
           </div>
+          <!-- 只有當圖片數量大於1時才顯示控制按鈕 -->
           <button
+            v-if="images.length > 1"
             class="carousel-control-prev"
             type="button"
             data-bs-target="#carouselExampleIndicators"
@@ -83,6 +86,7 @@
             <span class="visually-hidden">Previous</span>
           </button>
           <button
+            v-if="images.length > 1"
             class="carousel-control-next"
             type="button"
             data-bs-target="#carouselExampleIndicators"
@@ -120,26 +124,20 @@ export default {
     images() {
       let arr = [];
       if (this.activeTab === '初賽') {
-        // 初賽： chu001 ~ chu005
-        for (let i = 1; i <= 5; i++) {
+        // 初賽： chu001 ~ chu003 (改為3張)
+        for (let i = 1; i <= 2; i++) {
           let num = i.toString().padStart(3, '0');
           let url = new URL(`../../assets/img/hc/passed/chu${num}.png`, import.meta.url).href;
           arr.push(url);
         }
       } else if (this.activeTab === '複賽') {
-        // 複賽： fu001 ~ fu003
-        for (let i = 1; i <= 3; i++) {
-          let num = i.toString().padStart(3, '0');
-          let url = new URL(`../../assets/img/hc/passed/fu${num}.png`, import.meta.url).href;
-          arr.push(url);
-        }
+        // 複賽： fu001 (改為1張)
+        let url = new URL(`../../assets/img/hc/passed/fu001.png`, import.meta.url).href;
+        arr.push(url);
       } else if (this.activeTab === '決賽') {
-        // 決賽： jue001 ~ jue002
-        for (let i = 1; i <= 2; i++) {
-          let num = i.toString().padStart(3, '0');
-          let url = new URL(`../../assets/img/hc/passed/jue${num}.png`, import.meta.url).href;
-          arr.push(url);
-        }
+        // 決賽： jue001 (改為1張)
+        let url = new URL(`../../assets/img/hc/passed/jue001.png`, import.meta.url).href;
+        arr.push(url);
       }
       return arr;
     },

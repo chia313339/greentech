@@ -32,7 +32,7 @@
           <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#companyModal" @click="openModal(index)">
             <img :src="getCompanyLogo(index)" alt="公司">
           </a>
-          <div class="company-label">{{ company.name }}</div>
+          <div class="company-label" v-html="company.name"></div>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@ export default {
         { name: '欣辰健康' },
         { name: '屏東基督教醫院' },
         { name: '凌羣電腦' },
-        { name: '高醫岡山醫院' },
+        { name: '高雄醫學大學附設<br>高醫岡山醫院' },
         { name: '康博健康生活' },
         { name: '敏盛智慧健康管理中心' },
         { name: '普達康' },

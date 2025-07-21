@@ -119,25 +119,28 @@ export default {
     // 根據 activeTab 回傳不同的圖片陣列
     images() {
       let arr = [];
+      // 根據語言設定決定檔名後綴
+      const suffix = this.$i18n.locale === 'zh' ? '' : '_en';
+      
       if (this.activeTab === '初賽') {
         // 初賽： chu001 ~ chu005
         for (let i = 1; i <= 1; i++) {
           let num = i.toString().padStart(3, '0');
-          let url = new URL(`../../assets/img/city/passed/chu${num}.png`, import.meta.url).href;
+          let url = new URL(`../../assets/img/city/passed/chu${num}${suffix}.png`, import.meta.url).href;
           arr.push(url);
         }
       } else if (this.activeTab === '複賽') {
         // 複賽： fu001 ~ fu003
         for (let i = 1; i <= 1; i++) {
           let num = i.toString().padStart(3, '0');
-          let url = new URL(`../../assets/img/city/passed/fu${num}.png`, import.meta.url).href;
+          let url = new URL(`../../assets/img/city/passed/fu${num}${suffix}.png`, import.meta.url).href;
           arr.push(url);
         }
       } else if (this.activeTab === '決賽') {
         // 決賽： jue001 ~ jue002
         for (let i = 1; i <= 1; i++) {
           let num = i.toString().padStart(3, '0');
-          let url = new URL(`../../assets/img/city/passed/jue${num}.png`, import.meta.url).href;
+          let url = new URL(`../../assets/img/city/passed/jue${num}${suffix}.png`, import.meta.url).href;
           arr.push(url);
         }
       }

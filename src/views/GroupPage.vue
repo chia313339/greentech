@@ -134,7 +134,7 @@
 
     <!-- 右下角懸浮按鈕區 -->
     <div class="floating-buttons">
-      <button class="reg-btn" v-html="regBtnText" data-bs-toggle="modal" data-bs-target="#signModal"></button>
+      <!-- <button class="reg-btn" v-html="regBtnText" data-bs-toggle="modal" data-bs-target="#signModal"></button> -->
       <button class="lang-btn" @click="toggleLanguage">
         {{ languageBtnText }}
       </button>

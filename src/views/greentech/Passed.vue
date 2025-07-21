@@ -123,20 +123,23 @@ export default {
     // 根據 activeTab 回傳不同的圖片陣列
     images() {
       let arr = [];
+      // 根據語言設定決定檔名後綴
+      const suffix = this.$i18n.locale === 'zh' ? '' : '_en';
+      
       if (this.activeTab === '初賽') {
         // 初賽： chu001 ~ chu003 (改為3張)
         for (let i = 1; i <= 3; i++) {
           let num = i.toString().padStart(3, '0');
-          let url = new URL(`../../assets/img/passed/chu${num}.png`, import.meta.url).href;
+          let url = new URL(`../../assets/img/passed/chu${num}${suffix}.png`, import.meta.url).href;
           arr.push(url);
         }
       } else if (this.activeTab === '複賽') {
         // 複賽： fu001 (改為1張)
-        let url = new URL(`../../assets/img/passed/fu001.png`, import.meta.url).href;
+        let url = new URL(`../../assets/img/passed/fu001${suffix}.png`, import.meta.url).href;
         arr.push(url);
       } else if (this.activeTab === '決賽') {
         // 決賽： jue001 (改為1張)
-        let url = new URL(`../../assets/img/passed/jue001.png`, import.meta.url).href;
+        let url = new URL(`../../assets/img/passed/jue001${suffix}.png`, import.meta.url).href;
         arr.push(url);
       }
       return arr;

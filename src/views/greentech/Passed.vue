@@ -134,9 +134,12 @@ export default {
           arr.push(url);
         }
       } else if (this.activeTab === '複賽') {
-        // 複賽： fu001 (改為1張)
-        let url = new URL(`../../assets/img/passed/fu001${suffix}.png`, import.meta.url).href;
-        arr.push(url);
+        // 複賽： fu001 ~ fu003 (改為3張)
+        for (let i = 1; i <= 3; i++) {
+          let num = i.toString().padStart(3, '0');
+          let url = new URL(`../../assets/img/passed/fu${num}${suffix}.png`, import.meta.url).href;
+          arr.push(url);
+        }
       } else if (this.activeTab === '決賽') {
         // 決賽： jue001 (改為1張)
         let url = new URL(`../../assets/img/passed/jue001${suffix}.png`, import.meta.url).href;

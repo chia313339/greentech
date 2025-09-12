@@ -109,7 +109,7 @@ export default {
   name: 'GT-Scoring',
   data() {
     return {
-      activeTab: '初賽'
+      activeTab: '複賽'
     }
   },
   computed: {

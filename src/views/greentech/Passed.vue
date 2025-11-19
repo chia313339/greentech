@@ -141,9 +141,12 @@ export default {
           arr.push(url);
         }
       } else if (this.activeTab === '決賽') {
-        // 決賽： jue001 (改為1張)
-        let url = new URL(`../../assets/img/passed/jue001${suffix}.png`, import.meta.url).href;
-        arr.push(url);
+        // 決賽： jue001 ~ jue002 (改為2張)
+        for (let i = 1; i <= 2; i++) {
+          let num = i.toString().padStart(3, '0');
+          let url = new URL(`../../assets/img/passed/jue${num}${suffix}.png`, import.meta.url).href;
+          arr.push(url);
+        }
       }
       return arr;
     },

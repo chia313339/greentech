@@ -43,6 +43,16 @@
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="90000">
         <div class="carousel-inner">
           <div class="carousel-item active">
+            <!-- 新增封面影片頁，放在輪播最前面 -->
+            <div class="ratio ratio-16x9 w-75 mx-auto" style="margin-bottom: 105px;">
+              <iframe
+                src="https://www.youtube.com/embed/T80XuQEJ28k?si=AK1pVrfW2vvtwwHg"
+                title="YouTube video player"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <div class="carousel-item">
             <img src="@/assets/img/about/001.png" class="d-block w-100" alt="Image 1">
           </div>
           <div class="carousel-item">
@@ -63,7 +73,7 @@
         <div class="carousel-indicators custom-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <!-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> -->
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
       </div>
     </div>

@@ -6,6 +6,16 @@
     <!-- 小標題 -->
     <div class="title-little">{{ $t('class.city') }}</div>
 
+    <!-- 右上角文件按鈕 -->
+    <a
+      class="doc-button"
+      :href="docLink"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img :src="docIcon" alt="document link" />
+    </a>
+
     <!-- 標題欄 -->
     <div class="title-bar">{{ $t('nav.passed') }}</div>
 
@@ -105,11 +115,14 @@
 <script>
 import noneZh from '@/assets/img/city/passed/none.png';
 import noneEn from '@/assets/img/city/passed/none_en.png';
+import docIcon from '@/assets/docbt.png';
 export default {
   name: 'GT-Scoring',
   data() {
     return {
-      activeTab: '決賽'
+      activeTab: '決賽',
+      docIcon,
+      docLink: 'https://drive.google.com/file/d/1d_iRQcqdPrYoXWEX1eA8N32izwGUJXPn/view?usp=sharing'
     }
   },
   computed: {
@@ -235,6 +248,28 @@ export default {
   z-index: 9;
   font-size: calc(0.5vw + 0.6vh);
   text-align: center;
+}
+
+.doc-button {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  width: auto;
+  height: 50px;
+  display: inline-block;
+  z-index: 20;
+  transition: transform 0.2s ease;
+}
+
+.doc-button:hover {
+  transform: scale(1.05);
+}
+
+.doc-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* 按鈕容器 */

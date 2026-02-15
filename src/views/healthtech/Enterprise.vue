@@ -11,7 +11,7 @@
 
     <!-- 下載按鈕 -->
     <div class="buttons">
-      <a href="https://drive.google.com/drive/folders/1Hep9olw4j2YNzJxWm4m5bAFC76vN3uNM?usp=sharing" target="_blank">
+      <a href="https://drive.google.com/drive/folders/1yDTRu0xLASMoOe8QI1DeiBKQ5Cz2K9ab?usp=sharing" target="_blank">
         <button class="btn download-btn" style="background-color: #BA2553;">
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ downloadText }}
         </button>
@@ -25,15 +25,20 @@
 
     <!-- 內容層 -->
     <div class="content">
+      <!--
       <div class="grid-container">
-        <!-- 依序產生 22 個公司區塊 -->
+        依序產生公司區塊
         <div class="grid-item" v-for="(company, index) in companies" :key="index">
-          <!-- 點擊公司時更新 selectedCompanyIndex 並觸發 modal -->
+          點擊公司時更新 selectedCompanyIndex 並觸發 modal
           <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#companyModal" @click="openModal(index)">
             <img :src="getCompanyLogo(index)" alt="公司">
           </a>
           <div class="company-label" v-html="company.name"></div>
         </div>
+      </div>
+      -->
+      <div class="placeholder-container">
+        <img :src="passedImg" alt="No content yet">
       </div>
     </div>
 
@@ -208,6 +213,21 @@ export default {
   justify-content: center;
   overflow: hidden;
   margin-top: 10%;
+}
+
+.placeholder-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-container img {
+  max-width: 80vw;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  display: block;
 }
 
 /* Grid 排版 */

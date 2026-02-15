@@ -8,6 +8,13 @@
       <div class="buttons" style="margin-left: 10%;">
         <button
           class="btn btn-chu"
+          :class="{ active: activeTab === '2025' }"
+          @click="setActive('2025')"
+        >
+          2025
+        </button>
+        <button
+          class="btn btn-chu"
           :class="{ active: activeTab === '2024' }"
           @click="setActive('2024')"
         >
@@ -151,6 +158,7 @@
 </template>
 
 <script>
+// 2025 年圖片 (等待提供)
 // 2024 年圖片 (17 張)
 import img2024_00001 from '@/assets/img/retrospective/greentech/2024_00001.jpg';
 import img2024_00002 from '@/assets/img/retrospective/greentech/2024_00002.jpg';
@@ -197,9 +205,10 @@ export default {
   name: 'Retrospective',
   data() {
     return {
-      activeTab: '2024',
+      activeTab: '2025',
       selectedImage: null,
       // 靜態導入的圖片陣列（初始為空，在 created() 中填入）
+      p2025: [],
       p2024: [],
       p2023: [],
       p2022: []
@@ -208,6 +217,7 @@ export default {
   computed: {
     images() {
       switch (this.activeTab) {
+        case '2025': return this.p2025;
         case '2024': return this.p2024;
         case '2023': return this.p2023;
         case '2022': return this.p2022;
@@ -224,6 +234,10 @@ export default {
     },
     videos() {
       const videos = {
+        '2025': [
+          'https://www.youtube.com/embed/T80XuQEJ28k',
+          'https://www.youtube.com/embed/givhA2OkCZQ'
+        ],
         '2024': [
           'https://www.youtube.com/embed/1Vm3phKIDus',
           'https://www.youtube.com/embed/bIuWgA2FyHI?si=ySxOcwmgKIGe_Vrx'
@@ -241,6 +255,7 @@ export default {
     },
     carouselClass() {
       return {
+        '2025': 'chu',
         '2024': 'chu',
         '2023': 'fu',
         '2022': 'jue'
@@ -260,6 +275,7 @@ export default {
     },
     openWebsite() {
       const websiteMapping = {
+        '2025': 'https://greentech.startupterrace.tw/2025/',
         '2024': 'https://gt.startupterrace.tw/',
         '2023': 'https://gt.startupterrace.tw/2023%E5%B9%B4/',
         '2022': 'https://gt.startupterrace.tw/2022/'
@@ -281,6 +297,25 @@ export default {
   },
   created() {
     // 將靜態導入的圖片放入對應的陣列
+    this.p2025 = [
+      img2024_00001,
+      img2024_00002,
+      img2024_00003,
+      img2024_00004,
+      img2024_00005,
+      img2024_00006,
+      img2024_00007,
+      img2024_00008,
+      img2024_00009,
+      img2024_00010,
+      img2024_00011,
+      img2024_00012,
+      img2024_00013,
+      img2024_00014,
+      img2024_00015,
+      img2024_00016,
+      img2024_00017
+    ];
     this.p2024 = [
       img2024_00001,
       img2024_00002,

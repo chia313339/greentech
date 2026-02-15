@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import unitImgZh from '@/assets/img/contact/unit.png'
-import unitImgEn from '@/assets/img/contact/unit_en.png'
-import callImgZh from '@/assets/img/contact/call.png'
-import callImgEn from '@/assets/img/contact/call_en.png'
+import unitImgZh from '@/assets/img/hc/contact/unit.png'
+import unitImgEn from '@/assets/img/hc/contact/unit_en.png'
+import callImgZh from '@/assets/img/hc/contact/call.png'
+import callImgEn from '@/assets/img/hc/contact/call_en.png'
 import bkImgZh from '@/assets/img/contact/bk_b.png'
 import bkImgEn from '@/assets/img/contact/bk_b.png'
 

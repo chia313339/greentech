@@ -89,19 +89,19 @@ export default {
           },
           {
             question: '6. Are there any obligations that need to be fulfilled?',
-            answer: `• Finalists must fulfill the following obligations:
-1. Participate in at least one exchange or sharing event organized by the organizer and implementer.
-2. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display.
+            answer: `• Finalists must fulfill the following obligations: 
+   (1)Participate in at least one exchange or sharing event organized by the organizer and  implementer. 
+   (2)Provide a demo or introduction video (content should include data or products related   to this competition) to the organizer and implementer for subsequent promotion and display. 
 
-• Winners must fulfill the following obligations:
-1. Participate in at least one exhibition, promotion, or experiential event, with at least 50 attendees, organized by the organizer and implementer. After the event, evidence of participation (such as event photos or activity questionnaire) must be submitted to the organizer and implementer. 
-2. Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display.
-3. Sign a residency agreement with Startup Terrace or Startup Terrace Kaohsiung.`,
+• Winners must fulfill the following obligations: 
+   (1)Participate in at least one exhibition, promotion, or experiential event, with at least 50 attendees, organized by the organizer and implementer. After the event, evidence of participation (such as event photos or activity questionnaire) must be submitted to the organizer and implementer.
+   (2)Provide a demo or introduction video (content should include data or products related to this competition) to the organizer and implementer for subsequent promotion and display. 
+   (3)Sign a residency agreement with Startup Terrace or Startup Terrace Kaohsiung.`,
             isOpen: false
           },
           {
             question: '7. When is the deadline for application?',
-            answer: 'The application deadline is at 23:59 on May 30, 2025 (Friday). After completing the application, the system will send an Application Confirmation Letter; the implementer will consider the time shown in this email to take precedence.',
+            answer: 'The application deadline will be announced later. You must complete the application process before this deadline. After completion, the system will send you an application confirmation email. The time shown on this email will be the official confirmation date.',
             isOpen: false
           },
           {
@@ -122,6 +122,11 @@ export default {
           {
             question: '11. Can the contact person from the competition\'s topic-proposing company be provided?',
             answer: 'All the communication affairs for this competition are conducted through the executing units (Startup Terrace or Startup Terrace Kaohsiung) with the topic-providing company. We regret that we cannot provide contact information for individual companies.',
+            isOpen: false
+          },
+          {
+            question: '12. Will topic-proposing companies also sign Confidentiality Consent Form?',
+            answer: 'Yes, both the topic-proposing companies and participating startups are required to sign the Confidentiality Consent Form (Attachment 4)',
             isOpen: false
           },
         ];
@@ -159,8 +164,8 @@ export default {
             answer: `• 通過複賽者之優選新創企業須達成義務:
 1.應配合主辦單位及執行單位安排，參與至少 1 場交流分享活動。
 2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。
-            
-            • 通過決賽者之優勝新創企業須達成義務:
+
+• 通過決賽者之優勝新創企業須達成義務:
 1.應配合主辦單位及執行單位安排，參與至少1場達50人次(含)以上的成果展示、推廣或體驗活動。活動後須提交參與活動之佐證資料予主辦單位及執行單位，如：活動照片、交流心得。
 2.應提供競賽解決方案說明簡報一式，予主辦單位行政作業及留存。
 3.與林口新創園或亞灣新創園簽訂進駐合約。`,
@@ -168,7 +173,7 @@ export default {
           },
           {
             question: '7. 最後申請日是何時?',
-            answer: '申請截止時間為2025年5月30日(五)23時59分，需與此時間前完成報名申請作業，完成後系統將寄送〔申請確認信〕，以此封電子郵件顯示之時間為準。',
+            answer: '申請截止時間待公告，需與此時間前完成報名申請作業，完成後系統將寄送【申請確認信】，以此封電子郵件顯示之時間為準。',
             isOpen: false
           },
           {
@@ -189,6 +194,11 @@ export default {
           {
             question: '11. 是否可提供競賽出題企業聯繫窗口?',
             answer: '本競賽相關聯繫皆透過執行單位與出題企業進行溝通，恕無法提供企業窗口資訊。',
+            isOpen: false
+          },
+          {
+            question: '12. 出題企業也會簽署保密同意書嗎?',
+            answer: '是的。根據本競賽須知載明，出題企業及參賽新創企業均須簽署【附件四】之保密同意書。',
             isOpen: false
           },
         ];

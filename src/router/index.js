@@ -16,18 +16,6 @@ import GreentechRetrospective from '../views/greentech/Retrospective.vue'
 import GreentechFAQ from '../views/greentech/FAQ.vue'
 import GreentechContact from '../views/greentech/Contact.vue'
 
-// City 頁面
-import CityAbout from '../views/city/About.vue'
-import CitySchedule from '../views/city/Schedule.vue'
-import CityEnterprise from '../views/city/Enterprise.vue'
-import CityInstructions from '../views/city/Instructions.vue'
-import CityScoring from '../views/city/Scoring.vue'
-import CityAwards from '../views/city/Awards.vue'
-import CityPassed from '../views/city/Passed.vue'
-import CityRetrospective from '../views/city/Retrospective.vue'
-import CityFAQ from '../views/city/FAQ.vue'
-import CityContact from '../views/city/Contact.vue'
-
 // Healthtech 頁面
 import HealthtechAbout from '../views/healthtech/About.vue'
 import HealthtechSchedule from '../views/healthtech/Schedule.vue'
@@ -60,23 +48,6 @@ const routes = [
     ]
   },
   {
-    path: '/city',
-    component: GroupPage,
-    children: [
-      { path: '', redirect: 'about' },
-      { path: 'about', name: 'CityAbout', component: CityAbout },
-      { path: 'schedule', name: 'CitySchedule', component: CitySchedule },
-      { path: 'enterprise', name: 'CityEnterprise', component: CityEnterprise },
-      { path: 'instructions', name: 'CityInstructions', component: CityInstructions },
-      { path: 'scoring', name: 'CityScoring', component: CityScoring },
-      { path: 'awards', name: 'CityAwards', component: CityAwards },
-      { path: 'passed', name: 'CityPassed', component: CityPassed },
-      { path: 'retrospective', name: 'CityRetrospective', component: CityRetrospective },
-      { path: 'faq', name: 'CityFAQ', component: CityFAQ },
-      { path: 'contact', name: 'CityContact', component: CityContact }
-    ]
-  },
-  {
     path: '/healthtech',
     component: GroupPage,
     children: [
@@ -92,6 +63,18 @@ const routes = [
       { path: 'faq', name: 'HealthtechFAQ', component: HealthtechFAQ },
       { path: 'contact', name: 'HealthtechContact', component: HealthtechContact }
     ]
+  },
+  {
+    path: '/city',
+    redirect: '/greentech/about'
+  },
+  {
+    path: '/city/:navItem',
+    redirect: (to) => ({
+      path: `/greentech/${to.params.navItem || 'about'}`,
+      query: to.query,
+      hash: to.hash
+    })
   },
   {
     path: '/2024',

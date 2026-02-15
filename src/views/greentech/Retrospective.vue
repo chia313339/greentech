@@ -8,6 +8,13 @@
       <div class="buttons" style="margin-left: 10%;">
         <button
           class="btn btn-chu"
+          :class="{ active: activeTab === '2025' }"
+          @click="setActive('2025')"
+        >
+          2025
+        </button>
+        <button
+          class="btn btn-chu"
           :class="{ active: activeTab === '2024' }"
           @click="setActive('2024')"
         >
@@ -151,6 +158,28 @@
 </template>
 
 <script>
+// 2025 年圖片 (20 張)
+import img2025_00001 from '@/assets/img/retrospective/greentech/2025_00001.jpg';
+import img2025_00002 from '@/assets/img/retrospective/greentech/2025_00002.jpg';
+import img2025_00003 from '@/assets/img/retrospective/greentech/2025_00003.jpg';
+import img2025_00004 from '@/assets/img/retrospective/greentech/2025_00004.jpg';
+import img2025_00005 from '@/assets/img/retrospective/greentech/2025_00005.jpg';
+import img2025_00006 from '@/assets/img/retrospective/greentech/2025_00006.jpg';
+import img2025_00007 from '@/assets/img/retrospective/greentech/2025_00007.jpg';
+import img2025_00008 from '@/assets/img/retrospective/greentech/2025_00008.jpg';
+import img2025_00009 from '@/assets/img/retrospective/greentech/2025_00009.jpg';
+import img2025_00010 from '@/assets/img/retrospective/greentech/2025_00010.jpg';
+import img2025_00011 from '@/assets/img/retrospective/greentech/2025_00011.jpg';
+import img2025_00012 from '@/assets/img/retrospective/greentech/2025_00012.jpg';
+import img2025_00013 from '@/assets/img/retrospective/greentech/2025_00013.jpg';
+import img2025_00014 from '@/assets/img/retrospective/greentech/2025_00014.jpg';
+import img2025_00015 from '@/assets/img/retrospective/greentech/2025_00015.jpg';
+import img2025_00016 from '@/assets/img/retrospective/greentech/2025_00016.jpg';
+import img2025_00017 from '@/assets/img/retrospective/greentech/2025_00017.jpg';
+import img2025_00018 from '@/assets/img/retrospective/greentech/2025_00018.jpg';
+import img2025_00019 from '@/assets/img/retrospective/greentech/2025_00019.jpg';
+import img2025_00020 from '@/assets/img/retrospective/greentech/2025_00020.jpg';
+
 // 2024 年圖片 (17 張)
 import img2024_00001 from '@/assets/img/retrospective/greentech/2024_00001.jpg';
 import img2024_00002 from '@/assets/img/retrospective/greentech/2024_00002.jpg';
@@ -197,9 +226,10 @@ export default {
   name: 'Retrospective',
   data() {
     return {
-      activeTab: '2024',
+      activeTab: '2025',
       selectedImage: null,
       // 靜態導入的圖片陣列（初始為空，在 created() 中填入）
+      p2025: [],
       p2024: [],
       p2023: [],
       p2022: []
@@ -208,6 +238,7 @@ export default {
   computed: {
     images() {
       switch (this.activeTab) {
+        case '2025': return this.p2025;
         case '2024': return this.p2024;
         case '2023': return this.p2023;
         case '2022': return this.p2022;
@@ -224,6 +255,10 @@ export default {
     },
     videos() {
       const videos = {
+        '2025': [
+          'https://www.youtube.com/embed/T80XuQEJ28k',
+          'https://www.youtube.com/embed/givhA2OkCZQ'
+        ],
         '2024': [
           'https://www.youtube.com/embed/1Vm3phKIDus',
           'https://www.youtube.com/embed/bIuWgA2FyHI?si=ySxOcwmgKIGe_Vrx'
@@ -241,6 +276,7 @@ export default {
     },
     carouselClass() {
       return {
+        '2025': 'chu',
         '2024': 'chu',
         '2023': 'fu',
         '2022': 'jue'
@@ -260,6 +296,7 @@ export default {
     },
     openWebsite() {
       const websiteMapping = {
+        '2025': 'https://greentech.startupterrace.tw/2025/',
         '2024': 'https://gt.startupterrace.tw/',
         '2023': 'https://gt.startupterrace.tw/2023%E5%B9%B4/',
         '2022': 'https://gt.startupterrace.tw/2022/'
@@ -281,6 +318,28 @@ export default {
   },
   created() {
     // 將靜態導入的圖片放入對應的陣列
+    this.p2025 = [
+      img2025_00001,
+      img2025_00002,
+      img2025_00003,
+      img2025_00004,
+      img2025_00005,
+      img2025_00006,
+      img2025_00007,
+      img2025_00008,
+      img2025_00009,
+      img2025_00010,
+      img2025_00011,
+      img2025_00012,
+      img2025_00013,
+      img2025_00014,
+      img2025_00015,
+      img2025_00016,
+      img2025_00017,
+      img2025_00018,
+      img2025_00019,
+      img2025_00020
+    ];
     this.p2024 = [
       img2024_00001,
       img2024_00002,

@@ -11,7 +11,7 @@
 
     <!-- 下載按鈕 -->
     <div class="buttons">
-      <a href="https://drive.google.com/drive/folders/1M1KVTKi09n1gRECPDTfAn1Y0UjFMVZAb?usp=drive_link" target="_blank">
+      <a href="https://drive.google.com/drive/folders/188m8ApHFOTDGNYvaa662UxA67izw8mxc?usp=sharing" target="_blank">
         <button class="btn download-btn" style="background-color: #BA2553;">
           <i class="fa-solid fa-download"></i>&nbsp;&nbsp;{{ downloadText }}
         </button>
@@ -25,15 +25,20 @@
 
     <!-- 內容層 -->
     <div class="content">
+      <!--
       <div class="grid-container">
-        <!-- 依序產生 22 個公司區塊 -->
+        依序產生 22 個公司區塊
         <div class="grid-item" v-for="(company, index) in companies" :key="index">
-          <!-- 點擊公司時更新 selectedCompanyIndex 並觸發 modal -->
+          點擊公司時更新 selectedCompanyIndex 並觸發 modal
           <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#companyModal" @click="openModal(index)">
             <img :src="getCompanyLogo(index)" alt="公司">
           </a>
           <div class="company-label">{{ company.name }}</div>
         </div>
+      </div>
+      -->
+      <div class="placeholder-container">
+        <img :src="placeholderImage" alt="No content yet">
       </div>
     </div>
 
@@ -77,6 +82,9 @@
 </template>
 
 <script>
+import noneZh from '@/assets/img/passed/none.png';
+import noneEn from '@/assets/img/passed/none_en.png';
+
 export default {
   name: 'Greentech-Enterprise',
   data() {
@@ -116,6 +124,9 @@ export default {
     },
     videoText() {
       return this.$i18n.locale === 'zh' ? '觀看題目說明影片' : 'Watch Question Explanation Video';
+    },
+    placeholderImage() {
+      return this.$i18n.locale === 'zh' ? noneZh : noneEn;
     },
     // 對於一般公司，依據所選索引回傳單張圖片
     modalImage() {
@@ -258,6 +269,21 @@ export default {
   justify-content: center;
   overflow: hidden;
   margin-top: 10%;
+}
+
+.placeholder-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-container img {
+  max-width: 80vw;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  display: block;
 }
 
 /* Grid 排版 */

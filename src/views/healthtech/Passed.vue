@@ -7,14 +7,14 @@
     <div class="title-little">{{ $t('class.hc') }}</div>
 
     <!-- 右上角文件按鈕 -->
-    <a
+    <!-- <a
       class="doc-button"
       :href="docLink"
       target="_blank"
       rel="noopener noreferrer"
     >
       <img :src="docIcon" alt="document link" />
-    </a>
+    </a> -->
 
     <!-- 標題欄 -->
     <div class="title-bar">{{ $t('nav.passed') }}</div>
@@ -133,32 +133,9 @@ export default {
     passedImg() {
       return this.$i18n.locale === 'zh' ? noneZh : noneEn;
     },
-    // 根據 activeTab 回傳不同的圖片陣列
+    // 三個分頁都顯示同一張佔位圖（依語系切換）
     images() {
-      let arr = [];
-      // 根據語言設定決定檔名後綴
-      const suffix = this.$i18n.locale === 'zh' ? '' : '_en';
-      
-      if (this.activeTab === '初賽') {
-        // 初賽： chu001 ~ chu003 (改為3張)
-        for (let i = 1; i <= 2; i++) {
-          let num = i.toString().padStart(3, '0');
-          let url = new URL(`../../assets/img/hc/passed/chu${num}${suffix}.png`, import.meta.url).href;
-          arr.push(url);
-        }
-      } else if (this.activeTab === '複賽') {
-        // 複賽： fu001 ~ fu002 (改為2張)
-        for (let i = 1; i <= 2; i++) {
-          let num = i.toString().padStart(3, '0');
-          let url = new URL(`../../assets/img/hc/passed/fu${num}${suffix}.png`, import.meta.url).href;
-          arr.push(url);
-        }
-      } else if (this.activeTab === '決賽') {
-        // 決賽： jue001 (改為1張)
-        let url = new URL(`../../assets/img/hc/passed/jue001${suffix}.png`, import.meta.url).href;
-        arr.push(url);
-      }
-      return arr;
+      return [this.passedImg];
     },
     carouselClass() {
       switch (this.activeTab) {

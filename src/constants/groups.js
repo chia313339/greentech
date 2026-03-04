@@ -1,6 +1,6 @@
 export const GROUP_META = [
   { key: 'greentech', label: 'GREEN TECH', styleClass: 'greentech' },
-  { key: 'healthtech', label: 'HEALTH TECH', styleClass: 'healthtech' }
+  { key: 'healthtech', label: 'AI transformer', styleClass: 'healthtech' }
 ]
 
 export const ACTIVE_GROUP_KEYS = GROUP_META.map((group) => group.key)

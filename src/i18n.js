@@ -63,7 +63,7 @@ const messages = {
     class: {
       gt: "綠色科技組",
       city: "城市組",
-      hc: "健康照護組"
+      hc: "AI 轉型組"
     },
   }
 }

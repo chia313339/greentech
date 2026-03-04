@@ -129,7 +129,6 @@
           <img src="@/assets/img/retrospective/com/009.png" alt="Image 9">
           <img src="@/assets/img/retrospective/com/010.png" alt="Image 10">
           <img src="@/assets/img/retrospective/com/011.png" alt="Image 11">
-          <img src="@/assets/img/retrospective/com/012.png" alt="Image 12">
           <!-- 複製一次，達成無縫循環 -->
           <img src="@/assets/img/retrospective/com/001.png" alt="Image 1">
           <img src="@/assets/img/retrospective/com/002.png" alt="Image 2">
@@ -142,7 +141,6 @@
           <img src="@/assets/img/retrospective/com/009.png" alt="Image 9">
           <img src="@/assets/img/retrospective/com/010.png" alt="Image 10">
           <img src="@/assets/img/retrospective/com/011.png" alt="Image 11">
-          <img src="@/assets/img/retrospective/com/012.png" alt="Image 12">
         </div>
       </div>
     </div>
@@ -608,7 +606,10 @@ export default {
 
 .marquee-container {
   width: 80%;
+  height: 100%;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
   overflow: hidden; /* 保持無縫跑馬燈效果 */
 }
 
@@ -621,7 +622,8 @@ export default {
 
 /* 修改這裡，讓圖片高度自動滿足容器，高度固定、寬度自動 */
 .marquee img {
-  height: 30px;
+  height: 42px;
+  max-height: 100%;
   width: auto;
   object-fit: contain;
 }

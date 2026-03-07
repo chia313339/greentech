@@ -10,7 +10,7 @@
 
 這是我用vue3+vite+boostrap建立的網站，請幫我根據需求進行修改
 1. 開場請幫我改成全屏播放src/assets/opening.mp4，維持右下角的opening-skip按鈕，但移除opening-countdown功能
-2. 開場影片播完後，全屏顯示圖片src/assets/opening.png，並且在圖片上有三個圓形按鈕，在畫面top60％的位子，水平置中呈現，由左至右 #00DB00色圓形寫Greentech， #009CFF色圓形寫City， #FFB600圓形寫Health care，每個按鈕hover會稍微放大，不管點哪一個按鈕，都會把全屏圖片關閉
+2. 開場影片播完後，全屏顯示圖片src/assets/opening.png，並且在圖片上有三個圓形按鈕，在畫面top60％的位子，水平置中呈現，由左至右 #00DB00色圓形寫Greentech， #009CFF色圓形寫City， #FFB600圓形寫AI transformer，每個按鈕hover會稍微放大，不管點哪一個按鈕，都會把全屏圖片關閉
 3. 關閉後就顯示原本的網站頁面，其餘功能皆不變
 
 #FFBA40
@@ -176,7 +176,7 @@ answer: 'Yes, both the topic-proposing companies and participating startups are 
             City
           </button>
           <button class="opening-btn healthtech" @click="skipOpening">
-            Health care
+            AI transformer
           </button>
         </div>
 

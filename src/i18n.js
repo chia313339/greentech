@@ -31,7 +31,7 @@ const messages = {
     class: {
       gt: "Green tech",
       city: "City",
-      hc: "Health care"
+      hc: "AI transformer"
     },
   },
   zh: {

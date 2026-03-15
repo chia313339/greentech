@@ -17,16 +17,13 @@ import GreentechFAQ from '../views/greentech/FAQ.vue'
 import GreentechContact from '../views/greentech/Contact.vue'
 
 // Healthtech 頁面
-import HealthtechAbout from '../views/healthtech/About.vue'
 import HealthtechSchedule from '../views/healthtech/Schedule.vue'
 import HealthtechEnterprise from '../views/healthtech/Enterprise.vue'
 import HealthtechInstructions from '../views/healthtech/Instructions.vue'
 import HealthtechScoring from '../views/healthtech/Scoring.vue'
 import HealthtechAwards from '../views/healthtech/Awards.vue'
 import HealthtechPassed from '../views/healthtech/Passed.vue'
-import HealthtechRetrospective from '../views/healthtech/Retrospective.vue'
 import HealthtechFAQ from '../views/healthtech/FAQ.vue'
-import HealthtechContact from '../views/healthtech/Contact.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: HomePage },
@@ -52,16 +49,37 @@ const routes = [
     component: GroupPage,
     children: [
       { path: '', redirect: 'about' },
-      { path: 'about', name: 'HealthtechAbout', component: HealthtechAbout },
+      {
+        path: 'about',
+        redirect: (to) => ({
+          path: '/greentech/about',
+          query: to.query,
+          hash: to.hash
+        })
+      },
       { path: 'schedule', name: 'HealthtechSchedule', component: HealthtechSchedule },
       { path: 'enterprise', name: 'HealthtechEnterprise', component: HealthtechEnterprise },
       { path: 'instructions', name: 'HealthtechInstructions', component: HealthtechInstructions },
       { path: 'scoring', name: 'HealthtechScoring', component: HealthtechScoring },
       { path: 'awards', name: 'HealthtechAwards', component: HealthtechAwards },
       { path: 'passed', name: 'HealthtechPassed', component: HealthtechPassed },
-      { path: 'retrospective', name: 'HealthtechRetrospective', component: HealthtechRetrospective },
+      {
+        path: 'retrospective',
+        redirect: (to) => ({
+          path: '/greentech/retrospective',
+          query: to.query,
+          hash: to.hash
+        })
+      },
       { path: 'faq', name: 'HealthtechFAQ', component: HealthtechFAQ },
-      { path: 'contact', name: 'HealthtechContact', component: HealthtechContact }
+      {
+        path: 'contact',
+        redirect: (to) => ({
+          path: '/greentech/contact',
+          query: to.query,
+          hash: to.hash
+        })
+      }
     ]
   },
   {

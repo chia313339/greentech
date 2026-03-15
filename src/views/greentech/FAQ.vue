@@ -101,7 +101,7 @@ export default {
           },
           {
             question: '7. When is the deadline for application?',
-            answer: 'The application deadline will be announced later. You must complete the application process before this deadline. After completion, the system will send you an application confirmation email. The time shown on this email will be the official confirmation date.',
+            answer: 'The application deadline is at 23:59 on May 29, 2026 (Friday). After completion, the system will send you an application confirmation email. The time shown on this email will be the official confirmation date.',
             isOpen: false
           },
           {
@@ -173,7 +173,7 @@ export default {
           },
           {
             question: '7. 最後申請日是何時？',
-            answer: '申請截止時間待公告，填寫完成後，系統將寄送【申請確認信】，執行單位將以此封信電子郵件顯示之時間為準。',
+            answer: '申請截止時間為2026年5月29日(五)23時59分，填寫完成後，系統將寄送【申請確認信】，執行單位將以此封信電子郵件顯示之時間為準。',
             isOpen: false
           },
           {

@@ -79,7 +79,7 @@ export default {
           },
           {
             question: '4. What should I do if I encounter any issues during the registration or application document submission process?',
-            answer: 'Please fill out the inquiry form located at the bottom of the webpage under "Contact Us," or contact the execution team at (07)338-3827 ext. 306/311',
+            answer: 'Please fill out the inquiry form located at the bottom of the webpage under "Contact Us," or contact the execution team at (02)2577-4249 ext.539/290/535',
             isOpen: false
           },
           {
@@ -101,7 +101,7 @@ export default {
           },
           {
             question: '7. When is the deadline for application?',
-            answer: 'The application deadline will be announced later. You must complete the application process before this deadline. After completion, the system will send you an application confirmation email. The time shown on this email will be the official confirmation date.',
+            answer: 'The application deadline is at 23:59 on May 29, 2026 (Friday). After completion, the system will send you an application confirmation email. The time shown on this email will be the official confirmation date.',
             isOpen: false
           },
           {
@@ -151,7 +151,7 @@ export default {
           },
           {
             question: '4. 如果報名或填寫申請文件遇到問題時，怎麼辦?',
-            answer: '請至網頁下方〔聯繫我們〕填寫提問，或是來電洽詢執行團隊(07)338-3827分機 #306 #311。',
+            answer: '請至網頁下方〔聯繫我們〕填寫提問，或是來電洽詢執行團隊(02)2577-4249分機 #539 #290 #535。',
             isOpen: false
           },
           {
@@ -173,7 +173,7 @@ export default {
           },
           {
             question: '7. 最後申請日是何時?',
-            answer: '申請截止時間待公告，需與此時間前完成報名申請作業，完成後系統將寄送【申請確認信】，以此封電子郵件顯示之時間為準。',
+            answer: '申請截止時間為2026年5月29日(五)23時59分，填寫完成後，需與此時間前完成報名申請作業，完成後系統將寄送【申請確認信】，以此封電子郵件顯示之時間為準。',
             isOpen: false
           },
           {

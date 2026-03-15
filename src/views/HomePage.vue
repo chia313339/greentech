@@ -15,15 +15,18 @@
       </div>
       <div v-else-if="openingStage === 'image'" class="opening-image-container">
         <img src="@/assets/opening.png" alt="Opening" class="opening-image" />
-        <div class="opening-buttons">
-          <a
-            v-for="group in groups"
-            :key="group.key"
-            @click.prevent="selectGroup(group.key)"
-            class="opening-link"
-          >
-            <img :src="group.openingImg" :alt="group.label" class="opening-img" />
-          </a>
+        <div class="opening-image-content">
+          <img src="@/assets/center-logo.png" alt="Center Logo" class="opening-center-logo" />
+          <div class="opening-buttons">
+            <a
+              v-for="group in groups"
+              :key="group.key"
+              @click.prevent="selectGroup(group.key)"
+              class="opening-link"
+            >
+              <img :src="group.openingImg" :alt="group.label" class="opening-img" />
+            </a>
+          </div>
         </div>
       </div>
       <!-- Skip 按鈕只在影片階段顯示，位置置於右上角 -->
@@ -46,14 +49,10 @@
                 ></iframe>
               </div>
             </div>
-            <div class="carousel-item">
-              <img src="@/assets/img/about/001.png" class="d-block w-100" alt="Image 1">
-            </div>
           </div>
           <div class="carousel-indicators custom-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
         </div>
       </div>
@@ -106,7 +105,9 @@ export default {
     },
     selectGroup(group) {
       store.currentGroup = normalizeGroup(group)
+      store.currentNav = 'about'
       this.showOpening = false
+      this.$router.push('/greentech/about')
     }
   }
 }
@@ -137,14 +138,30 @@ export default {
   height: 100%;
 }
 
-.opening-buttons {
-  margin-top: 17vh;
+.opening-image-content {
   position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2.6vh, 36px);
+  padding: 6vh 5vw;
+}
+
+.opening-center-logo {
+  width: min(52vw, 620px);
+  max-width: 50vw;
+  max-height: 40vh;
+  height: auto;
+  object-fit: contain;
+}
+
+.opening-buttons {
   display: flex;
   gap: 8vw;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .opening-link {
@@ -258,5 +275,23 @@ export default {
   margin: 0 auto;
   box-sizing: border-box;
   border: none;
+}
+
+@media (max-width: 900px) {
+  .opening-image-content {
+    gap: clamp(14px, 2.2vh, 24px);
+  }
+
+  .opening-center-logo {
+    width: min(68vw, 460px);
+  }
+
+  .opening-buttons {
+    gap: 6vw;
+  }
+
+  .opening-img {
+    width: min(32vw, 220px);
+  }
 }
 </style>

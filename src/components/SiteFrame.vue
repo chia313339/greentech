@@ -5,7 +5,7 @@
         v-for="group in groups"
         :key="group.key"
         class="group-btn"
-        :class="[group.styleClass, { 'active-btn': currentGroup === group.key }]"
+        :class="[group.styleClass, { 'active-btn': isGroupActive(group.key) }]"
         @click="goToGroup(group.key)"
       >
         {{ group.label }}
@@ -23,7 +23,7 @@
       <div class="bottom-nav">
         <template v-for="(item, index) in navItems" :key="item">
           <router-link
-            :to="`/${currentGroup}/${item}`"
+            :to="resolveNavPath(item)"
             class="nav-link"
             :class="{ active: currentNav === item }"
             @click="updateNav(item)"
@@ -130,22 +130,44 @@ export default {
           src: isZh ? healthtechZh : healthtechEn
         }
       ]
+    },
+    isSharedPage() {
+      return this.$route.path !== '/' && this.isSharedNav(this.currentNav)
     }
   },
   methods: {
+    isSharedNav(nav) {
+      return nav === 'about' || nav === 'retrospective' || nav === 'contact'
+    },
+    isGroupActive(groupKey) {
+      if (this.isSharedPage) {
+        return groupKey === 'greentech' || groupKey === 'healthtech'
+      }
+      return this.currentGroup === groupKey
+    },
+    resolveNavPath(navKey) {
+      const targetGroup = this.isSharedNav(navKey) ? 'greentech' : this.currentGroup
+      return `/${targetGroup}/${navKey}`
+    },
     syncRouteState() {
       const segments = this.$route.path.split('/')
       const routeGroup = segments[1]
       const routeNav = segments[2]
-      store.currentGroup = normalizeGroup(routeGroup || store.currentGroup)
-      store.currentNav = routeNav || store.currentNav || 'about'
+      const targetNav = routeNav || store.currentNav || 'about'
+
+      if (!this.isSharedNav(targetNav)) {
+        store.currentGroup = normalizeGroup(routeGroup || store.currentGroup)
+      }
+      store.currentNav = targetNav
     },
     goToGroup(route) {
       const targetGroup = normalizeGroup(route)
       const targetNav = this.groupSwitchBehavior === 'reset'
         ? 'about'
         : (store.currentNav || 'about')
-      const targetPath = `/${targetGroup}/${targetNav}`
+      const targetPath = this.isSharedNav(targetNav)
+        ? `/greentech/${targetNav}`
+        : `/${targetGroup}/${targetNav}`
 
       store.currentGroup = targetGroup
       store.currentNav = targetNav
@@ -372,14 +394,17 @@ export default {
 }
 
 .modal-custom-size {
-  width: 90vw;
-  height: 60vh;
+  width: min(90vw, 1100px);
   max-width: 90vw;
-  max-height: 60vh;
+  margin: 1rem auto;
 }
 
 .custom-modal-content {
-  height: 100%;
+  height: min(60vh, calc(100dvh - 2rem));
+  max-height: calc(100dvh - 2rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background-size: cover;
   border: none;
 }
@@ -390,10 +415,12 @@ export default {
 }
 
 .modal-body {
+  flex: 1;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: clamp(10px, 2vh, 20px) clamp(12px, 2vw, 24px) clamp(16px, 3vh, 24px);
 }
 
 .custom-modal-content {
@@ -407,15 +434,19 @@ export default {
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: 3vw;
-  max-width: 70vw;
+  gap: clamp(10px, 3vw, 48px);
+  width: 100%;
+  max-width: 900px;
+  height: 100%;
   margin: 0 auto;
 }
 
 .signup-images-container img {
-  width: calc((100% - 1 * 3vw) / 2);
-  height: auto;
+  width: min(32vw, 360px);
+  max-width: calc(50% - clamp(6px, 1.5vw, 24px));
   max-height: 100%;
+  height: auto;
+  object-fit: contain;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -430,5 +461,16 @@ export default {
 
 :deep(.modal) {
   z-index: 3001 !important;
+}
+
+@media (max-height: 760px) {
+  .custom-modal-content {
+    height: calc(100dvh - 1.5rem);
+    max-height: calc(100dvh - 1.5rem);
+  }
+
+  .modal-header {
+    padding: 0.5rem 0.75rem 0;
+  }
 }
 </style>

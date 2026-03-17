@@ -55,6 +55,12 @@
             allowfullscreen
           ></iframe>
         </div>
+        <!-- 2025 右側：YouTube 尚未上傳，暫以本地 MP4 替代 -->
+        <div class="video-item" v-if="activeTab === '2025'">
+          <video width="100%" height="315" controls style="display:block;">
+            <source src="@/assets/img/retrospective/2025.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
 
       <!-- 下排 輪播 -->
@@ -234,7 +240,7 @@ export default {
       const videos = {
         '2025': [
           'https://www.youtube.com/embed/T80XuQEJ28k',
-          'https://www.youtube.com/embed/givhA2OkCZQ'
+          // 'https://www.youtube.com/embed/givhA2OkCZQ' // 影片尚未上傳，暫以本地 MP4 替代
         ],
         '2024': [
           'https://www.youtube.com/embed/1Vm3phKIDus',

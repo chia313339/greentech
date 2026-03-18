@@ -107,7 +107,6 @@ export default {
       store.currentGroup = normalizeGroup(group)
       store.currentNav = 'about'
       this.showOpening = false
-      this.$router.push('/greentech/about')
     }
   }
 }

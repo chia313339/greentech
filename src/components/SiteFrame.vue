@@ -25,7 +25,7 @@
           <router-link
             :to="resolveNavPath(item)"
             class="nav-link"
-            :class="{ active: currentNav === item }"
+            :class="{ active: shouldHighlightNav && currentNav === item }"
             @click="updateNav(item)"
           >
             {{ $t(`nav.${item}`) }}
@@ -132,7 +132,10 @@ export default {
       ]
     },
     isSharedPage() {
-      return this.$route.path !== '/' && this.isSharedNav(this.currentNav)
+      return this.$route.path === '/' || this.isSharedNav(this.currentNav)
+    },
+    shouldHighlightNav() {
+      return this.$route.path !== '/'
     }
   },
   methods: {

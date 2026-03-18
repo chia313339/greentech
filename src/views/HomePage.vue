@@ -37,10 +37,10 @@
       <div class="home-content">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="90000">
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <!-- <div class="carousel-item ">
               <img src="@/assets/2026banner.png" class="d-block w-100" alt="2026 Banner">
-            </div>
-            <div class="carousel-item">
+            </div> -->
+            <div class="carousel-item active">
               <div class="ratio ratio-16x9 w-75 mx-auto" style="margin-bottom: 105px;">
                 <iframe
                   src="https://www.youtube.com/embed/T80XuQEJ28k?si=AK1pVrfW2vvtwwHg"
@@ -50,10 +50,10 @@
               </div>
             </div>
           </div>
-          <div class="carousel-indicators custom-indicators">
+          <!-- <div class="carousel-indicators custom-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          </div>
+          </div> -->
         </div>
       </div>
     </SiteFrame>

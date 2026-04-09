@@ -25,20 +25,18 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <!--
       <div class="grid-container">
-        依序產生公司區塊
-        <div class="grid-item" v-for="(company, index) in companies" :key="index">
-          點擊公司時更新 selectedCompanyIndex 並觸發 modal
-          <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#companyModal" @click="openModal(index)">
-            <img :src="getCompanyLogo(index)" alt="公司">
+        <div class="grid-item" v-for="company in companies" :key="company.id">
+          <a
+            href="javascript:void(0)"
+            data-bs-toggle="modal"
+            data-bs-target="#companyModal"
+            @click="openModal(company.id)"
+          >
+            <img :src="getCompanyLogo(company.id)" :alt="getCompanyName(company)">
           </a>
-          <div class="company-label" v-html="company.name"></div>
+          <div class="company-label">{{ getCompanyName(company) }}</div>
         </div>
-      </div>
-      -->
-      <div class="placeholder-container">
-        <img :src="passedImg" alt="No content yet">
       </div>
     </div>
 
@@ -46,7 +44,6 @@
     <div class="modal fade" id="companyModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content p-0 border-0">
-          <!-- 右上角的 X 按鈕 -->
           <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-body p-0">
             <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
@@ -58,62 +55,53 @@
 </template>
 
 <script>
-import noneZh from '@/assets/img/hc/passed/none.png';
-import noneEn from '@/assets/img/hc/passed/none_en.png';
-
 export default {
   name: 'hc-Enterprise',
   data() {
     return {
-      // 記錄目前點擊的公司（索引：0～21）
-      selectedCompanyIndex: null,
-      // 公司列表，共 22 間，依照需求順序與名稱設定
+      selectedCompanyId: 1,
       companies: [
-        { name: '旭安日照' },
-        { name: '秀和苑' },
-        { name: '亞東醫院' },
-        { name: '奇美食品' },
-        { name: '欣辰健康' },
-        { name: '屏東基督教醫院' },
-        { name: '凌羣電腦' },
-        { name: '高雄醫學大學附設<br>高醫岡山醫院' },
-        { name: '康博健康生活' },
-        { name: '敏盛智慧健康管理中心' },
-        { name: '普達康' },
-        { name: '福樂多' },
+        { id: 1, zh: '永雋科技', en: 'EVERDURA' },
+        { id: 2, zh: '旭安日照', en: '' },
+        { id: 3, zh: '亞果遊艇', en: 'ARGO YACHT GROUP' },
+        { id: 4, zh: '屏基', en: 'PTCH' },
+        { id: 5, zh: '凌羣電腦', en: 'SYSCOM' },
+        { id: 6, zh: '秀和基金會', en: '' },
+        { id: 7, zh: '高醫岡山醫院', en: '' },
+        { id: 8, zh: '康博集團', en: 'CALMPORT GROUP' },
+        { id: 9, zh: '敏盛綜合醫院', en: 'Min Sheng General Hospital' },
+        { id: 10, zh: '普達康', en: '' },
+        { id: 11, zh: '康威特', en: 'ConvaTec Taiwan' },
+        { id: 12, zh: '福樂多醫療福祉事業', en: 'FUROTO' },
       ]
     }
   },
   computed: {
-    passedImg() {
-      return this.$i18n.locale === 'zh' ? noneZh : noneEn;
-    },
     downloadText() {
       return this.$i18n.locale === 'zh' ? '完整題目下載' : 'Download All Topics';
     },
     videoText() {
       return this.$i18n.locale === 'zh' ? '觀看題目說明影片' : 'Watch Question Explanation Video';
     },
-    // 根據目前選擇的公司及語系，動態回傳 modal 詳細內容圖片
     modalImage() {
-      if (this.selectedCompanyIndex === null) return '';
-      const number = (this.selectedCompanyIndex + 1).toString().padStart(3, '0');
+      const number = this.selectedCompanyId.toString().padStart(3, '0');
       if (this.$i18n.locale === 'zh') {
         return new URL(`../../assets/img/hc/enterprise/content/zh/com_content_${number}.png`, import.meta.url).href;
-      } else {
-        return new URL(`../../assets/img/hc/enterprise/content/en/com_content_en_${number}.png`, import.meta.url).href;
       }
+      return new URL(`../../assets/img/hc/enterprise/content/en/com_content_en_${number}.png`, import.meta.url).href;
     }
   },
   methods: {
-    // 點擊公司時記錄目前索引
-    openModal(index) {
-      this.selectedCompanyIndex = index;
+    openModal(companyId) {
+      this.selectedCompanyId = companyId;
     },
-    // 根據 index 動態回傳該公司 logo 的圖片路徑
-    getCompanyLogo(index) {
-      const number = (index + 1).toString().padStart(3, '0');
-      return new URL(`../../assets/img/hc/enterprise/logo/com_content_${number}.png`, import.meta.url).href;
+    getCompanyName(company) {
+      if (this.$i18n.locale === 'zh') return company.zh;
+      return company.en || company.zh;
+    },
+    getCompanyLogo(companyId) {
+      const number = companyId.toString().padStart(3, '0');
+      return new URL(`../../assets/img/hc/enterprise/logo/com_${number}.png`, import.meta.url).href;
     }
   },
 }
@@ -215,21 +203,6 @@ export default {
   margin-top: 10%;
 }
 
-.placeholder-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.placeholder-container img {
-  max-width: 80vw;
-  max-height: 70vh;
-  width: auto;
-  height: auto;
-  display: block;
-}
-
 /* Grid 排版 */
 .grid-container {
   display: grid;
@@ -273,7 +246,7 @@ export default {
 
 .company-label {
   margin-top: 5px;
-  font-size: 1vw;
+  font-size: clamp(11px, 0.8vw, 16px);
   font-weight: bold;
 }
 
@@ -297,22 +270,5 @@ export default {
 .modal-dialog {
   max-width: 90vw !important;
   max-height: 90vh !important;
-}
-
-/* 圖片容器 */
-.img-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: -5%;
-}
-
-.img-container img {
-  max-width: 90vw;
-  max-height: 80vh;
-  width: auto;
-  height: auto;
-  display: block;
 }
 </style>

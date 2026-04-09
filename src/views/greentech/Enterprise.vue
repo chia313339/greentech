@@ -25,20 +25,18 @@
 
     <!-- 內容層 -->
     <div class="content">
-      <!--
       <div class="grid-container">
-        依序產生 22 個公司區塊
-        <div class="grid-item" v-for="(company, index) in companies" :key="index">
-          點擊公司時更新 selectedCompanyIndex 並觸發 modal
-          <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#companyModal" @click="openModal(index)">
-            <img :src="getCompanyLogo(index)" alt="公司">
+        <div class="grid-item" v-for="company in companies" :key="company.id">
+          <a
+            href="javascript:void(0)"
+            data-bs-toggle="modal"
+            data-bs-target="#companyModal"
+            @click="openModal(company.id)"
+          >
+            <img :src="getCompanyLogo(company.id)" :alt="getCompanyName(company)">
           </a>
-          <div class="company-label">{{ company.name }}</div>
+          <div class="company-label">{{ getCompanyName(company) }}</div>
         </div>
-      </div>
-      -->
-      <div class="placeholder-container">
-        <img :src="placeholderImage" alt="No content yet">
       </div>
     </div>
 
@@ -46,34 +44,9 @@
     <div class="modal fade" id="companyModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content p-0 border-0">
-          <!-- 右上角的 X 按鈕 -->
           <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
           <div class="modal-body p-0">
-            <!-- 若選擇的公司為第8間（台灣萊雅），使用輪播呈現兩張圖片 -->
-            <template v-if="selectedCompanyIndex === 7">
-              <div id="companyCarousel" class="carousel slide" data-bs-interval="false">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img :src="modalImage1" alt="公司詳細內容 1" class="img-fluid">
-                  </div>
-                  <div class="carousel-item">
-                    <img :src="modalImage2" alt="公司詳細內容 2" class="img-fluid">
-                  </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#companyCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#companyCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-            </template>
-            <!-- 其他公司顯示單張圖片 -->
-            <template v-else>
-              <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
-            </template>
+            <img :src="modalImage" alt="公司詳細內容" class="img-fluid">
           </div>
         </div>
       </div>
@@ -82,39 +55,31 @@
 </template>
 
 <script>
-import noneZh from '@/assets/img/passed/none.png';
-import noneEn from '@/assets/img/passed/none_en.png';
-
 export default {
   name: 'Greentech-Enterprise',
   data() {
     return {
-      // 記錄目前點擊的公司（索引：0～21）
-      selectedCompanyIndex: null,
-      // 公司列表，共 22 間，依照需求順序與名稱設定
+      selectedCompanyId: 1,
       companies: [
-        { name: '大同智能' },
-        { name: '元太科技' },
-        { name: '友達光電' },
-        { name: '友達宇沛' },
-        { name: '日月光' },
-        { name: '台灣自來水公司' },
-        { name: '台灣艾司摩爾' },
-        { name: '台灣萊雅' },
-        { name: '台電綜研所' },
-        { name: '亞東預拌' },
-        { name: '和碩' },
-        { name: '奇美食品' },
-        { name: '東豐纖維' },
-        { name: '太古可口可樂' },
-        { name: '凌羣電腦' },
-        { name: '理想大地' },
-        { name: '統一企業' },
-        { name: '華碩電腦' },
-        { name: '群光電子' },
-        { name: '聚陽實業' },
-        { name: '聯發科&日月光' },
-        { name: '聯新國際醫院' }
+        { id: 1, zh: '大同智能', en: 'TFE CO.,LTD' },
+        { id: 2, zh: '元太科技', en: 'E Ink' },
+        { id: 3, zh: '友達光電', en: 'AUO' },
+        { id: 4, zh: '日月光', en: 'ASE' },
+        { id: 5, zh: '台水公司', en: 'Taiwan Water Corporation' },
+        { id: 6, zh: '台電公司綜研所', en: 'TPC-TPRI' },
+        { id: 7, zh: '宇沛永續(AET)', en: 'AET' },
+        { id: 8, zh: '和碩', en: 'PEGATRON' },
+        { id: 9, zh: '奇美食品', en: 'CHI MEI FROZEN FOOD' },
+        { id: 10, zh: '岱德橡膠', en: 'DELTEC' },
+        { id: 11, zh: '東豐纖維', en: 'TUNtex' },
+        { id: 12, zh: '太古可口可樂', en: 'Swire Coca-Cola' },
+        { id: 13, zh: '凌羣電腦', en: 'SYSCOM' },
+        { id: 14, zh: '華碩電腦', en: 'ASUS' },
+        { id: 15, zh: 'NVIDIA', en: 'NVIDIA' },
+        { id: 16, zh: '新北捷運公司', en: 'New Taipei Metro Corp.' },
+        { id: 17, zh: '群光電子', en: 'Chicony' },
+        { id: 18, zh: '聯發科技X矽品精密', en: 'MediaTek SPIL' },
+        { id: 19, zh: '聯新國際醫院', en: 'Landseed International Hospital' }
       ]
     }
   },
@@ -125,51 +90,24 @@ export default {
     videoText() {
       return this.$i18n.locale === 'zh' ? '觀看題目說明影片' : 'Watch Question Explanation Video';
     },
-    placeholderImage() {
-      return this.$i18n.locale === 'zh' ? noneZh : noneEn;
-    },
-    // 對於一般公司，依據所選索引回傳單張圖片
     modalImage() {
-      if (this.selectedCompanyIndex === null) return '';
-      // 若為台灣萊雅（索引 7），則不使用單一圖片
-      if (this.selectedCompanyIndex === 7) return '';
-      const number = (this.selectedCompanyIndex + 1).toString().padStart(3, '0');
+      const number = this.selectedCompanyId.toString().padStart(3, '0');
       if (this.$i18n.locale === 'zh') {
         return new URL(`../../assets/img/enterprise/content/zh/com_content_${number}.png`, import.meta.url).href;
-      } else {
-        return new URL(`../../assets/img/enterprise/content/en/com_content_en_${number}.png`, import.meta.url).href;
       }
-    },
-    // 台灣萊雅第一張詳細內容圖片
-    modalImage1() {
-      if (this.selectedCompanyIndex !== 7) return '';
-      const number = '008';
-      if (this.$i18n.locale === 'zh') {
-        return new URL(`../../assets/img/enterprise/content/zh/com_content_${number}_1.png`, import.meta.url).href;
-      } else {
-        return new URL(`../../assets/img/enterprise/content/en/com_content_en_${number}_1.png`, import.meta.url).href;
-      }
-    },
-    // 台灣萊雅第二張詳細內容圖片
-    modalImage2() {
-      if (this.selectedCompanyIndex !== 7) return '';
-      const number = '008';
-      if (this.$i18n.locale === 'zh') {
-        return new URL(`../../assets/img/enterprise/content/zh/com_content_${number}_2.png`, import.meta.url).href;
-      } else {
-        return new URL(`../../assets/img/enterprise/content/en/com_content_en_${number}_2.png`, import.meta.url).href;
-      }
+      return new URL(`../../assets/img/enterprise/content/en/com_content_en_${number}.png`, import.meta.url).href;
     }
   },
   methods: {
-    // 點擊公司時記錄目前索引
-    openModal(index) {
-      this.selectedCompanyIndex = index;
+    openModal(companyId) {
+      this.selectedCompanyId = companyId;
     },
-    // 根據 index 動態回傳該公司 logo 的圖片路徑
-    getCompanyLogo(index) {
-      const number = (index + 1).toString().padStart(3, '0');
-      return new URL(`../../assets/img/enterprise/logo/com_content_${number}.png`, import.meta.url).href;
+    getCompanyName(company) {
+      return this.$i18n.locale === 'zh' ? company.zh : company.en;
+    },
+    getCompanyLogo(companyId) {
+      const number = companyId.toString().padStart(3, '0');
+      return new URL(`../../assets/img/enterprise/logo/com_${number}.png`, import.meta.url).href;
     }
   },
 }
@@ -271,21 +209,6 @@ export default {
   margin-top: 10%;
 }
 
-.placeholder-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.placeholder-container img {
-  max-width: 80vw;
-  max-height: 70vh;
-  width: auto;
-  height: auto;
-  display: block;
-}
-
 /* Grid 排版 */
 .grid-container {
   display: grid;
@@ -329,8 +252,9 @@ export default {
 
 .company-label {
   margin-top: 5px;
-  font-size: 1vw;
+  font-size: clamp(11px, 0.8vw, 16px);
   font-weight: bold;
+  color: #1d2a1d;
 }
 
 /* Modal 樣式 */
@@ -354,18 +278,4 @@ export default {
   max-width: 90vw !important;
   max-height: 90vh !important;
 }
-
-.carousel-control-prev {
-  left: -5%; /* 向右移動 */
-}
-
-.carousel-control-next {
-  right: -5%; /* 向右移動 */
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  filter: brightness(0) invert(0);
-}
-
 </style>

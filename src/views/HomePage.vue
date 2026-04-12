@@ -35,7 +35,7 @@
 
     <SiteFrame group-switch-behavior="reset" :light-nav="true">
       <div class="home-content">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="90000">
+        <div id="carouselExampleIndicators" class="carousel slide">
           <div class="carousel-inner">
             <!-- <div class="carousel-item ">
               <img src="@/assets/2026banner.png" class="d-block w-100" alt="2026 Banner">
@@ -49,11 +49,20 @@
                 ></iframe>
               </div>
             </div>
+            <div class="carousel-item">
+              <div class="ratio ratio-16x9 w-75 mx-auto" style="margin-bottom: 105px;">
+                <iframe
+                  src="https://www.youtube.com/embed/vHx0ydHWPYc?si=BS56q2zvOI7qlRgK"
+                  title="YouTube video player"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
           </div>
-          <!-- <div class="carousel-indicators custom-indicators">
+          <div class="carousel-indicators custom-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          </div> -->
+          </div>
         </div>
       </div>
     </SiteFrame>

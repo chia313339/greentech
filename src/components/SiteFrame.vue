@@ -68,8 +68,8 @@ import { store } from '../store'
 import { GROUP_META, GROUP_SIGNUP_URLS, normalizeGroup } from '@/constants/groups'
 import greentechZh from '@/assets/signup/greentech.png'
 import greentechEn from '@/assets/signup/greentech_en.png'
-import healthtechZh from '@/assets/signup/healthtech.png'
-import healthtechEn from '@/assets/signup/healthtech_en.png'
+import aitransformationZh from '@/assets/signup/healthtech.png'
+import aitransformationEn from '@/assets/signup/healthtech_en.png'
 
 const NAV_ITEMS = [
   'about',
@@ -125,9 +125,9 @@ export default {
           src: isZh ? greentechZh : greentechEn
         },
         {
-          key: 'healthtech',
-          alt: 'Healthtech',
-          src: isZh ? healthtechZh : healthtechEn
+          key: 'aitransformation',
+          alt: 'AI transformation',
+          src: isZh ? aitransformationZh : aitransformationEn
         }
       ]
     },
@@ -144,7 +144,7 @@ export default {
     },
     isGroupActive(groupKey) {
       if (this.isSharedPage) {
-        return groupKey === 'greentech' || groupKey === 'healthtech'
+        return groupKey === 'greentech' || groupKey === 'aitransformation'
       }
       return this.currentGroup === groupKey
     },

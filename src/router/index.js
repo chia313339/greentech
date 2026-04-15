@@ -16,7 +16,7 @@ import GreentechRetrospective from '../views/greentech/Retrospective.vue'
 import GreentechFAQ from '../views/greentech/FAQ.vue'
 import GreentechContact from '../views/greentech/Contact.vue'
 
-// Healthtech 頁面
+// AI transformation 頁面
 import HealthtechSchedule from '../views/healthtech/Schedule.vue'
 import HealthtechEnterprise from '../views/healthtech/Enterprise.vue'
 import HealthtechInstructions from '../views/healthtech/Instructions.vue'
@@ -45,7 +45,7 @@ const routes = [
     ]
   },
   {
-    path: '/healthtech',
+    path: '/aitransformation',
     component: GroupPage,
     children: [
       { path: '', redirect: 'about' },
@@ -81,6 +81,22 @@ const routes = [
         })
       }
     ]
+  },
+  {
+    path: '/healthtech',
+    redirect: (to) => ({
+      path: '/aitransformation/about',
+      query: to.query,
+      hash: to.hash
+    })
+  },
+  {
+    path: '/healthtech/:navItem',
+    redirect: (to) => ({
+      path: `/aitransformation/${to.params.navItem || 'about'}`,
+      query: to.query,
+      hash: to.hash
+    })
   },
   {
     path: '/city',

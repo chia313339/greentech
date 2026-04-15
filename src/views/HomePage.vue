@@ -83,7 +83,7 @@ import gotoh from '@/assets/gotoh.png'
 
 const OPENING_IMAGES = {
   greentech: gotog,
-  healthtech: gotoh
+  aitransformation: gotoh
 }
 
 export default {

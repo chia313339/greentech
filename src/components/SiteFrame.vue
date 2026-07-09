@@ -36,11 +36,11 @@
     </div>
 
     <div class="floating-buttons">
-      <button class="reg-btn" v-html="regBtnText" data-bs-toggle="modal" data-bs-target="#signModal"></button>
+      <button v-if="registrationOpen" class="reg-btn" v-html="regBtnText" data-bs-toggle="modal" data-bs-target="#signModal"></button>
       <button class="lang-btn" @click="toggleLanguage">{{ languageBtnText }}</button>
     </div>
 
-    <div class="modal fade" id="signModal" tabindex="-1" aria-hidden="true">
+    <div v-if="registrationOpen" class="modal fade" id="signModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-custom-size">
         <div class="modal-content custom-modal-content">
           <div class="modal-header">
@@ -100,7 +100,10 @@ export default {
   data() {
     return {
       navItems: NAV_ITEMS,
-      groups: GROUP_META
+      groups: GROUP_META,
+      // 活動已停止報名 → 隱藏右下「報名連結」泡泡與報名彈窗。
+      // 日後重新開放報名時，改回 true 即可。
+      registrationOpen: false
     }
   },
   computed: {

@@ -281,7 +281,7 @@ export default {
       const websiteMapping = {
         '2025': 'https://greentech.startupterrace.tw/2025/',
         '2024': 'https://gt.startupterrace.tw/',
-        '2023': 'https://gt.startupterrace.tw/2023%E5%B9%B4/',
+        '2023': 'https://greentech.startupterrace.tw/2023/',
         '2022': 'https://gt.startupterrace.tw/2022/'
       };
       const url = websiteMapping[this.activeTab];

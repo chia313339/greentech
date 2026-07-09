@@ -55,7 +55,6 @@
           id="carouselExampleIndicators"
           class="carousel slide"
           :class="carouselClass"
-          data-bs-ride="carousel"
         >
           <!-- 只有當圖片數量大於1時才顯示指示器 -->
           <div v-if="images.length > 1" class="carousel-indicators custom-indicators">
@@ -117,6 +116,10 @@
 </template>
 
 <script>
+import chu001Zh from '@/assets/img/passed/chu001.png';
+import chu001En from '@/assets/img/passed/chu001_en.png';
+import chu002Zh from '@/assets/img/passed/chu002.png';
+import chu002En from '@/assets/img/passed/chu002_en.png';
 import noneZh from '@/assets/img/passed/none.png';
 import noneEn from '@/assets/img/passed/none_en.png';
 import docIcon from '@/assets/docbt.png';
@@ -124,18 +127,36 @@ export default {
   name: 'GT-Scoring',
   data() {
     return {
-      activeTab: '決賽',
+      activeTab: '初賽',
       docIcon,
-      docLink: 'https://drive.google.com/file/d/1d_iRQcqdPrYoXWEX1eA8N32izwGUJXPn/view?usp=sharing'
+      docLink: 'https://drive.google.com/file/d/1d_iRQcqdPrYoXWEX1eA8N32izwGUJXPn/view?usp=sharing',
+      // 各階段通過名單圖片（zh / en 成對，依語系切換）
+      // 目前僅初賽已公布名單；複賽、決賽補齊 fu/jue 圖片後填入陣列即可
+      passedSets: {
+        初賽: [
+          { zh: chu001Zh, en: chu001En },
+          { zh: chu002Zh, en: chu002En }
+        ],
+        複賽: [],
+        決賽: []
+      }
     }
   },
   computed: {
-    passedImg() {
-      return this.$i18n.locale === 'zh' ? noneZh : noneEn;
+    isZh() {
+      return this.$i18n.locale === 'zh';
     },
-    // 三個分頁都顯示同一張佔位圖（依語系切換）
+    // 佔位圖（尚未公布名單的階段使用）
+    passedImg() {
+      return this.isZh ? noneZh : noneEn;
+    },
+    // 依目前分頁與語系回傳要輪播的圖片
     images() {
-      return [this.passedImg];
+      const set = this.passedSets[this.activeTab] || [];
+      if (set.length === 0) {
+        return [this.passedImg];
+      }
+      return set.map((item) => (this.isZh ? item.zh : item.en));
     },
     carouselClass() {
       switch (this.activeTab) {
@@ -342,6 +363,18 @@ export default {
   width: 90vw;
   margin-top: 20vh;
   max-width: 80vw;
+  /* 底部預留空間，讓輪播指示點可放到圖片下方而不被裁切 */
+  padding-bottom: 72px;
+}
+
+/* 輪播圖片：限制高度並置中，空出下方位置給指示點 */
+.carousel-inner img {
+  width: auto !important;
+  max-width: 100%;
+  height: auto;
+  max-height: 75vh;
+  margin: 0 auto;
+  display: block;
 }
 
 /* 調整 carousel 控制鈕 */
@@ -372,7 +405,7 @@ export default {
 .custom-indicators {
   position: absolute;
   width: 100%;
-  bottom: -20px;
+  bottom: -76px;
   left: -15%;
   display: flex;
   justify-content: center;

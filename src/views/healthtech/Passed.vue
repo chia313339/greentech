@@ -131,7 +131,7 @@ export default {
       docIcon,
       docLink: 'https://drive.google.com/file/d/1d_iRQcqdPrYoXWEX1eA8N32izwGUJXPn/view?usp=sharing',
       // 各階段通過名單圖片（zh / en 成對，依語系切換）
-      // 目前僅初賽已公布名單；複賽、決賽補齊 fu/jue 圖片後填入陣列即可
+      // 目前僅初賽已公布名單；複賽、決賽維持佔位圖，之後補齊 fu/jue 圖片再填入陣列即可
       passedSets: {
         初賽: [
           { zh: chu001Zh, en: chu001En },
@@ -363,18 +363,6 @@ export default {
   width: 90vw;
   margin-top: 20vh;
   max-width: 80vw;
-  /* 底部預留空間，讓輪播指示點可放到圖片下方而不被裁切 */
-  padding-bottom: 72px;
-}
-
-/* 輪播圖片：限制高度並置中，空出下方位置給指示點 */
-.carousel-inner img {
-  width: auto !important;
-  max-width: 100%;
-  height: auto;
-  max-height: 75vh;
-  margin: 0 auto;
-  display: block;
 }
 
 /* 調整 carousel 控制鈕 */
@@ -405,7 +393,7 @@ export default {
 .custom-indicators {
   position: absolute;
   width: 100%;
-  bottom: -76px;
+  bottom: -20px;
   left: -15%;
   display: flex;
   justify-content: center;

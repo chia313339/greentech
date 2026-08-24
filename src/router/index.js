@@ -27,6 +27,7 @@ import HealthtechFAQ from '../views/healthtech/FAQ.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: HomePage },
+  { path: '/about', redirect: '/' },
   {
     path: '/greentech',
     component: GroupPage,
@@ -119,7 +120,8 @@ const routes = [
     path: '/2023',
     name: '2023',
     component: page2023
-  }
+  },
+  { path: '/:pathMatch(.*)*', redirect: '/' }
 ]
 
 const router = createRouter({

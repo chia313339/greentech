@@ -294,10 +294,10 @@ export default {
     },
     openWebsite() {
       const websiteMapping = {
-        '2025': 'https://greentech.startupterrace.tw/2025/',
-        '2024': 'https://gt.startupterrace.tw/',
-        '2023': 'https://greentech.startupterrace.tw/2023/',
-        '2022': 'https://gt.startupterrace.tw/2022/'
+        '2025': 'https://startupterrace.sme.gov.tw/startupchallenge2025/',
+        '2024': 'https://startupterrace.sme.gov.tw/startupchallenge2024/',
+        '2023': 'https://startupterrace.sme.gov.tw/startupchallenge2023/',
+        '2022': 'https://startupterrace.sme.gov.tw/startupchallenge2022/'
       };
       const url = websiteMapping[this.activeTab];
       // 若對應網址不為空則開啟新視窗，否則提示訊息

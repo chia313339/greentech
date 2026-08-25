@@ -11,7 +11,7 @@ export default defineComponent({
   setup() {
     onMounted(() => {
       // 使用 replace 不會讓使用者回上一頁時回到這個元件
-      window.location.replace('https://gt.startupterrace.tw/')
+      window.location.replace('https://startupterrace.sme.gov.tw/startupchallenge2024/')
     })
   }
 })

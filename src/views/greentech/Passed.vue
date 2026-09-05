@@ -120,6 +120,10 @@ import chu001Zh from '@/assets/img/passed/chu001.png';
 import chu001En from '@/assets/img/passed/chu001_en.png';
 import chu002Zh from '@/assets/img/passed/chu002.png';
 import chu002En from '@/assets/img/passed/chu002_en.png';
+import fu001Zh from '@/assets/img/passed/fu001.png';
+import fu001En from '@/assets/img/passed/fu001_en.png';
+import fu002Zh from '@/assets/img/passed/fu002.png';
+import fu002En from '@/assets/img/passed/fu002_en.png';
 import noneZh from '@/assets/img/passed/none.png';
 import noneEn from '@/assets/img/passed/none_en.png';
 import docIcon from '@/assets/docbt.png';
@@ -131,13 +135,16 @@ export default {
       docIcon,
       docLink: 'https://drive.google.com/file/d/1d_iRQcqdPrYoXWEX1eA8N32izwGUJXPn/view?usp=sharing',
       // 各階段通過名單圖片（zh / en 成對，依語系切換）
-      // 目前僅初賽已公布名單；複賽、決賽維持佔位圖，之後補齊 fu/jue 圖片再填入陣列即可
+      // 初賽、複賽已公布名單；決賽維持佔位圖，之後補齊 jue 圖片再填入陣列即可
       passedSets: {
         初賽: [
           { zh: chu001Zh, en: chu001En },
           { zh: chu002Zh, en: chu002En }
         ],
-        複賽: [],
+        複賽: [
+          { zh: fu001Zh, en: fu001En },
+          { zh: fu002Zh, en: fu002En }
+        ],
         決賽: []
       }
     }

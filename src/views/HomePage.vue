@@ -96,12 +96,32 @@ const OPENING_IMAGES = {
   aitransformation: gotoh
 }
 
-// 網址異動公告的下架時間：台北時間 2026/10/31 00:00（等同 2026/10/30 整天仍會顯示）。
+// 網址異動公告的下架時間：台北時間 2027/09/02 00:00（等同 2027/09/01 整天仍會顯示）。
 // 用固定的 UTC 瞬間比較，避免受訪客所在時區影響。
-const NOTICE_END = Date.UTC(2026, 9, 30, 16, 0, 0)
+const NOTICE_END = Date.UTC(2027, 8, 1, 16, 0, 0)
+
+// 同一個瀏覽器工作階段只提醒一次。日後若公告內容有異動，換掉這個 key 就會重新顯示。
+const NOTICE_SEEN_KEY = 'gt2026-notice-urlchange'
+
+function noticeSeen() {
+  try {
+    return sessionStorage.getItem(NOTICE_SEEN_KEY) === '1'
+  } catch (e) {
+    // 無痕模式或停用儲存時讀取會拋錯，退回「照常顯示」而不是讓開場整個壞掉
+    return false
+  }
+}
+
+function markNoticeSeen() {
+  try {
+    sessionStorage.setItem(NOTICE_SEEN_KEY, '1')
+  } catch (e) {
+    // 記不起來就維持每次顯示，不影響開場流程
+  }
+}
 
 function shouldShowNotice() {
-  return Date.now() < NOTICE_END
+  return Date.now() < NOTICE_END && !noticeSeen()
 }
 
 export default {
@@ -121,6 +141,7 @@ export default {
   },
   methods: {
     closeNotice() {
+      markNoticeSeen()
       this.openingStage = 'video'
     },
     videoEnded() {

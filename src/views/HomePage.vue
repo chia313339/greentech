@@ -2,8 +2,18 @@
   <div class="home-page">
     <!-- 開場全屏 overlay -->
     <div v-if="showOpening" class="opening-overlay">
-      <!-- 畫面內容依階段切換：影片或圖片 -->
-      <div v-if="openingStage === 'video'" class="opening-video-container">
+      <!-- 畫面內容依階段切換：公告、影片或圖片 -->
+      <div v-if="openingStage === 'notice'" class="opening-notice-mask">
+        <div class="notice-modal" role="dialog" aria-modal="true" aria-labelledby="notice-title">
+          <h2 id="notice-title" class="notice-title">【公告】</h2>
+          <p class="notice-text">
+            活動更新網址囉，舊網址的 greentech.startupterrace.tw 將自動轉跳到新網址
+            startupterrace.sme.gov.tw/startupchallenge2026，造成不便敬請見諒
+          </p>
+          <button type="button" class="notice-close" @click="closeNotice">我知道了</button>
+        </div>
+      </div>
+      <div v-else-if="openingStage === 'video'" class="opening-video-container">
         <video
           src="@/assets/opening.mp4"
           class="opening-video"
@@ -86,6 +96,14 @@ const OPENING_IMAGES = {
   aitransformation: gotoh
 }
 
+// 網址異動公告的下架時間：台北時間 2026/10/31 00:00（等同 2026/10/30 整天仍會顯示）。
+// 用固定的 UTC 瞬間比較，避免受訪客所在時區影響。
+const NOTICE_END = Date.UTC(2026, 9, 30, 16, 0, 0)
+
+function shouldShowNotice() {
+  return Date.now() < NOTICE_END
+}
+
 export default {
   name: 'HomePage',
   components: {
@@ -94,7 +112,7 @@ export default {
   data() {
     return {
       showOpening: true,
-      openingStage: 'video',
+      openingStage: shouldShowNotice() ? 'notice' : 'video',
       groups: GROUP_META.map((group) => ({
         ...group,
         openingImg: OPENING_IMAGES[group.key]
@@ -102,6 +120,9 @@ export default {
     }
   },
   methods: {
+    closeNotice() {
+      this.openingStage = 'video'
+    },
     videoEnded() {
       this.openingStage = 'image'
     },
@@ -130,6 +151,63 @@ export default {
   height: 100%;
   z-index: 2000;
   background: #000;
+}
+
+.opening-notice-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 2200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5vh 5vw;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.notice-modal {
+  width: min(680px, 90vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: clamp(24px, 4vh, 44px) clamp(20px, 3.5vw, 48px);
+  border-radius: 12px;
+  border-top: 6px solid #66CC66;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.notice-title {
+  margin: 0 0 16px;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  font-weight: 700;
+  color: #2f8f2f;
+}
+
+.notice-text {
+  margin: 0 0 24px;
+  font-size: clamp(0.98rem, 1.35vw, 1.12rem);
+  line-height: 1.9;
+  color: #333;
+  text-align: left;
+  word-break: break-word;
+}
+
+.notice-close {
+  min-width: 140px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  color: #fff;
+  background: #66CC66;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.notice-close:hover {
+  background: #55b855;
+  transform: scale(1.05);
 }
 
 .opening-video,
@@ -286,6 +364,14 @@ export default {
 }
 
 @media (max-width: 900px) {
+  .notice-modal {
+    padding: 24px 20px;
+  }
+
+  .notice-text {
+    line-height: 1.8;
+  }
+
   .opening-image-content {
     gap: clamp(14px, 2.2vh, 24px);
   }

@@ -7,14 +7,14 @@
     <div class="title-little">{{ $t('class.gt') }}</div>
 
     <!-- 右上角文件按鈕 -->
-    <!-- <a
+    <a
       class="doc-button"
       :href="docLink"
       target="_blank"
       rel="noopener noreferrer"
     >
-      <img :src="docIcon" alt="document link" />
-    </a> -->
+      <img :src="docIcon" alt="2026 winners and finalists" />
+    </a>
 
     <!-- 標題欄 -->
     <div class="title-bar">{{ $t('nav.passed') }}</div>
@@ -124,18 +124,22 @@ import fu001Zh from '@/assets/img/passed/fu001.png';
 import fu001En from '@/assets/img/passed/fu001_en.png';
 import fu002Zh from '@/assets/img/passed/fu002.png';
 import fu002En from '@/assets/img/passed/fu002_en.png';
+import jue001Zh from '@/assets/img/passed/jue001.png';
+import jue001En from '@/assets/img/passed/jue001_en.png';
+import jue002Zh from '@/assets/img/passed/jue002.png';
+import jue002En from '@/assets/img/passed/jue002_en.png';
 import noneZh from '@/assets/img/passed/none.png';
 import noneEn from '@/assets/img/passed/none_en.png';
-import docIcon from '@/assets/docbt.png';
+import docIcon from '@/assets/docbt2026.png';
 export default {
   name: 'GT-Scoring',
   data() {
     return {
-      activeTab: '初賽',
+      activeTab: '決賽',
       docIcon,
-      docLink: 'https://drive.google.com/file/d/1d_iRQcqdPrYoXWEX1eA8N32izwGUJXPn/view?usp=sharing',
+      docLink: 'https://drive.google.com/drive/folders/1kErXgHyY5_qi-u8mxQi8UAqDEMSbb8Pa?usp=drive_link',
       // 各階段通過名單圖片（zh / en 成對，依語系切換）
-      // 初賽、複賽已公布名單；決賽維持佔位圖，之後補齊 jue 圖片再填入陣列即可
+      // 初賽、複賽、決賽皆已公布名單
       passedSets: {
         初賽: [
           { zh: chu001Zh, en: chu001En },
@@ -145,7 +149,10 @@ export default {
           { zh: fu001Zh, en: fu001En },
           { zh: fu002Zh, en: fu002En }
         ],
-        決賽: []
+        決賽: [
+          { zh: jue001Zh, en: jue001En },
+          { zh: jue002Zh, en: jue002En }
+        ]
       }
     }
   },

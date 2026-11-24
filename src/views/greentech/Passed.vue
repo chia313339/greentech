@@ -137,7 +137,7 @@ export default {
     return {
       activeTab: '決賽',
       docIcon,
-      docLink: 'https://drive.google.com/drive/folders/1kErXgHyY5_qi-u8mxQi8UAqDEMSbb8Pa?usp=drive_link',
+      docLink: 'https://drive.google.com/file/d/1_x_uGIRiA39olmiNybxAdVj8xkKGgFva/view?usp=sha',
       // 各階段通過名單圖片（zh / en 成對，依語系切換）
       // 初賽、複賽、決賽皆已公布名單
       passedSets: {
